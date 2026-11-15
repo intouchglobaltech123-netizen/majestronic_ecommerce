@@ -1064,6 +1064,14 @@ body.is-cat .utilbar .ub{display:none}
 .cat-bar .sortl select{border:0!important;height:40px!important;padding:0 34px 0 8px!important;border-radius:999px!important}
 #grid{border-top:1px solid #EFEAE0;padding-top:24px}
 @media(max-width:820px){.cat-bar{display:grid!important;grid-template-columns:1fr 1fr;align-items:center}.cat-bar .catbtn{order:1;width:100%;justify-content:center}.cat-bar .sortl{order:2;margin:0!important;padding-left:12px;min-width:0;font-size:0}.cat-bar .sortl select{min-width:0;width:100%}.cat-bar .fopen{order:3}.cat-bar .ccount{order:4;justify-self:end;margin:0!important}}
+
+/* v39 real product photos */
+img.ph{display:block;width:86%;height:86%;object-fit:contain;mix-blend-mode:multiply;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.card2:hover .c2img img.ph,.pdimg:hover img.ph{transform:scale(1.06)}
+.c2img,.pdimg{background:#fff!important}
+.ctile .sq span{background:#fff!important;overflow:hidden}
+.ctile .sq img.ph{width:92%;height:92%}
+.suggest img.ph,.row .th img.ph{width:100%;height:100%}
 </style>
 </head>
 <body>
@@ -1437,7 +1445,8 @@ const ART={
   prop:()=>`<ellipse cx="38" cy="45" rx="30" ry="7" fill="#111522" transform="rotate(-25 38 45)"/><ellipse cx="82" cy="45" rx="30" ry="7" fill="#111522" transform="rotate(25 82 45)"/><circle cx="60" cy="45" r="7" fill="#c9ccd6"/>`,
   castor:()=>`<circle cx="60" cy="52" r="24" fill="#c9ccd6"/><circle cx="52" cy="44" r="8" fill="#eef0f5"/><rect x="38" y="12" width="44" height="14" rx="3" fill="#8a93a5"/><circle cx="46" cy="19" r="2.4" fill="${DK}"/><circle cx="74" cy="19" r="2.4" fill="${DK}"/>`
 };
-const art=spec=>{const [k,v]=spec.split(':');return `<svg viewBox="0 0 120 90" role="img" aria-hidden="true">${ART[k](v)}</svg>`};
+const PHOTOS=new Set(["board-cam", "board-esp", "board-xiao", "cap", "castor", "cell", "chassis", "chassis2", "drone", "gun", "ic", "jumper", "kit-car", "kit-starter", "led", "lipo", "mat", "mist", "module-gas", "module-ir", "module-ldr", "module-level", "module-pir", "module-soil", "motor", "oled", "prop", "pump", "res", "shield", "solar", "speaker", "spool", "ultra", "usbc", "volt", "wheel", "wire", "wood-ball", "wood-car", "wood-coin", "wood-jcb", "wood-rack", "wood-sat", "wood-slope", "wood-star", "wood-treb", "wood-uv"]);
+const art=spec=>{const f=spec.replace(':','-');if(PHOTOS.has(f))return `<img class="ph" src="p/${f}.webp" alt="" loading="lazy" decoding="async">`;const [k,v]=spec.split(':');return `<svg viewBox="0 0 120 90" role="img" aria-hidden="true">${ART[k](v)}</svg>`};
 
 /* ---------- CATALOG ---------- */
 const P=[
@@ -1489,12 +1498,12 @@ const P=[
  ['DIY Coin Eating Robot STEM Kit','Kids DIY Kits',399,null,'wood:coin','A slot-fit wooden robot whose arms guide a coin into its body.'],
  ['Smart Drying Rack STEM Kit','Kids DIY Kits',933,1199,'wood:rack','A wooden puzzle kit for building a miniature drying rack and learning structural mechanisms.'],
  ['4 Wheel Kit','DIY Robotic Kits',599,699,'chassis','A four-wheel robot chassis with DC geared motors for building mobile robots.'],
- ['Arduino UNO Starter Kit for Beginners','DIY Robotic Kits',999,null,'shield','Arduino UNO SMD board with sensors, a servo, a relay and a breadboard for learning circuits and code.'],
- ['2 Wheel Chassis with Kit','DIY Robotic Kits',299,350,'castor','A compact two-motor robot chassis with a caster wheel for learning robotics.'],
- ['Smart Line Following Robot Kit','DIY Robotic Kits',1750,1999,'module:ir','An educational robot that uses IR sensors to follow black or white lines.'],
- ['Obstacle Avoiding Robot Car using Arduino Kit','DIY Robotic Kits',1750,2500,'ultra','A DIY robot car that uses an ultrasonic sensor and Arduino to detect obstacles and turn away.'],
- ['2 Wheel Mobile Controlled Robot Car Kit','DIY Robotic Kits',1750,2200,'motor','A two-wheel robot car with Bluetooth control to assemble, program and drive from a phone.'],
- ['Intermediate ESP32 Starter Kit for IoT and Automation','DIY Robotic Kits',1499,null,'board:esp','ESP32 Wi-Fi module with sensors, a relay, a servo and a water pump for IoT and automation projects.',1],
+ ['Arduino UNO Starter Kit for Beginners','DIY Robotic Kits',999,null,'kit:starter','Arduino UNO SMD board with sensors, a servo, a relay and a breadboard for learning circuits and code.'],
+ ['2 Wheel Chassis with Kit','DIY Robotic Kits',299,350,'chassis2','A compact two-motor robot chassis with a caster wheel for learning robotics.'],
+ ['Smart Line Following Robot Kit','DIY Robotic Kits',1750,1999,'kit:car','An educational robot that uses IR sensors to follow black or white lines.'],
+ ['Obstacle Avoiding Robot Car using Arduino Kit','DIY Robotic Kits',1750,2500,'kit:car','A DIY robot car that uses an ultrasonic sensor and Arduino to detect obstacles and turn away.'],
+ ['2 Wheel Mobile Controlled Robot Car Kit','DIY Robotic Kits',1750,2200,'chassis2','A two-wheel robot car with Bluetooth control to assemble, program and drive from a phone.'],
+ ['Intermediate ESP32 Starter Kit for IoT and Automation','DIY Robotic Kits',1499,null,'kit:starter','ESP32 Wi-Fi module with sensors, a relay, a servo and a water pump for IoT and automation projects.',1],
  ['Beginner ESP32 Starter Kit for IoT and Electronics','DIY Robotic Kits',999,null,'board:esp','ESP32 module with sensors, a relay, a buzzer and a breadboard for learning basic electronics.',1]
 ].map((a,i)=>({id:i,name:a[0],cat:a[1],price:a[2],mrp:a[3],kind:a[4],desc:a[5],out:!!a[6]}));
 const CATS=['All',...[...new Set(P.map(p=>p.cat))]];
