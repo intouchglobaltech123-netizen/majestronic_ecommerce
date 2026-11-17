@@ -629,6 +629,40 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:
  tb.addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(b)draw(+b.dataset.t)});
  $$('.railbtn').forEach(b=>b.addEventListener('click',()=>tr.scrollBy({left:(b.classList.contains('next')?1:-1)*tr.clientWidth*.8,behavior:'smooth'})));
  draw(0);}
+
+/* ---------- 3D: tilt, reveal, coverflow ---------- */
+{const RM=matchMedia('(prefers-reduced-motion: reduce)').matches,FINE=matchMedia('(pointer:fine)').matches;
+ const TILT='.ctile,.card2,.sc-card,.st,.trust-grid>div,.p3steps li';
+ if(!RM&&FINE){
+  let cur=null;
+  document.addEventListener('pointermove',e=>{
+   const el=e.target.closest&&e.target.closest(TILT);
+   if(cur&&cur!==el){cur.style.transform='';cur.classList.remove('t3d');cur=null}
+   if(!el||el.closest('.page:not([data-page="home"]):not([data-page="print-3d"])')&&!el.matches('.card2'))return;
+   const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+   const k=el.matches('.sc-card')?6:el.matches('.card2,.ctile')?10:8;
+   el.classList.add('t3d');el.style.setProperty('--gx',x*100+'%');el.style.setProperty('--gy',y*100+'%');
+   el.style.transform=`perspective(900px) rotateX(${(.5-y)*k}deg) rotateY(${(x-.5)*k}deg) translateZ(10px)`;cur=el;
+  },{passive:true});
+  document.addEventListener('pointerleave',()=>{if(cur){cur.style.transform='';cur.classList.remove('t3d');cur=null}});
+ }
+ /* scroll reveal */
+ const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12});
+ const mark=()=>$$('[data-page="home"] .trust-grid>div,[data-page="home"] .ctile,.sc-card,.st,.lux-head,.featured .card2,.eco,.jb,.p3steps li').forEach((el,i)=>{if(!el.dataset.rv){el.dataset.rv=1;el.style.setProperty('--d',(i%4)*90+'ms');if(!RM)el.classList.add('rv');io.observe(el)}});
+ mark();new MutationObserver(mark).observe(document.body,{childList:true,subtree:true});
+ /* coverflow rail */
+ const tr=$('#railTrack');
+ const flow=()=>{const c=tr.getBoundingClientRect(),mid=c.left+c.width/2;
+  tr.querySelectorAll('.card2').forEach(k=>{const r=k.getBoundingClientRect(),d=Math.max(-1,Math.min(1,(r.left+r.width/2-mid)/(c.width/2)));
+   k.style.setProperty('--ry',(-d*14).toFixed(2)+'deg');k.style.setProperty('--tz',(-Math.abs(d)*40).toFixed(1)+'px')})};
+ if(tr&&!RM){tr.addEventListener('scroll',()=>requestAnimationFrame(flow),{passive:true});addEventListener('resize',flow);new MutationObserver(()=>requestAnimationFrame(flow)).observe(tr,{childList:true});setTimeout(flow,300)}
+ /* eco ring drag */
+ const ring=$('#ecoRing');if(ring){let a=0,v=.15,drag=null;
+  const tick=()=>{if(!drag)a+=v;ring.style.transform=`rotateX(-8deg) rotateY(${a}deg)`;requestAnimationFrame(tick)};if(!RM)tick();
+  ring.parentElement.addEventListener('pointerdown',e=>{drag=e.clientX;ring.parentElement.setPointerCapture(e.pointerId)});
+  ring.parentElement.addEventListener('pointermove',e=>{if(drag!==null){a+=(e.clientX-drag)*.4;drag=e.clientX}});
+  ring.parentElement.addEventListener('pointerup',()=>drag=null);}
+}
 /* ---------- ROUTER ---------- */
 const R={page:'home',key:'home',id:null};
 function route(){

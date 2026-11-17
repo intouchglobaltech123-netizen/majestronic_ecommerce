@@ -1247,3 +1247,48 @@ body.is-home .nav:not(.solid){background:linear-gradient(rgba(255,253,249,.9),rg
 .brand{position:relative}
 .brand::after{content:"Electronics · Robotics · STEM";position:absolute;left:62px;bottom:-6px;font:500 9px var(--body);letter-spacing:.28em;text-transform:uppercase;color:var(--gold-d);white-space:nowrap}
 @media(max-width:700px){.brand::after{display:none}.brand b,.brand span,.brand strong{font-size:18px!important}}
+
+/* =================== v43: 3D + interactive =================== */
+.ctile,.card2,.sc-card,.st,.trust-grid>div,.p3steps li{transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s,border-color .35s;will-change:transform}
+.t3d{transition:transform .08s linear,box-shadow .3s!important;box-shadow:0 30px 60px rgba(40,30,10,.16)!important;z-index:2}
+.card2,.st,.trust-grid>div,.p3steps li,.sc-card{position:relative}
+.card2::after,.st::before,.sc-card::before,.trust-grid>div::after,.ctile .sq::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--gx,50%) var(--gy,50%),rgba(255,236,190,.38),transparent 45%);z-index:4}
+.ctile .sq{position:relative}
+.t3d::after,.t3d::before,.ctile.t3d .sq::after{opacity:1}
+.card2.t3d .c2img img,.ctile.t3d .sq img,.sc-card.t3d img{transform:translateZ(40px) scale(1.04)}
+.card2 .c2img img,.ctile .sq img{transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.card2.t3d h3,.st.t3d b{transform:translateZ(24px)}
+.trust-grid>div{background:#fff}
+.trust-grid>div.t3d{border-color:transparent}
+/* reveal */
+.rv{opacity:0;transform:perspective(1000px) rotateX(16deg) translateY(50px);transform-origin:50% 100%}
+.rv.in{opacity:1;transform:none;transition:opacity .8s ease var(--d),transform 1s cubic-bezier(.2,.8,.2,1) var(--d)}
+.rv.in.t3d{transition:transform .08s linear!important}
+/* coverflow rail */
+.railtrack{perspective:1400px;padding-top:20px!important;padding-bottom:40px!important}
+.railtrack .card2{transform:perspective(1200px) rotateY(var(--ry,0)) translateZ(var(--tz,0));transition:transform .25s ease-out,box-shadow .35s}
+.railtrack .card2.t3d{transform:perspective(900px) rotateY(0) translateZ(30px) scale(1.02)!important}
+/* showcase depth */
+.sc-card .sc-copy{transform:translateZ(50px)}
+.sc-card.dark::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(226,198,138,.05) 0 1px,transparent 1px 60px),repeating-linear-gradient(0deg,rgba(226,198,138,.05) 0 1px,transparent 1px 60px);transform:perspective(500px) rotateX(55deg) translateY(35%) scale(2);transform-origin:50% 100%;z-index:-2;pointer-events:none}
+/* marquee 3D band */
+.marq{transform:perspective(900px) rotateX(18deg) rotateZ(-1.2deg);margin:30px -2%!important;box-shadow:0 30px 50px rgba(0,0,0,.18)}
+/* eco ring */
+.eco{overflow:hidden}
+.eco-stage{height:150px;perspective:1100px;display:grid;place-items:center;cursor:grab;touch-action:pan-y;user-select:none}
+.eco-stage:active{cursor:grabbing}
+.eco-ring{position:relative;width:200px;height:60px;transform-style:preserve-3d}
+.eco-ring span{position:absolute;inset:0;display:grid;place-items:center;font:600 30px var(--serif);color:var(--noir);background:linear-gradient(180deg,#fff,#F6F0E3);border:1px solid #E6D9BC;transform:rotateY(calc(var(--i)*60deg)) translateZ(280px);backface-visibility:hidden;box-shadow:0 18px 30px rgba(40,30,10,.08)}
+.eco-ring span:nth-child(odd){color:var(--gold-d)}
+/* join band cube */
+.jb-right{display:flex;align-items:center;gap:40px}
+.jb-cube{width:90px;height:90px;position:relative;transform-style:preserve-3d;animation:jbspin 10s linear infinite}
+.jb-cube i{position:absolute;inset:0;border:1px solid var(--gold-l);background:linear-gradient(135deg,rgba(226,198,138,.25),rgba(226,198,138,.04))}
+.jb-cube i:nth-child(1){transform:translateZ(45px)}.jb-cube i:nth-child(2){transform:rotateY(180deg) translateZ(45px)}.jb-cube i:nth-child(3){transform:rotateY(90deg) translateZ(45px)}.jb-cube i:nth-child(4){transform:rotateY(-90deg) translateZ(45px)}.jb-cube i:nth-child(5){transform:rotateX(90deg) translateZ(45px)}.jb-cube i:nth-child(6){transform:rotateX(-90deg) translateZ(45px)}
+@keyframes jbspin{from{transform:rotateX(-24deg) rotateY(0)}to{transform:rotateX(-24deg) rotateY(360deg)}}
+.jb-btn{transition:transform .3s,box-shadow .3s}
+.jb-btn:hover{transform:translateY(-3px);box-shadow:0 14px 0 -6px #8C6A2F,0 24px 40px rgba(0,0,0,.4)}
+/* stores 3D numbers */
+.st-n{display:inline-block;transform:translateZ(30px)}
+@media(max-width:820px){.eco-ring{width:150px;height:48px}.eco-ring span{font-size:22px;transform:rotateY(calc(var(--i)*60deg)) translateZ(190px)}.jb-cube{display:none}.marq{transform:perspective(700px) rotateX(10deg) rotateZ(-1deg)}}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.jb-cube,.p3cube{animation:none}}
