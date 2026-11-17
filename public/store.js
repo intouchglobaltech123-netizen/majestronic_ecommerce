@@ -1314,7 +1314,7 @@ document.addEventListener('click',e=>{
     const id=+a.dataset.add,c=a.closest('.card2'),q=c?Math.max(1,Math.min(99,+c.querySelector('.qty2 input').value||1)):1;
     add(id,q);if(!a.dataset.html)a.dataset.html=a.innerHTML;a.innerHTML=`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Added`;a.classList.add('done');
     clearTimeout(a._t);a._t=setTimeout(()=>{a.innerHTML=a.dataset.html;a.classList.remove('done')},1500);
-    toast(`${q} × ${esc(P[id].name)} added`,'View cart',openDrawer);
+    toast(`${q} × ${esc(P[id].name)} added`,'View cart',()=>location.hash='cart');
   }
 });
 
@@ -1410,8 +1410,8 @@ function showProduct(id){
   const rel=[...P.filter(x=>x.id!==id&&x.cat===p.cat),...P.filter(x=>x.id!==id&&x.cat!==p.cat&&COLLS.some(c=>c.test(x)&&c.test(p)))];
   $('#related').innerHTML=[...new Map(rel.map(x=>[x.id,x])).values()].slice(0,4).map(card).join('');
 }
-$('#pdAdd').addEventListener('click',()=>{const p=P[R.id];if(p.out)return;const q=Math.max(1,+$('#pdQty input').value||1);add(p.id,q);toast(`${q} × ${esc(p.name)} added`,'View cart',openDrawer)});
-$('#pdBuy').addEventListener('click',()=>{const p=P[R.id];if(p.out)return;add(p.id,Math.max(1,+$('#pdQty input').value||1));$('#checkout').click()});
+$('#pdAdd').addEventListener('click',()=>{const p=P[R.id];if(p.out)return;const q=Math.max(1,+$('#pdQty input').value||1);add(p.id,q);toast(`${q} × ${esc(p.name)} added`,'View cart',()=>location.hash='cart')});
+$('#pdBuy').addEventListener('click',()=>{const p=P[R.id];if(p.out)return;add(p.id,Math.max(1,+$('#pdQty input').value||1));location.hash='checkout'});
 $('#pdWish').addEventListener('click',()=>toggleWish(R.id));
 
 /* ---------- WISHLIST / ACCOUNT ---------- */
@@ -1421,12 +1421,7 @@ function drawWish(){
   $('#wlEmpty').hidden=list.length>0;
   $('#wlCount').textContent=list.length?`${list.length} saved ${list.length===1?'item':'items'}`:'';
 }
-function drawAccount(){
-  $('#acWish').textContent=`${wish.size} saved ${wish.size===1?'item':'items'}`;
-  const n=Object.keys(cart).filter(i=>P[i]).reduce((s,i)=>s+cart[i],0);
-  $('#acCart2').textContent=`${n} ${n===1?'item':'items'}`;
-}
-$('#acCart').addEventListener('click',()=>openDrawer());
+
 
 /* ---------- CART ---------- */
 let cart={};
@@ -1444,7 +1439,7 @@ function drawCart(){
   $('#fsBar').style.width=Math.min(100,sub/FREE*100)+'%';
   $('#fsText').textContent=sub===0?'Tamil Nadu prepaid orders of ₹999 or more ship free.':left>0?`Add ${inr(left)} more for free shipping on Tamil Nadu prepaid orders.`:'Free shipping unlocked for Tamil Nadu prepaid orders.';
   $('#checkout').disabled=!ids.length;$('#checkout').style.opacity=ids.length?1:.5;
-  if(R.page==='account')drawAccount();
+  if(R.page==='account')drawAccount();if(R.page==='cart')drawCartPage();
 }
 $('#items').addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(b){const [i,n]=b.dataset.q.split(':');add(+i,+n);return}if(e.target.closest('a.th'))closeAll()});
 const scrim=$('#scrim');
@@ -1452,14 +1447,7 @@ const openDrawer=()=>{closeMega();$('#toast').classList.remove('on');$('#drawer'
 const closeAll=()=>{$('#drawer').classList.remove('open');$('#fside').classList.remove('open');scrim.classList.remove('open');$$('.modal').forEach(m=>{m.classList.remove('open');m.setAttribute('aria-hidden','true')})};
 $('#openCart').addEventListener('click',openDrawer);$('#closeCart').addEventListener('click',closeAll);scrim.addEventListener('click',closeAll);
 addEventListener('keydown',e=>{if(e.key==='Escape'){closeAll();closeMega();hideSuggest()}});
-$('#checkout').addEventListener('click',()=>{
-  const ids=Object.keys(cart).filter(i=>P[i]);if(!ids.length)return;
-  const sub=ids.reduce((s,i)=>s+cart[i]*P[i].price,0);
-  $('#coText').textContent=ids.map(i=>`${cart[i]} × ${P[i].name}  ${inr(cart[i]*P[i].price)}`).join('\n')+`\n\nSubtotal ${inr(sub)} (shipping calculated at checkout)`;
-  $('#coMsg').textContent='';closeAll();$('#co').classList.add('open');$('#co').setAttribute('aria-hidden','false');scrim.classList.add('open');
-});
-$('#coCopy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#coText').textContent);$('#coMsg').textContent='Order copied.'}catch(e){$('#coMsg').textContent='Copy was blocked here. Select the text above and copy it by hand.'}});
-$('#closeCo').addEventListener('click',closeAll);
+
 
 /* ---------- POLICIES ---------- */
 const ul=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join('')}</ul>`;
@@ -1665,6 +1653,118 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:
   const keys=['shop','kids-diy-kits','diy-robotic-kit',...Object.keys(COL).filter(k=>k.startsWith('cat-')&&!/kids|robotic/.test(k))];
   $('#fcats').innerHTML=keys.map(k=>{const n=P.filter(COL[k].test).length;return `<a href="#${k}" class="${k===cur?'on':''}"><span>${k==='shop'?'All products':COL[k].title}</span><i>${n}</i></a>`}).join('');};
  __syncSort();}
+
+/* ---------- ACCOUNTS, ORDERS, CART PAGE, CHECKOUT ---------- */
+const LS={get:(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const hash=async t=>{try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('mz:'+t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){return btoa(unescape(encodeURIComponent('mz:'+t)))}};
+const users=()=>LS.get('mz-users',[]);const setUsers=u=>LS.set('mz-users',u);
+const me=()=>{const id=LS.get('mz-session',null);return id?users().find(u=>u.id===id)||null:null};
+const saveMe=u=>{setUsers(users().map(x=>x.id===u.id?u:x))};
+let afterLogin='account';const go=h=>{if(location.hash==='#'+h)route();else location.hash=h};
+function drawAccount(){
+  const u=me();if(!u){afterLogin='account';location.hash='login';return}
+  $('#accHello').textContent='Hello, '+u.name.split(' ')[0];
+  $('#accMeta').textContent=[u.phone,u.email].filter(Boolean).join(' · ');
+  const n=Object.keys(cart).filter(i=>P[i]).reduce((s,i)=>s+cart[i],0);
+  $('#acCart2').textContent=`${n} ${n===1?'item':'items'}`;$('#acWish').textContent=`${wish.size} saved ${wish.size===1?'item':'items'}`;
+  $('#accOrders').textContent=u.orders.length?`${u.orders.length} order${u.orders.length>1?'s':''} · track or buy again`:'No orders yet';
+  $('#accAddr').textContent=u.addresses.length?`${u.addresses.length} saved`:'Add an address for delivery';
+}
+function drawAccLbl(){const u=me();$('#accLbl').textContent=u?'Hi, '+u.name.split(' ')[0]:'Sign in'}
+/* auth */
+const setTab=t=>{$$('.auth-tabs button').forEach(b=>b.classList.toggle('on',b.dataset.at===t));$('#fIn').hidden=t!=='in';$('#fUp').hidden=t!=='up'};
+document.addEventListener('click',e=>{const t=e.target.closest('[data-at]');if(t){e.preventDefault();setTab(t.dataset.at)}});
+const norm=v=>v.trim().toLowerCase().replace(/\s+/g,'');
+$('#fUp').addEventListener('submit',async e=>{e.preventDefault();const f=e.target,er=f.querySelector('.aerr');const d=Object.fromEntries(new FormData(f));
+  const phone=norm(d.phone).replace(/^\+?91/,''),email=norm(d.email||'');
+  if(!/^\d{10}$/.test(phone)){er.textContent='Enter a 10-digit mobile number.';return}
+  if(users().some(u=>u.phone===phone||(email&&u.email===email))){er.textContent='An account already exists with this mobile or email. Sign in instead.';return}
+  const u={id:'u'+Date.now(),name:d.name.trim(),phone,email,pw:await hash(d.pw),addresses:[],orders:[]};
+  setUsers([...users(),u]);LS.set('mz-session',u.id);f.reset();er.textContent='';drawAccLbl();toast('Account created. Welcome, '+u.name.split(' ')[0]+'!');go(afterLogin)});
+$('#fIn').addEventListener('submit',async e=>{e.preventDefault();const f=e.target,er=f.querySelector('.aerr');const d=Object.fromEntries(new FormData(f));
+  const id=norm(d.id).replace(/^\+?91(?=\d{10}$)/,'');const pw=await hash(d.pw);
+  const u=users().find(x=>(x.phone===id||x.email===id)&&x.pw===pw);
+  if(!u){er.textContent='Mobile/email or password is incorrect.';return}
+  LS.set('mz-session',u.id);f.reset();er.textContent='';drawAccLbl();toast('Signed in. Welcome back!');go(afterLogin)});
+$('#signOut').addEventListener('click',()=>{LS.set('mz-session',null);drawAccLbl();toast('Signed out');location.hash='home'});
+/* profile */
+function drawProfile(){const u=me();if(!u){afterLogin='profile';location.hash='login';return}const f=$('#fProf');f.name.value=u.name;f.phone.value=u.phone;f.email.value=u.email||'';f.pw.value='';f.querySelector('.aerr').textContent=''}
+$('#fProf').addEventListener('submit',async e=>{e.preventDefault();const u=me(),f=e.target;u.name=f.name.value.trim();u.phone=norm(f.phone.value);u.email=norm(f.email.value);if(f.pw.value)u.pw=await hash(f.pw.value);saveMe(u);drawAccLbl();f.querySelector('.aerr').textContent='Saved.'});
+/* addresses */
+const addrHTML=(a,sel)=>`<b>${esc(a.name)}</b><br>${esc(a.l1)}, ${esc(a.l2)}<br>${esc(a.city)}, ${esc(a.state)} ${esc(a.pin)}<br>Phone: ${esc(a.phone)}`;
+let editAddr=null,addrBack=null;
+function openAddr(i=null,back=null){editAddr=i;addrBack=back;const f=$('#fAddr');f.reset();const u=me();
+  if(i!==null){const a=u.addresses[i];for(const k of ['name','phone','l1','l2','city','pin','state'])f[k].value=a[k];f.def.checked=!!a.def;$('#addrT').textContent='Edit address'}else{f.name.value=u.name;f.phone.value=u.phone;$('#addrT').textContent='Add an address'}
+  $('#addrModal').classList.add('open');$('#addrModal').setAttribute('aria-hidden','false');scrim.classList.add('open')}
+$('#addrModal [data-close]').addEventListener('click',closeAll);
+$('#fAddr').addEventListener('submit',e=>{e.preventDefault();const u=me(),d=Object.fromEntries(new FormData(e.target));d.def=!!d.def;
+  if(d.def||!u.addresses.length)u.addresses.forEach(a=>a.def=false),d.def=true;
+  if(editAddr!==null)u.addresses[editAddr]={...u.addresses[editAddr],...d};else u.addresses.push(d);
+  saveMe(u);closeAll();addrBack==='checkout'?drawCheckout():drawAddresses();toast('Address saved')});
+function drawAddresses(){const u=me();if(!u){afterLogin='addresses';location.hash='login';return}
+  $('#addrList').innerHTML=`<button class="addr add" data-addnew>+<span>Add address</span></button>`+u.addresses.map((a,i)=>`<div class="addr">${a.def?'<em>Default</em>':''}<p>${addrHTML(a)}</p><div class="al"><button data-aedit="${i}">Edit</button><button data-adel="${i}">Remove</button>${a.def?'':`<button data-adef="${i}">Set as default</button>`}</div></div>`).join('')}
+document.addEventListener('click',e=>{const t=e.target;const u=me();
+  if(t.closest('[data-addnew]')){openAddr(null,R.page);return}
+  const ed=t.closest('[data-aedit]');if(ed){openAddr(+ed.dataset.aedit,R.page);return}
+  const dl=t.closest('[data-adel]');if(dl){u.addresses.splice(+dl.dataset.adel,1);if(u.addresses.length&&!u.addresses.some(a=>a.def))u.addresses[0].def=true;saveMe(u);R.page==='checkout'?drawCheckout():drawAddresses();return}
+  const df=t.closest('[data-adef]');if(df){u.addresses.forEach((a,i)=>a.def=i===+df.dataset.adef);saveMe(u);R.page==='checkout'?drawCheckout():drawAddresses();return}
+  const pk=t.closest('[data-apick]');if(pk){coAddr=+pk.dataset.apick;drawCheckout();return}
+});
+/* cart page */
+const cartIds=()=>Object.keys(cart).filter(i=>P[i]);
+const cartSub=()=>cartIds().reduce((s,i)=>s+cart[i]*P[i].price,0);
+const cartCount=()=>cartIds().reduce((s,i)=>s+cart[i],0);
+function drawCartPage(){
+  const ids=cartIds(),n=cartCount(),sub=cartSub();
+  $('#cartN').textContent=n?`${n} item${n>1?'s':''}`:'';
+  $('#cartRows').innerHTML=ids.length?ids.map(i=>{const p=P[i];const sale=onSale(p);return `<div class="crow"><a class="cimg" href="#product-${i}">${pimg(p)}</a><div class="cinfo"><a href="#product-${i}" class="cn">${esc(p.name)}</a><p class="${p.out?'oos':'ins'}">${p.out?'Currently out of stock':'In stock'}</p><p class="cat">${esc(p.cat)}</p><div class="cact"><div class="cq"><button data-q="${i}:-1" aria-label="Decrease">${cart[i]>1?'−':'🗑'}</button><span>${cart[i]}</span><button data-q="${i}:1" aria-label="Increase">+</button></div><button class="lnk" data-rm="${i}">Delete</button><button class="lnk" data-sfl="${i}">Save for later</button></div></div><div class="cpr"><b>${rs(p.price*cart[i])}</b>${sale?`<s>${rs(p.mrp*cart[i])}</s><em>${Math.round((1-p.price/p.mrp)*100)}% off</em>`:''}${cart[i]>1?`<small>${rs(p.price)} each</small>`:''}</div></div>`}).join('')+`<div class="csub">Subtotal (${n} item${n>1?'s':''}): <b>${rs(sub)}</b></div>`
+   :`<div class="cempty"><b>Your cart is empty</b><p>Browse 1000+ components, boards and kits.</p><a class="abtn" href="#shop">Start shopping</a></div>`;
+  $('#sumLbl').textContent=`Subtotal (${n} item${n===1?'':'s'})`;$('#sumVal').textContent=rs(sub);
+  const left=Math.max(0,FREE-sub);
+  $('#cartFs').innerHTML=sub?(left?`<div class="bar"><i style="width:${Math.min(100,sub/FREE*100)}%"></i></div><span>Add <b>${rs(left)}</b> for free delivery in Tamil Nadu (prepaid).</span>`:`<span class="ok">✓ Your order qualifies for free delivery in Tamil Nadu (prepaid).</span>`):'';
+  $('#toBuy').disabled=!ids.length;
+}
+document.addEventListener('click',e=>{const rm=e.target.closest('[data-rm]');if(rm){delete cart[rm.dataset.rm];save();drawCart();return}
+  const sf=e.target.closest('[data-sfl]');if(sf){const i=+sf.dataset.sfl;delete cart[i];save();if(!wish.has(i))toggleWish(i);drawCart();toast('Moved to wishlist');return}});
+$('#toBuy').addEventListener('click',()=>{location.hash='checkout'});
+$('#checkout').addEventListener('click',()=>{if(cartIds().length)location.hash='checkout'});
+/* checkout */
+let coAddr=null;
+const shipFor=(sub,a,pay)=>{const tn=a&&a.state==='Tamil Nadu';if(tn&&pay!=='cod'&&sub>=FREE)return 0;return tn?49:79};
+function drawCheckout(){
+  if(!cartIds().length){location.hash='cart';return}
+  const u=me();if(!u){afterLogin='checkout';location.hash='login';return}
+  if(coAddr===null||!u.addresses[coAddr])coAddr=Math.max(0,u.addresses.findIndex(a=>a.def));
+  $('#coAddr').innerHTML=u.addresses.length?`<div class="addr-pick">${u.addresses.map((a,i)=>`<label class="apk ${i===coAddr?'on':''}"><input type="radio" name="ad" data-apick="${i}" ${i===coAddr?'checked':''}><span>${addrHTML(a)}</span><button type="button" class="lnk" data-aedit="${i}">Edit</button></label>`).join('')}</div><button class="lnk" data-addnew>+ Add a new address</button>`:`<button class="obtn" data-addnew>+ Add a delivery address</button>`;
+  const ids=cartIds();
+  $('#coItems').innerHTML=ids.map(i=>`<div class="ci">${pimg(P[i])}<span>${esc(P[i].name)}<small>Qty ${cart[i]}</small></span><b>${rs(P[i].price*cart[i])}</b></div>`).join('');
+  coTotals();
+}
+function coTotals(){const u=me();const a=u&&u.addresses[coAddr];const pay=($('input[name="pay"]:checked')||{}).value;const sub=cartSub(),sh=shipFor(sub,a,pay);
+  $('#coSub').textContent=rs(sub);$('#coShip').textContent=a?(sh?rs(sh):'FREE'):'—';$('#coTot').textContent=rs(sub+(a?sh:0));
+  $('#coNote').textContent=a?(pay==='cod'?'COD orders are confirmed by phone before dispatch.':'Free delivery in Tamil Nadu on prepaid orders of ₹999+.'):'Add a delivery address to continue.';
+  $('#placeOrder').disabled=!a}
+document.addEventListener('change',e=>{if(e.target.name==='pay')coTotals()});
+$('#placeOrder').addEventListener('click',()=>{const u=me();const a=u.addresses[coAddr];if(!a)return;const pay=$('input[name="pay"]:checked').value;
+  const ids=cartIds(),sub=cartSub(),sh=shipFor(sub,a,pay);
+  const o={id:'MZ'+Date.now().toString().slice(-8),at:Date.now(),items:ids.map(i=>({id:+i,n:P[i].name,q:cart[i],p:P[i].price})),sub,ship:sh,total:sub+sh,pay,addr:a,status:'Placed'};
+  u.orders.unshift(o);saveMe(u);cart={};save();drawCart();
+  const msg=`New order ${o.id}\n`+o.items.map(x=>`${x.q} × ${x.n} – ₹${x.p*x.q}`).join('\n')+`\nItems ₹${sub} + Delivery ₹${sh} = ₹${o.total}\nPayment: ${pay==='cod'?'Cash on Delivery':'UPI / bank transfer'}\nDeliver to: ${a.name}, ${a.l1}, ${a.l2}, ${a.city}, ${a.state} ${a.pin}. Ph ${a.phone}`;
+  $('#plMsg').innerHTML=`Order <b>${o.id}</b> · ${o.items.length} item${o.items.length>1?'s':''} · <b>${rs(o.total)}</b><br>Delivering to ${esc(a.name)}, ${esc(a.city)} ${esc(a.pin)}.`;
+  $('#plWa').href='https://wa.me/916379560289?text='+encodeURIComponent(msg);
+  go('placed')});
+/* orders */
+const STEPS=['Placed','Confirmed','Shipped','Delivered'];
+function drawOrders(){const u=me();if(!u){afterLogin='orders';location.hash='login';return}
+  $('#ordList').innerHTML=u.orders.length?u.orders.map((o,k)=>{const si=STEPS.indexOf(o.status);const d=new Date(o.at);return `<div class="ord">
+   <div class="oh"><div><small>ORDER PLACED</small><b>${d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}</b></div><div><small>TOTAL</small><b>${rs(o.total)}</b></div><div><small>SHIP TO</small><b>${esc(o.addr.name)}</b></div><div class="r"><small>ORDER # ${o.id}</small><b>${o.pay==='cod'?'Cash on Delivery':'UPI / bank transfer'}</b></div></div>
+   <div class="obody"><div class="otrack">${o.status==='Cancelled'?'<span class="cx">Cancelled</span>':STEPS.map((s,i)=>`<span class="${i<=si?'on':''}">${s}</span>`).join('<i></i>')}</div>
+   ${o.items.map(x=>`<div class="oitem">${P[x.id]?pimg(P[x.id]):''}<div><a href="#product-${x.id}">${esc(x.n)}</a><small>Qty ${x.q} · ${rs(x.p)}</small><button class="obtn sm" data-again="${x.id}">Buy it again</button></div></div>`).join('')}</div>
+   <div class="of"><a class="lnk" target="_blank" rel="noopener" href="https://wa.me/916379560289?text=${encodeURIComponent('Hi Majestronicz, status of my order '+o.id+'?')}">Track on WhatsApp</a>${o.status==='Placed'?`<button class="lnk" data-cancel="${k}">Cancel order</button>`:''}</div></div>`}).join('')
+   :`<div class="cempty"><b>You have no orders yet</b><p>When you place an order it will show up here.</p><a class="abtn" href="#shop">Start shopping</a></div>`}
+document.addEventListener('click',e=>{const ag=e.target.closest('[data-again]');if(ag){add(+ag.dataset.again,1);toast('Added to cart','View cart',()=>location.hash='cart');return}
+  const cx=e.target.closest('[data-cancel]');if(cx){const u=me();u.orders[+cx.dataset.cancel].status='Cancelled';saveMe(u);drawOrders();toast('Order cancelled')}});
+drawAccLbl();
 /* ---------- ROUTER ---------- */
 const R={page:'home',key:'home',id:null};
 function route(){
@@ -1675,7 +1775,14 @@ function route(){
   else if(h==='search'){page='catalog';showCatalog('search')}
   else if(/^product-\d+$/.test(h)&&P[+h.slice(8)]){page='product';R.id=+h.slice(8);showProduct(R.id);key=colOf(P[R.id])}
   else if(h==='wishlist'){page='wishlist';drawWish();document.title='Wishlist – MAJESTRONICZ'}
-  else if(h==='account'){page='account';drawAccount();document.title='Account – MAJESTRONICZ'}
+  else if(h==='account'){page=me()?'account':'login';if(me())drawAccount();else afterLogin='account';document.title='Your account – MAJESTRONICZ'}
+  else if(h==='login'){page=me()?'account':'login';if(me())drawAccount();document.title='Sign in – MAJESTRONICZ'}
+  else if(h==='orders'){page=me()?'orders':'login';if(me())drawOrders();else afterLogin='orders';document.title='Your orders – MAJESTRONICZ'}
+  else if(h==='addresses'){page=me()?'addresses':'login';if(me())drawAddresses();else afterLogin='addresses';document.title='Your addresses – MAJESTRONICZ'}
+  else if(h==='profile'){page=me()?'profile':'login';if(me())drawProfile();else afterLogin='profile';document.title='Login & security – MAJESTRONICZ'}
+  else if(h==='cart'){page='cart';drawCartPage();document.title='Shopping cart – MAJESTRONICZ'}
+  else if(h==='checkout'){if(!cartIds().length){page='cart';drawCartPage()}else if(!me()){page='login';afterLogin='checkout';setTab('in')}else{page='checkout';drawCheckout()}document.title='Checkout – MAJESTRONICZ'}
+  else if(h==='placed'){page='placed';document.title='Order placed – MAJESTRONICZ'}
   else if(h==='print-3d'){page='print-3d';document.title='3D Print – MAJESTRONICZ'}
   else if(h==='contact'){page='contact';document.title='Contact Information – MAJESTRONICZ'}
   else if(POL[h]){page='policy';showPolicy(h)}
