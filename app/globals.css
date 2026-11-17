@@ -1334,17 +1334,10 @@ body.is-home .nav:not(.solid){background:linear-gradient(rgba(255,253,249,.9),rg
 @media(max-width:900px){.lf-top{grid-template-columns:1fr}.lf-grid{grid-template-columns:1fr 1fr}.lf-card{grid-column:1/-1}.lf-top-btn{padding-right:0}.lf-bottom{flex-direction:column;align-items:flex-start;padding-bottom:100px}}
 @media(max-width:520px){.lf-grid{grid-template-columns:1fr}}
 
-/* =================== v45: WhatsApp button polish (black + gold) =================== */
-.wafloat .wadot{position:relative;width:64px!important;height:64px!important;border-radius:50%!important;display:grid!important;place-items:center;background:radial-gradient(circle at 32% 26%,#3A342A 0,#16130F 52%,#060505 100%)!important;border:0!important;box-shadow:0 0 0 2px #0E0C09,0 0 0 4px transparent,0 16px 34px rgba(0,0,0,.35),0 4px 10px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,236,190,.25),inset 0 -6px 12px rgba(0,0,0,.6)!important;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s!important;isolation:isolate}
-.wafloat .wadot::before{content:"";position:absolute;inset:-5px;border-radius:50%;background:conic-gradient(from 0deg,#8C6A2F,#F6E2AE,#B8924A,#5E4620,#E9CF92,#8C6A2F);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,transparent calc(100% - 3px),#000 calc(100% - 3px));animation:waring 6s linear infinite;z-index:-1}
-.wafloat .wadot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(226,198,138,.55);animation:wapulse 2.8s ease-out infinite;pointer-events:none}
-@keyframes waring{to{transform:rotate(360deg)}}
-@keyframes wapulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.55);opacity:0}}
-.wafloat .wadot svg{width:30px!important;height:30px!important;filter:drop-shadow(0 1px 0 rgba(0,0,0,.5)) drop-shadow(0 0 6px rgba(226,198,138,.35))}
-.wafloat .wadot svg path{fill:url(/#waGold)!important}
-.wafloat:hover .wadot{transform:translateY(-3px) scale(1.05);box-shadow:0 0 0 2px #0E0C09,0 22px 44px rgba(0,0,0,.4),0 0 30px rgba(226,198,138,.35),inset 0 1px 0 rgba(255,236,190,.3),inset 0 -6px 12px rgba(0,0,0,.6)!important}
-.wafloat:hover .wadot svg{animation:wawig .6s ease}
-@keyframes wawig{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg)}60%{transform:rotate(8deg)}}
-.wafloat .watip{background:#0F0E0C!important;color:#F1E3BF!important;border:1px solid rgba(226,198,138,.5)!important;font:600 11px var(--body)!important;letter-spacing:.18em;text-transform:uppercase;border-radius:999px!important;padding:10px 16px!important;box-shadow:0 12px 26px rgba(0,0,0,.25)}
-.wafloat .watip::after{border-left-color:#0F0E0C!important}
-@media(prefers-reduced-motion:reduce){.wafloat .wadot::before,.wafloat .wadot::after{animation:none}}
+/* =================== v46: simple WhatsApp button =================== */
+.wafloat .wadot{width:58px!important;height:58px!important;border-radius:50%!important;display:grid!important;place-items:center;background:#111!important;border:1.5px solid #C9A45E!important;box-shadow:0 10px 24px rgba(0,0,0,.22)!important;transition:transform .3s ease,box-shadow .3s ease!important}
+.wafloat .wadot::before,.wafloat .wadot::after{display:none!important;animation:none!important}
+.wafloat .wadot svg{width:32px!important;height:32px!important;filter:none!important}
+.wafloat .wadot svg .wap{fill:#111!important}
+.wafloat .wadot svg .wab{fill:url(/#waGold)!important}
+.wafloat:hover .wadot{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.28)!important}
