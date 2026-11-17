@@ -658,7 +658,7 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:
  }
  /* scroll reveal */
  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12});
- const mark=()=>$$('[data-page="home"] .trust-grid>div,[data-page="home"] .cat2,.stop,.lux-head,.featured .card2,.eco,.jb,.p3steps li').forEach((el,i)=>{if(!el.dataset.rv){el.dataset.rv=1;el.style.setProperty('--d',(i%4)*90+'ms');if(!RM)el.classList.add('rv');io.observe(el)}});
+ const mark=()=>$$('[data-page="home"] .trust-grid>div,[data-page="home"] .cat2,.tk,.lux-head,.featured .card2,.eco,.jb,.p3steps li').forEach((el,i)=>{if(!el.dataset.rv){el.dataset.rv=1;el.style.setProperty('--d',(i%4)*90+'ms');if(!RM)el.classList.add('rv');io.observe(el)}});
  mark();new MutationObserver(mark).observe(document.body,{childList:true,subtree:true});
  /* coverflow rail */
  const tr=$('#railTrack');
@@ -677,6 +677,10 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:
 /* ---------- HOME: spotlight ---------- */
 {const set=i=>{$$('.sp-item').forEach(x=>x.classList.toggle('on',x.dataset.sp==i));$$('.sp-frame img').forEach(x=>x.classList.toggle('on',x.dataset.spi==i))};
  $$('.sp-item').forEach(x=>{x.addEventListener('mouseenter',()=>set(x.dataset.sp));x.addEventListener('focus',()=>set(x.dataset.sp))});}
+
+/* ---------- HOME: store map ---------- */
+{const on=i=>{$$('.mp,.tk').forEach(x=>x.classList.toggle('on',x.dataset.c==i))};
+ $$('.tk,.mp').forEach(x=>x.addEventListener('mouseenter',()=>on(x.dataset.c)));on(0);}
 /* ---------- ROUTER ---------- */
 const R={page:'home',key:'home',id:null};
 function route(){
