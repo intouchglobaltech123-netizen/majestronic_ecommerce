@@ -1711,3 +1711,45 @@ html body .cat-bar .searchslot input::placeholder{color:#A49A86}
 html body .cat-bar .searchslot svg{color:#B8924A!important}
 html body .cat-bar .searchslot button,html body .cat-bar .searchslot [type=submit]{height:44px!important;padding:0 22px!important;border-radius:12px!important;background:linear-gradient(135deg,#174538,#0B2A23)!important;color:#F1D99C!important;font:700 12px var(--body)!important;letter-spacing:.16em!important;text-transform:uppercase;box-shadow:0 6px 14px rgba(11,42,35,.25)}
 html body .cat-bar .ccount{height:56px;display:inline-flex!important;align-items:center;padding:0 18px!important;border-radius:16px!important;background:#0B2A23!important;color:#F1D99C!important;font:700 11.5px var(--body)!important;letter-spacing:.16em}
+
+/* =================== v62: professional font + product page =================== */
+:root{--serif:'Plus Jakarta Sans',system-ui,sans-serif;--body:'Plus Jakarta Sans',system-ui,sans-serif}
+body,button,input,select,textarea{font-family:'Plus Jakarta Sans',system-ui,sans-serif!important}
+h1,h2,h3,.cats-head h2,.lux-head h2,.ptitle,.cat-head h1,.pdinfo h1,.policy h1,.cathero h1,.fl-f b,.fl-b b,.c2txt b,.lf-lede,.cf-brand b{font-family:'Plus Jakarta Sans',system-ui,sans-serif!important;letter-spacing:-.02em!important;font-weight:700!important}
+h1 em,h2 em,h3 em,.fl-b em{font-style:normal!important}
+.bx-txt b{font-family:'Plus Jakarta Sans',sans-serif!important;font-weight:800!important;letter-spacing:.14em!important}
+.pc h3{font-weight:600!important;letter-spacing:-.005em!important}
+/* product page */
+[data-page="product"] .pd{display:grid!important;grid-template-columns:1.05fr 1fr!important;gap:56px!important;align-items:start}
+[data-page="product"] .pdgal{position:sticky;top:110px}
+[data-page="product"] .pdimg{background:radial-gradient(120% 90% at 50% 30%,#fff,#F4EEE2)!important;border:1px solid #ECE4D3!important;border-radius:24px!important;aspect-ratio:1;display:grid;place-items:center;padding:8%;box-shadow:0 30px 60px rgba(40,30,10,.07)!important;overflow:hidden;position:relative}
+[data-page="product"] .pdimg img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;transition:transform .5s}
+[data-page="product"] .pdimg:hover img{transform:scale(1.06)}
+[data-page="product"] .pdimg .tag{top:18px!important;left:18px!important;background:#0B2A23!important;color:#F1D99C!important;border-radius:999px!important;padding:7px 14px!important;font:700 11px var(--body)!important;letter-spacing:.12em}
+.pdvendor{font:700 11px var(--body)!important;letter-spacing:.28em!important;color:var(--gold-d)!important;margin-bottom:12px!important}
+.pdinfo h1{font-size:clamp(26px,2.6vw,38px)!important;line-height:1.15!important;color:#0B2A23;margin:0 0 18px!important}
+.pdprice{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:18px 20px;border-radius:16px;background:#fff;border:1px solid #ECE4D3;margin-bottom:10px}
+.pdprice>*:first-child{font:800 30px var(--body)!important;color:#0B2A23!important}
+.pdprice s{font-size:16px;color:#A59D8E}
+.pdprice .tag,.pdprice span[class*="tag"]{background:#0B2A23!important;color:#F1D99C!important;border-radius:999px!important}
+.pdtax{font-size:13px;color:#8A8274}
+.stock{display:inline-flex!important;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#E9F5EE;color:#1C6B45!important;font:600 13px var(--body)!important;margin:14px 0 22px!important}
+.pdqty{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.pdqty>span{font:700 11px var(--body);letter-spacing:.2em;text-transform:uppercase;color:#6E6759}
+.pdqty .qty2{display:flex!important;align-items:center;height:50px;border:1px solid #E3D7BE!important;border-radius:999px!important;background:#fff;padding:0 6px}
+.pdqty .qty2 button{width:38px;height:38px;border-radius:50%;border:0;background:#F7F2E8;font-size:18px}
+.pdqty .qty2 input{width:44px;text-align:center;border:0;font:700 16px var(--body);background:transparent}
+.pdbtns{display:grid!important;grid-template-columns:1fr 1fr;gap:10px;max-width:none!important}
+.pdbtns .addbtn,.pdbtns .buybtn{height:56px;border-radius:999px!important;font:700 13px var(--body)!important;letter-spacing:.14em!important;text-transform:uppercase;margin:0!important}
+.pdbtns .addbtn{background:#fff!important;color:#0B2A23!important;border:1.5px solid #0B2A23!important}
+.pdbtns .addbtn:hover{background:#0B2A23!important;color:#F1D99C!important}
+.pdbtns .buybtn{background:linear-gradient(135deg,#174538,#0B2A23)!important;color:#F1D99C!important;border:0!important;box-shadow:0 14px 28px rgba(11,42,35,.25)}
+.pdbtns .wishbtn{grid-column:1/-1;justify-content:center}
+.pdtrust{list-style:none;padding:0;margin:22px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pdtrust li{background:#fff;border:1px solid #ECE4D3;border-radius:14px;padding:14px;display:grid;gap:3px}
+.pdtrust b{font:700 13px var(--body);color:#0B2A23}
+.pdtrust span{font-size:12px;color:#8A8274}
+.pddesc{font-size:15px;line-height:1.7;color:#3E3930}
+.pdacc table,.pdacc .spec{border-radius:14px;overflow:hidden}
+.related h2{font-size:clamp(24px,2.4vw,34px)!important;margin:70px 0 24px!important}
+@media(max-width:900px){[data-page="product"] .pd{grid-template-columns:1fr!important;gap:26px!important}[data-page="product"] .pdgal{position:static}.pdtrust{grid-template-columns:1fr}.pdbtns{grid-template-columns:1fr}}
