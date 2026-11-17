@@ -1339,7 +1339,7 @@ body.is-home .nav:not(.solid){background:linear-gradient(rgba(255,253,249,.9),rg
 .wafloat .wadot::before,.wafloat .wadot::after{display:none!important;animation:none!important}
 .wafloat .wadot svg{width:32px!important;height:32px!important;filter:none!important}
 .wafloat .wadot svg .wap{fill:#0E2F27!important}
-.wafloat .wadot svg .wab{fill:url(/#waGold)!important}
+.wafloat .wadot svg .wab{fill:url(#waGold)!important}
 .wafloat:hover .wadot{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.28)!important}
 
 /* =================== v47: bento categories =================== */
@@ -1935,3 +1935,12 @@ html body .af input{height:52px!important;background:#FCFAF6!important}
 html body .af input::placeholder{color:#ABA290}
 html body #fIn .abtn,html body #fUp .abtn{height:54px;font-size:14px;margin-top:6px}
 @media(max-width:900px){html body .auth{grid-template-columns:1fr!important;border-radius:22px}html body .auth-side{display:none!important}html body .auth-card{padding:30px 22px!important}}
+/* v69 running platforms */
+html body .e3m{overflow:hidden;border-top:1px solid rgba(226,198,138,.18);border-bottom:1px solid rgba(226,198,138,.18);-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+html body .e3g.e3run{display:flex;width:max-content;border:0;animation:e3run 38s linear infinite}
+html body .e3m:hover .e3run{animation-play-state:paused}
+html body .e3run .pt{flex:0 0 260px;border-bottom:0!important;border-right:1px solid rgba(226,198,138,.18)!important}
+html body .e3run .pt em{opacity:1;transform:none}
+@keyframes e3run{to{transform:translateX(-50%)}}
+@media(max-width:600px){html body .e3run .pt{flex-basis:190px;padding:26px 20px}html body .e3g.e3run{animation-duration:28s}}
+@media(prefers-reduced-motion:reduce){html body .e3g.e3run{animation-duration:120s}}
