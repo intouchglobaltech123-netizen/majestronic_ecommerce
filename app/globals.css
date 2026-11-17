@@ -1659,3 +1659,15 @@ html body .cats-grid.bento{grid-template-columns:repeat(4,1fr)!important}@media(
 .fs-opt input:checked{border-color:#0B2A23}
 .fs-opt input:checked::after{content:"";width:8px;height:8px;border-radius:50%;background:#0B2A23}
 .fs-opt:has(input:checked){color:#0B2A23;font-weight:600}
+
+/* =================== v59: brand lockup =================== */
+.brand.bx::after{display:none!important}
+.brand.bx{display:flex!important;align-items:center;gap:14px;text-decoration:none}
+.bx-mark{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#fff,#F3ECDD);box-shadow:inset 0 0 0 1px rgba(184,146,74,.45),0 6px 16px rgba(40,30,10,.10);transition:transform .4s}
+.bx-mark img{width:34px!important;height:auto!important;filter:drop-shadow(0 2px 3px rgba(0,0,0,.18))}
+.brand.bx:hover .bx-mark{transform:rotate(-8deg) scale(1.05)}
+.bx-txt{display:grid;gap:5px;padding-left:14px;border-left:1px solid rgba(184,146,74,.45);line-height:1}
+.bx-txt b{font:700 24px/1 var(--serif)!important;letter-spacing:.2em!important;background:linear-gradient(180deg,#0E2F27,#0B2A23 60%,#1D5245);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+.bx-txt small{font:600 9.5px/1 var(--body);letter-spacing:.34em;text-transform:uppercase;color:var(--gold-d);white-space:nowrap}
+.bx-txt small i{font-style:normal;color:var(--gold)}
+@media(max-width:900px){.bx-mark{width:40px;height:40px}.bx-mark img{width:28px!important}.bx-txt{padding-left:10px}.bx-txt b{font-size:17px!important;letter-spacing:.14em!important}.bx-txt small{display:none}.brand.bx{gap:10px}}
