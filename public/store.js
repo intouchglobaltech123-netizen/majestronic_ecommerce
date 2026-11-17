@@ -349,8 +349,8 @@ document.addEventListener('click',e=>{
   const a=e.target.closest('[data-add]');
   if(a&&!a.disabled){
     const id=+a.dataset.add,c=a.closest('.card2'),q=c?Math.max(1,Math.min(99,+c.querySelector('.qty2 input').value||1)):1;
-    add(id,q);a.textContent=`Added ${q} to cart`;a.classList.add('done');
-    setTimeout(()=>{a.textContent='Add to cart';a.classList.remove('done')},1500);
+    add(id,q);if(!a.dataset.html)a.dataset.html=a.innerHTML;a.innerHTML=`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>Added`;a.classList.add('done');
+    clearTimeout(a._t);a._t=setTimeout(()=>{a.innerHTML=a.dataset.html;a.classList.remove('done')},1500);
     toast(`${q} × ${esc(P[id].name)} added`,'View cart',openDrawer);
   }
 });

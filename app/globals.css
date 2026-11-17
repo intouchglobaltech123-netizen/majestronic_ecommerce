@@ -1671,3 +1671,7 @@ html body .cats-grid.bento{grid-template-columns:repeat(4,1fr)!important}@media(
 .bx-txt small{font:600 9.5px/1 var(--body);letter-spacing:.34em;text-transform:uppercase;color:var(--gold-d);white-space:nowrap}
 .bx-txt small i{font-style:normal;color:var(--gold)}
 @media(max-width:900px){.bx-mark{width:40px;height:40px}.bx-mark img{width:28px!important}.bx-txt{padding-left:10px}.bx-txt b{font-size:17px!important;letter-spacing:.14em!important}.bx-txt small{display:none}.brand.bx{gap:10px}}
+html body .pc .addbtn.done,html body .addbtn.done{background:#0B2A23!important;color:#F1D99C!important;animation:addpop .35s ease}
+.addbtn.done svg{animation:addck .4s ease}
+@keyframes addpop{40%{transform:scale(.94)}100%{transform:none}}
+@keyframes addck{from{transform:scale(0) rotate(-30deg)}to{transform:none}}
