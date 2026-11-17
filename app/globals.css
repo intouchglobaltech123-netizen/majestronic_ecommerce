@@ -1292,3 +1292,56 @@ body.is-home .nav:not(.solid){background:linear-gradient(rgba(255,253,249,.9),rg
 .st-n{display:inline-block;transform:translateZ(30px)}
 @media(max-width:820px){.eco-ring{width:150px;height:48px}.eco-ring span{font-size:22px;transform:rotateY(calc(var(--i)*60deg)) translateZ(190px)}.jb-cube{display:none}.marq{transform:perspective(700px) rotateX(10deg) rotateZ(-1deg)}}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.jb-cube,.p3cube{animation:none}}
+
+/* =================== v44: luxe footer + WhatsApp =================== */
+.lux-foot{position:relative;overflow:hidden;background:#0E0D0B!important;color:#CFC5B2;padding:90px 0 0!important;border-top:0!important}
+.lux-foot::before{content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,#E2C68A 30%,#E2C68A 70%,transparent)}
+.lux-foot::after{content:"";position:absolute;width:900px;height:900px;left:50%;top:-500px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(184,146,74,.16),transparent);pointer-events:none}
+.lux-foot .wrap{position:relative;z-index:1}
+.lf-top{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;align-items:end;padding-bottom:50px;border-bottom:1px solid rgba(226,198,138,.16)}
+.lf-brand{display:flex;align-items:center;gap:16px}
+.lf-brand img{filter:drop-shadow(0 6px 14px rgba(226,198,138,.25))}
+.lf-brand b{display:block;font:700 28px var(--serif);letter-spacing:.16em;color:#fff}
+.lf-brand span{font:500 10px var(--body);letter-spacing:.3em;text-transform:uppercase;color:var(--gold-l)}
+.lf-lede{font:500 clamp(24px,2.6vw,36px)/1.15 var(--serif);color:#EFE6D4;margin:0}
+.lf-lede em{color:var(--gold-l)}
+.lf-grid{display:grid;grid-template-columns:1fr 1fr 1.3fr 1.6fr;gap:40px;padding:56px 0}
+.lf-grid h4{font:600 11px var(--body)!important;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-l)!important;margin:0 0 22px}
+.lf-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:13px}
+.lf-grid ul a{color:#CFC5B2;text-decoration:none;font-size:15px;position:relative;transition:color .25s,padding .25s}
+.lf-grid ul a::before{content:"";position:absolute;left:0;top:50%;width:0;height:1px;background:var(--gold-l);transition:width .25s}
+.lf-grid ul a:hover{color:#fff;padding-left:18px}
+.lf-grid ul a:hover::before{width:12px}
+.lf-contact a{display:grid!important;gap:3px}
+.lf-contact small{font:600 10px var(--body);letter-spacing:.24em;text-transform:uppercase;color:#7F776A}
+.lf-contact a:hover{padding-left:0!important}.lf-contact a::before{display:none}
+.lf-card{position:relative;padding:32px;border:1px solid rgba(226,198,138,.3);background:linear-gradient(150deg,rgba(226,198,138,.10),rgba(226,198,138,.02));transform-style:preserve-3d}
+.lf-card::before{content:"";position:absolute;inset:8px;border:1px solid rgba(226,198,138,.12);pointer-events:none}
+.lf-card .kicker{color:var(--gold-l);margin-bottom:12px}
+.lf-card h3{font:600 30px/1.05 var(--serif);color:#fff;margin:0 0 10px}
+.lf-card h3 em{color:var(--gold-l)}
+.lf-card p{font-size:14px;color:#A99F8C;margin:0 0 22px}
+.lf-wa{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(180deg,#F1D99C,#C49A4E);color:#16120B;padding:15px 22px;text-decoration:none;font:600 12px var(--body);letter-spacing:.18em;text-transform:uppercase;transition:transform .3s,box-shadow .3s}
+.lf-wa i{font-style:normal;transition:transform .3s}
+.lf-wa:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(196,154,78,.3)}
+.lf-wa:hover i{transform:translateX(5px)}
+.lf-mark{font:700 clamp(36px,11.2vw,168px)/.8 var(--serif);letter-spacing:.02em;overflow:hidden;text-align:center;white-space:nowrap;background:linear-gradient(180deg,rgba(226,198,138,.22),rgba(226,198,138,0) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;margin:10px 0 -10px;user-select:none}
+.lf-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:24px 0 30px;border-top:1px solid rgba(226,198,138,.16);font-size:13px;color:#8C8475}
+.lf-badges{display:flex;gap:8px;flex-wrap:wrap}
+.lf-badges i{font-style:normal;border:1px solid rgba(226,198,138,.28);padding:6px 10px;font:500 10.5px var(--body);letter-spacing:.16em;text-transform:uppercase;color:#CDBE9E}
+.lf-top-btn{background:none;border:0;color:var(--gold-l);font:600 11px var(--body);letter-spacing:.22em;text-transform:uppercase;cursor:pointer;padding:0 92px 0 0}
+.lf-top-btn:hover{color:#fff}
+/* WhatsApp float */
+.wafloat{position:fixed!important;right:24px!important;bottom:24px!important;display:flex!important;align-items:center;gap:0;text-decoration:none;z-index:60}
+.wafloat .wadot{position:relative;width:62px!important;height:62px!important;border-radius:50%!important;display:grid!important;place-items:center;background:radial-gradient(circle at 30% 25%,#5BF08E,#25D366 45%,#128C4A)!important;box-shadow:0 0 0 3px #fff,0 0 0 4.5px rgba(184,146,74,.9),0 14px 30px rgba(18,140,74,.35),inset 0 -4px 10px rgba(0,0,0,.15)!important;border:0!important;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.wafloat .wadot::before,.wafloat .wadot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,.55);animation:waping 2.4s ease-out infinite;pointer-events:none}
+.wafloat .wadot::after{animation-delay:1.2s}
+@keyframes waping{from{transform:scale(1);opacity:.9}to{transform:scale(1.7);opacity:0}}
+.wafloat .wadot svg{width:32px;height:32px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
+.wafloat:hover .wadot{transform:scale(1.07) rotate(-8deg)}
+.wafloat .watip{order:-1;position:static!important;opacity:1!important;transform:none!important;visibility:visible!important;max-width:0;overflow:hidden;white-space:nowrap;margin-right:0;background:#fff!important;color:#111!important;border:1px solid #E6D9BC;padding:11px 0!important;border-radius:999px!important;font:600 13px var(--body)!important;box-shadow:0 12px 26px rgba(0,0,0,.12);transition:max-width .45s cubic-bezier(.2,.8,.2,1),padding .45s,margin .45s}
+.wafloat .watip::after{display:none!important}
+.wafloat:hover .watip{max-width:200px;padding:11px 18px!important;margin-right:12px}
+@media(max-width:900px){.lf-top{grid-template-columns:1fr}.lf-grid{grid-template-columns:1fr 1fr}.lf-card{grid-column:1/-1}.lf-top-btn{padding-right:0}.lf-bottom{flex-direction:column;align-items:flex-start;padding-bottom:100px}}
+@media(max-width:520px){.lf-grid{grid-template-columns:1fr}.wafloat .wadot{width:56px!important;height:56px!important}.wafloat{right:16px!important;bottom:16px!important}}
+@media(prefers-reduced-motion:reduce){.wafloat .wadot::before,.wafloat .wadot::after{animation:none}}
