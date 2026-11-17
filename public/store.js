@@ -316,7 +316,7 @@ function card(p,i=0){
 /* ---------- HOME ---------- */
 {const tc=t=>t.toLowerCase().replace(/(^|[\s,])(\w)/g,(m,a,b)=>a+b.toUpperCase()).replace(/\bLed\b/,'LED').replace(/\bEsp\b/,'ESP').replace(/And/,'&').replace(/^Stem Kit$/,'STEM Kits');
  $('#catsGrid').classList.add('bento');
- $('#catsGrid').innerHTML=COLLS.map((c,i)=>{const n=P.filter(c.test).length;return `<a class="cat2${i===0?' big':''}" href="#${c.key}">
+ $('#catsGrid').innerHTML=COLLS.slice(0,9).map((c,i)=>{const n=P.filter(c.test).length;return `<a class="cat2${i===0?' big':''}" href="#${c.key}">
   <span class="c2n">${String(i+1).padStart(2,'0')}</span>
   <span class="c2pics"><span class="p1">${art(c.art[0])}</span><span class="p2">${art(c.art[1])}</span></span>
   <span class="c2txt"><b>${tc(c.title)}</b><small>${n} product${n===1?'':'s'}</small></span>
