@@ -1616,8 +1616,7 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:
   tr.querySelectorAll('.card2').forEach(k=>{const r=k.getBoundingClientRect(),d=Math.max(-1,Math.min(1,(r.left+r.width/2-mid)/(c.width/2)));
    k.style.setProperty('--ry',(-d*14).toFixed(2)+'deg');k.style.setProperty('--tz',(-Math.abs(d)*40).toFixed(1)+'px')})};
  if(tr&&!RM){tr.addEventListener('scroll',()=>requestAnimationFrame(flow),{passive:true});addEventListener('resize',flow);new MutationObserver(()=>requestAnimationFrame(flow)).observe(tr,{childList:true});setTimeout(flow,300)}
- /* eco ring drag */
- const ring=$('#ecoRing');if(ring){let a=0,v=.15,drag=null;
+  const ring=null;if(ring){let a=0,v=.15,drag=null;
   const tick=()=>{if(!drag)a+=v;ring.style.transform=`rotateX(-8deg) rotateY(${a}deg)`;requestAnimationFrame(tick)};if(!RM)tick();
   ring.parentElement.addEventListener('pointerdown',e=>{drag=e.clientX;ring.parentElement.setPointerCapture(e.pointerId)});
   ring.parentElement.addEventListener('pointermove',e=>{if(drag!==null){a+=(e.clientX-drag)*.4;drag=e.clientX}});
