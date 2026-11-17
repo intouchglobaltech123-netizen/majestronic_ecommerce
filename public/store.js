@@ -379,7 +379,7 @@ function drawCatalog(){
   $('#nIn').textContent=base.filter(p=>!p.out).length;$('#nOut').textContent=base.filter(p=>p.out).length;
   const max=base.reduce((m,p)=>Math.max(m,p.price),0);
   $('#maxHint').textContent=base.length?`The highest price is ${rs(max)}`:'';
-  $('#avIn').checked=F.inS;$('#avOut').checked=F.outS;$('#pFrom').value=F.from;$('#pTo').value=F.to;$('#sort').value=F.sort;
+  $('#avIn').checked=F.inS;$('#avOut').checked=F.outS;$('#pFrom').value=F.from;$('#pTo').value=F.to;$('#sort').value=F.sort;window.__syncSort&&__syncSort();
   let list=base.filter(p=>(F.inS===F.outS||(F.inS&&!p.out)||(F.outS&&p.out))&&(F.from===''||p.price>=+F.from)&&(F.to===''||p.price<=+F.to));
   const q=F.q,by={
     feat:(a,b)=>a.id-b.id,rel:(a,b)=>relScore(b,q)-relScore(a,q)||a.id-b.id,best:(a,b)=>bestRank(a)-bestRank(b),
@@ -677,6 +677,20 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:
 {const set=i=>{$$('.sp-item').forEach(x=>x.classList.toggle('on',x.dataset.sp==i));$$('.sp-frame img').forEach(x=>x.classList.toggle('on',x.dataset.spi==i))};
  $$('.sp-item').forEach(x=>{x.addEventListener('mouseenter',()=>set(x.dataset.sp));x.addEventListener('focus',()=>set(x.dataset.sp))});}
 
+
+/* ---------- custom sort dropdown ---------- */
+{const sel=$('#sort'),lab=sel.closest('label');
+ const wrap=document.createElement('div');wrap.className='sortx';
+ wrap.innerHTML=`<button type="button" class="sx-btn" aria-haspopup="listbox" aria-expanded="false"><span class="sx-k">Sort</span><span class="sx-v"></span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></button><ul class="sx-list" role="listbox" hidden>${[...sel.options].map(o=>`<li role="option" data-v="${o.value}"><span>${o.text}</span><i>✓</i></li>`).join('')}</ul>`;
+ lab.after(wrap);lab.classList.add('sx-hidden');
+ const btn=wrap.querySelector('.sx-btn'),list=wrap.querySelector('.sx-list');
+ window.__syncSort=()=>{wrap.querySelector('.sx-v').textContent=sel.options[sel.selectedIndex].text;list.querySelectorAll('li').forEach(li=>li.setAttribute('aria-selected',li.dataset.v===sel.value))};
+ const close=()=>{list.hidden=true;btn.setAttribute('aria-expanded','false');wrap.classList.remove('open')};
+ btn.addEventListener('click',e=>{e.stopPropagation();const o=list.hidden;list.hidden=!o;btn.setAttribute('aria-expanded',o);wrap.classList.toggle('open',o)});
+ list.addEventListener('click',e=>{const li=e.target.closest('li');if(!li)return;sel.value=li.dataset.v;sel.dispatchEvent(new Event('change',{bubbles:true}));__syncSort();close()});
+ document.addEventListener('click',e=>{if(!wrap.contains(e.target))close()});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+ __syncSort();}
 /* ---------- ROUTER ---------- */
 const R={page:'home',key:'home',id:null};
 function route(){
