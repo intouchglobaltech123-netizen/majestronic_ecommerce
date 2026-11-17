@@ -1675,3 +1675,9 @@ html body .pc .addbtn.done,html body .addbtn.done{background:#0B2A23!important;c
 .addbtn.done svg{animation:addck .4s ease}
 @keyframes addpop{40%{transform:scale(.94)}100%{transform:none}}
 @keyframes addck{from{transform:scale(0) rotate(-30deg)}to{transform:none}}
+html body .cat-bar{display:flex!important;align-items:center;gap:14px}
+html body .cat-bar .searchslot{margin-left:auto;width:360px;max-width:100%}
+html body .cat-head .catchips{flex:1}
+@media(max-width:700px){html body .cat-bar{flex-wrap:wrap}html body .cat-bar .searchslot{order:5;width:100%}}
+html body .cat-bar .searchslot>*{border-radius:999px!important;border:1px solid #E6DCC6!important;background:#fff!important;box-shadow:0 6px 18px rgba(40,30,10,.05)!important}
+html body .cat-bar .searchslot button,html body .cat-bar .searchslot [type=submit]{background:#0B2A23!important;color:#F1E3BF!important;border-radius:999px!important}
