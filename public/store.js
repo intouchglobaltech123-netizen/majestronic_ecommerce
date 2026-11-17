@@ -299,15 +299,19 @@ const bestRank=p=>{const i=FEAT_NAMES.indexOf(p.name);return i<0?100+p.id:i};
 
 /* ---------- CARDS ---------- */
 function card(p,i=0){
-  const w=wish.has(p.id),sale=onSale(p);
-  return `<article class="card2" style="animation-delay:${Math.min(i,12)*30}ms">
-  <div style="position:relative"><a class="c2img" href="#product-${p.id}" aria-label="${esc(p.name)}">${art(p.kind)}${p.out?'<span class="tag out">Sold out</span>':sale?'<span class="tag">Sale</span>':''}</a>
-  <button class="heart" data-wish="${p.id}" aria-pressed="${w}" aria-label="${w?'Remove from':'Add to'} wishlist">${IC_HEART}</button></div>
+  const w=wish.has(p.id),sale=onSale(p),off=sale?Math.round((1-p.price/p.mrp)*100):0;
+  return `<article class="card2 pc" style="animation-delay:${Math.min(i,12)*30}ms">
+  <div class="pc-media"><a class="c2img" href="#product-${p.id}" aria-label="${esc(p.name)}">${art(p.kind)}</a>
+  ${p.out?'<span class="pc-badge out">Sold out</span>':sale?`<span class="pc-badge">−${off}%</span>`:''}
+  <button class="heart" data-wish="${p.id}" aria-pressed="${w}" aria-label="${w?'Remove from':'Add to'} wishlist">${IC_HEART}</button>
+  <a class="pc-quick" href="#product-${p.id}">View details</a></div>
+  <div class="pc-body">
+  <p class="pc-cat">${esc(p.cat)}</p>
   <h3><a href="#product-${p.id}">${esc(p.name)}</a></h3>
   <div class="c2price">${sale?`<span class="now">${rs(p.price)}</span><s>${rs(p.mrp)}</s>`:`<span class="now reg">${rs(p.price)}</span>`}</div>
-  <div class="c2q"><span>Quantity</span><div class="qty2"><button type="button" data-step="-1" aria-label="Decrease quantity">−</button><input type="number" min="1" max="99" value="1" aria-label="Quantity for ${esc(p.name)}"><button type="button" data-step="1" aria-label="Increase quantity">+</button></div></div>
-  <button class="addbtn" data-add="${p.id}" ${p.out?'disabled':''}>${p.out?'Sold out':'Add to cart'}</button>
-  </article>`;
+  <div class="pc-buy"><div class="qty2"><button type="button" data-step="-1" aria-label="Decrease quantity">−</button><input type="number" min="1" max="99" value="1" aria-label="Quantity for ${esc(p.name)}"><button type="button" data-step="1" aria-label="Increase quantity">+</button></div>
+  <button class="addbtn" data-add="${p.id}" ${p.out?'disabled':''}>${p.out?'Sold out':'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Add'}</button></div>
+  </div></article>`;
 }
 
 /* ---------- HOME ---------- */
