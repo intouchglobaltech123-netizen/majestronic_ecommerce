@@ -1944,3 +1944,17 @@ html body .e3run .pt em{opacity:1;transform:none}
 @keyframes e3run{to{transform:translateX(-50%)}}
 @media(max-width:600px){html body .e3run .pt{flex-basis:190px;padding:26px 20px}html body .e3g.e3run{animation-duration:28s}}
 @media(prefers-reduced-motion:reduce){html body .e3g.e3run{animation-duration:120s}}
+/* v70 logo ticker */
+html body .eco3{padding:70px 0 64px}
+html body .lgm{overflow:hidden;padding:9px 0;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+html body .lgt{display:flex;align-items:center;gap:26px;width:max-content;animation:lgrun 34s linear infinite}
+html body .lgm.rev .lgt{animation-direction:reverse;animation-duration:40s}
+html body .lgm:hover .lgt{animation-play-state:paused}
+html body .pt.lg{display:flex!important;align-items:center;gap:12px;padding:12px 22px 12px 12px!important;border:1px solid rgba(226,198,138,.25)!important;border-radius:999px;background:rgba(255,255,255,.03);white-space:nowrap}
+html body .pt.lg::before{border-radius:999px}
+html body .pt.lg .pg{width:44px;height:44px;border-radius:50%;font-size:12px}
+html body .pt.lg b{font-size:17px}
+html body .pt.lg small{font-size:12px;padding-left:10px;border-left:1px solid rgba(226,198,138,.25)}
+html body .lgd{font-style:normal;color:#E2C68A;opacity:.55;font-size:14px}
+@keyframes lgrun{to{transform:translateX(-50%)}}
+@media(max-width:600px){html body .pt.lg b{font-size:15px}html body .pt.lg .pg{width:38px;height:38px}html body .lgt{gap:18px}}
