@@ -1233,3 +1233,17 @@ body.is-home{padding-top:0}
 /* home: section reveal */
 .lux,.showcase,.stores,.eco,.trust{animation:none}
 @media(max-width:900px){.cathero{grid-template-columns:1fr;padding:34px 26px}.ch-art{height:190px}.ch-art .cha0{width:150px;height:150px;left:30%}.ch-art .cha1,.ch-art .cha2{width:110px;height:110px}.cat-head{flex-direction:column;align-items:stretch}.cat-head .searchslot{width:100%}.p3grid,.p3steps ol,.st-grid{grid-template-columns:1fr}.p3art{height:240px}}
+
+/* =================== v42: header polish =================== */
+.nav{background:rgba(255,253,249,.82)!important;-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);border-bottom:0!important;box-shadow:none!important;transition:padding .35s ease,background .35s,box-shadow .35s!important}
+.nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,146,74,.55) 20%,rgba(184,146,74,.55) 80%,transparent)}
+.nav.solid{background:rgba(255,253,249,.94)!important;box-shadow:0 14px 40px rgba(40,30,10,.08)!important}
+.nav>.annc{transition:height .35s ease,opacity .25s;height:32px}
+.nav.solid>.annc{height:0;opacity:0}
+.nav.solid{padding-top:8px!important}
+body.is-home .nav:not(.solid){background:linear-gradient(rgba(255,253,249,.9),rgba(255,253,249,.55))!important}
+.brand b,.brand span,.brand strong{font-family:var(--serif)!important;font-weight:700!important;font-size:25px!important;letter-spacing:.14em!important}
+.brand img{filter:drop-shadow(0 4px 8px rgba(140,106,47,.25))}
+.brand{position:relative}
+.brand::after{content:"Electronics · Robotics · STEM";position:absolute;left:62px;bottom:-6px;font:500 9px var(--body);letter-spacing:.28em;text-transform:uppercase;color:var(--gold-d);white-space:nowrap}
+@media(max-width:700px){.brand::after{display:none}.brand b,.brand span,.brand strong{font-size:18px!important}}
