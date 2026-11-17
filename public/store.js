@@ -658,7 +658,7 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:
  }
  /* scroll reveal */
  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.12});
- const mark=()=>$$('[data-page="home"] .trust-grid>div,[data-page="home"] .cat2,.sc-card,.st,.lux-head,.featured .card2,.eco,.jb,.p3steps li').forEach((el,i)=>{if(!el.dataset.rv){el.dataset.rv=1;el.style.setProperty('--d',(i%4)*90+'ms');if(!RM)el.classList.add('rv');io.observe(el)}});
+ const mark=()=>$$('[data-page="home"] .trust-grid>div,[data-page="home"] .cat2,.acc-p,.stop,.lux-head,.featured .card2,.eco,.jb,.p3steps li').forEach((el,i)=>{if(!el.dataset.rv){el.dataset.rv=1;el.style.setProperty('--d',(i%4)*90+'ms');if(!RM)el.classList.add('rv');io.observe(el)}});
  mark();new MutationObserver(mark).observe(document.body,{childList:true,subtree:true});
  /* coverflow rail */
  const tr=$('#railTrack');
