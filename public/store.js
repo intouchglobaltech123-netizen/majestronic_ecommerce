@@ -1333,7 +1333,7 @@ function drawCatalog(){
    'search':['Search','Results across the full catalogue.']};
    const d=SUB[F.key]||['Category','Hand-picked '+title.toLowerCase()+' for makers, students and labs.'];
    $('#catKick').textContent=d[0];$('#catSub').textContent=d[1];$('#catN').textContent=base.length+' products';
-   const ph=base.slice(0,3);
+   const ph=[...base.filter(p=>p.img.startsWith('hd/')&&!p.out),...base.filter(p=>!p.img.startsWith('hd/')&&!p.out),...base].filter((p,i,a)=>a.indexOf(p)===i).slice(0,3);
    $('#catArt').innerHTML=ph.map((p,i)=>`<figure class="cha${i}">${pimg(p)}</figure>`).join('');
    const keys=['shop','kids-diy-kits','diy-robotic-kit',...Object.keys(COL).filter(k=>k.startsWith('cat-')&&!/kids|robotic/.test(k))];
    $('#catChips').innerHTML=keys.map(k=>`<a href="#${k}" class="${k===F.key?'on':''}">${COL[k].key==='shop'?'All':COL[k].title}</a>`).join('');
