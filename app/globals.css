@@ -1582,9 +1582,6 @@ body.is-home .nav:not(.solid){background:linear-gradient(rgba(255,253,249,.9),rg
  .pc .c2price .now{font-size:16.5px}
 }
 @container (max-width:210px){.pc-cat{font-size:9px;letter-spacing:.14em}.pc .addbtn svg{display:none}}
-@media(max-width:1280px) and (min-width:861px){.cgrid4[data-cols="4"],#grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
-@media(max-width:1100px) and (min-width:861px){body:not(.is-home) #grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
-@media(max-width:860px) and (min-width:601px){.cgrid4,#grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media(max-width:900px){.brand b,.brand span,.brand strong{font-size:18px!important;letter-spacing:.1em!important}.brand::after{display:none}}
 
 /* =================== v55: stores as gold type band =================== */
@@ -1620,3 +1617,6 @@ body.is-home .nav:not(.solid){background:linear-gradient(rgba(255,253,249,.9),rg
 .cat-head .searchslot button{background:#0B2A23!important;color:#F1E3BF!important;border-radius:999px!important}
 @media(max-width:900px){.catchips{border-radius:999px}.cat-head .searchslot{width:100%}}
 html body .cat-head .searchslot button,html body .cat-head .searchslot [type=submit]{background:#0B2A23!important;color:#F1E3BF!important}
+html body .cgrid4,html body #grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+@media(max-width:1024px){html body .cgrid4,html body #grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important}}
+@media(max-width:600px){html body .cgrid4,html body #grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}}
