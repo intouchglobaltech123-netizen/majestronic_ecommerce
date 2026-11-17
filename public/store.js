@@ -355,6 +355,18 @@ function drawCatalog(){
   const isS=F.key==='search',title=isS?(F.q?`Search results for “${F.q}”`:'Search'):COL[F.key].title;
   $('#catTitle').textContent=title;$('#crumbCat').textContent=isS?'Search':COL[F.key].title;
   document.title=`${isS?'Search':COL[F.key].title} – MAJESTRONICZ`;
+  {const SUB={'shop':['The full catalogue','Every component, board, sensor, tool and kit we stock, in one place.'],
+   'kids-diy-kits':['Learn by building','Wooden STEM kits for young makers: cut-out parts, simple motors and a finished model to keep.'],
+   'diy-robotic-kit':['Build your own robot','Complete robot car kits with chassis, motors, driver, sensors and board in the box.'],
+   'search':['Search','Results across the full catalogue.']};
+   const d=SUB[F.key]||['Category','Hand-picked '+title.toLowerCase()+' for makers, students and labs.'];
+   $('#catKick').textContent=d[0];$('#catSub').textContent=d[1];$('#catN').textContent=base.length+' products';
+   const ph=base.filter(p=>PHOTOS.has(p.kind.replace(':','-'))).slice(0,3);
+   $('#catArt').innerHTML=ph.map((p,i)=>`<figure class="cha${i}">${art(p.kind)}</figure>`).join('');
+   const keys=['shop','kids-diy-kits','diy-robotic-kit',...Object.keys(COL).filter(k=>k.startsWith('cat-')&&!/kids|robotic/.test(k))];
+   $('#catChips').innerHTML=keys.map(k=>`<a href="#${k}" class="${k===F.key?'on':''}">${COL[k].key==='shop'?'All':COL[k].title}</a>`).join('');
+   {const o=$('#catChips .on'),c=$('#catChips');if(o)c.scrollLeft=o.offsetLeft-c.clientWidth/2+o.offsetWidth/2;}}
+
   $('#nIn').textContent=base.filter(p=>!p.out).length;$('#nOut').textContent=base.filter(p=>p.out).length;
   const max=base.reduce((m,p)=>Math.max(m,p.price),0);
   $('#maxHint').textContent=base.length?`The highest price is ${rs(max)}`:'';
