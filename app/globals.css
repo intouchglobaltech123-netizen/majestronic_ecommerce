@@ -1607,3 +1607,4 @@ body.is-home .nav:not(.solid){background:linear-gradient(rgba(255,253,249,.9),rg
 .cw:hover .cw-t{font-style:italic}
 .cw:hover .cw-s{opacity:1;transform:none;color:var(--gold-l)}
 @media(max-width:900px){.s4-row{grid-template-columns:1fr}.cw{border-right:0;border-bottom:1px solid rgba(11,42,35,.25);padding:22px 4px}.cw-s{opacity:1;transform:none}.cw:hover{padding-left:16px}}
+.card2.pc,.card2.pc *{will-change:auto!important}.card2.pc{transform:none!important}.card2.pc::after{display:none!important}.card2.pc:hover{transform:translateY(-4px)!important}.pc:hover .c2img img{transform:scale(1.05)}

@@ -303,8 +303,7 @@ function card(p,i=0){
   return `<article class="card2 pc" style="animation-delay:${Math.min(i,12)*30}ms">
   <div class="pc-media"><a class="c2img" href="#product-${p.id}" aria-label="${esc(p.name)}">${art(p.kind)}</a>
   ${p.out?'<span class="pc-badge out">Sold out</span>':sale?`<span class="pc-badge">−${off}%</span>`:''}
-  <button class="heart" data-wish="${p.id}" aria-pressed="${w}" aria-label="${w?'Remove from':'Add to'} wishlist">${IC_HEART}</button>
-  <a class="pc-quick" href="#product-${p.id}">View details</a></div>
+  <button class="heart" data-wish="${p.id}" aria-pressed="${w}" aria-label="${w?'Remove from':'Add to'} wishlist">${IC_HEART}</button></div>
   <div class="pc-body">
   <p class="pc-cat">${esc(p.cat)}</p>
   <h3><a href="#product-${p.id}">${esc(p.name)}</a></h3>
@@ -642,7 +641,7 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:
 
 /* ---------- 3D: tilt, reveal, coverflow ---------- */
 {const RM=matchMedia('(prefers-reduced-motion: reduce)').matches,FINE=matchMedia('(pointer:fine)').matches;
- const TILT='.cat2,.ctile,.card2,.sc-card,.st,.trust-grid>div,.p3steps li';
+ const TILT='.cat2,.ctile,.sc-card,.st,.trust-grid>div,.p3steps li';
  if(!RM&&FINE){
   let cur=null;
   document.addEventListener('pointermove',e=>{
