@@ -1703,3 +1703,11 @@ html body .fcats a i{font:600 11px var(--body)!important;background:#F3ECDD!impo
 html body .fcats a.on i{background:rgba(226,198,138,.2)!important;color:#F1D99C!important}
 html body .fside{border-radius:20px!important;box-shadow:0 14px 34px rgba(40,30,10,.06)!important}
 html body .fgrp summary{color:#0B2A23!important}
+/* v60 search bar */
+html body .cat-bar .searchslot>*{height:56px!important;border-radius:16px!important;border:1px solid #E3D7BE!important;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(120deg,#E9CF92,#fff 40%,#fff 60%,#C49A4E) border-box!important;border:1.5px solid transparent!important;box-shadow:0 10px 30px rgba(40,30,10,.07),inset 0 1px 0 #fff!important;padding:0 6px 0 18px!important;transition:box-shadow .3s}
+html body .cat-bar .searchslot>*:focus-within{box-shadow:0 0 0 4px rgba(201,164,94,.18),0 14px 34px rgba(40,30,10,.1)!important}
+html body .cat-bar .searchslot input{font:500 15px var(--body)!important;color:#0B2A23!important;background:transparent!important}
+html body .cat-bar .searchslot input::placeholder{color:#A49A86}
+html body .cat-bar .searchslot svg{color:#B8924A!important}
+html body .cat-bar .searchslot button,html body .cat-bar .searchslot [type=submit]{height:44px!important;padding:0 22px!important;border-radius:12px!important;background:linear-gradient(135deg,#174538,#0B2A23)!important;color:#F1D99C!important;font:700 12px var(--body)!important;letter-spacing:.16em!important;text-transform:uppercase;box-shadow:0 6px 14px rgba(11,42,35,.25)}
+html body .cat-bar .ccount{height:56px;display:inline-flex!important;align-items:center;padding:0 18px!important;border-radius:16px!important;background:#0B2A23!important;color:#F1D99C!important;font:700 11.5px var(--body)!important;letter-spacing:.16em}
