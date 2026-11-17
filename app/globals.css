@@ -1620,3 +1620,8 @@ html body .cat-head .searchslot button,html body .cat-head .searchslot [type=sub
 html body .cgrid4,html body #grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
 @media(max-width:1024px){html body .cgrid4,html body #grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important}}
 @media(max-width:600px){html body .cgrid4,html body #grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}}
+html body .pc-buy{flex-direction:row!important;gap:8px}
+html body .pc .qty2{width:auto!important;flex:none;justify-content:center;height:42px}
+html body .pc .qty2 input{flex:none;width:26px}
+html body .pc .addbtn{flex:1!important;width:auto!important;min-width:0}
+@container (max-width:200px){html body .pc .qty2{height:36px;padding:0 2px}html body .pc .qty2 button{width:22px}html body .pc .qty2 input{width:18px;font-size:13px}html body .pc .addbtn{height:36px;font-size:10.5px!important;letter-spacing:.08em!important;padding:0 6px!important}html body .pc .addbtn svg{display:none}}
