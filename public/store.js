@@ -691,6 +691,17 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:
  document.addEventListener('click',e=>{if(!wrap.contains(e.target))close()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
  __syncSort();}
+
+/* ---------- sidebar categories + sort ---------- */
+{const sel=$('#sort');
+ $('#fsort').innerHTML=[...sel.options].map(o=>`<label class="fs-opt"><input type="radio" name="fsort" value="${o.value}"><span>${o.text}</span></label>`).join('');
+ $('#fsort').addEventListener('change',e=>{sel.value=e.target.value;sel.dispatchEvent(new Event('change',{bubbles:true}))});
+ const prev=window.__syncSort;
+ window.__syncSort=()=>{prev&&prev();const r=$(`#fsort input[value="${sel.value}"]`);if(r)r.checked=true;
+  const cur=location.hash.slice(1)||'shop';
+  const keys=['shop','kids-diy-kits','diy-robotic-kit',...Object.keys(COL).filter(k=>k.startsWith('cat-')&&!/kids|robotic/.test(k))];
+  $('#fcats').innerHTML=keys.map(k=>{const n=P.filter(COL[k].test).length;return `<a href="#${k}" class="${k===cur?'on':''}"><span>${k==='shop'?'All products':COL[k].title}</span><i>${n}</i></a>`}).join('');};
+ __syncSort();}
 /* ---------- ROUTER ---------- */
 const R={page:'home',key:'home',id:null};
 function route(){
