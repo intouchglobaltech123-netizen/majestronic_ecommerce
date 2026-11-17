@@ -1958,3 +1958,16 @@ html body .pt.lg small{font-size:12px;padding-left:10px;border-left:1px solid rg
 html body .lgd{font-style:normal;color:#E2C68A;opacity:.55;font-size:14px}
 @keyframes lgrun{to{transform:translateX(-50%)}}
 @media(max-width:600px){html body .pt.lg b{font-size:15px}html body .pt.lg .pg{width:38px;height:38px}html body .lgt{gap:18px}}
+/* v71 banner trio */
+html body .ch-art{position:relative!important;height:320px!important;padding:0!important;border:0!important;border-radius:18px;background:radial-gradient(120% 90% at 50% 100%,#F3E7CC,#FBF7EE 60%);box-shadow:inset 0 0 0 1px #E6D6B2}
+html body .ch-art::before{display:block!important;content:"";position:absolute;inset:14px;border:1.5px solid #C9A45E;border-radius:12px;pointer-events:none}
+html body .ch-art .cha1,html body .ch-art .cha2{display:block!important}
+html body .ch-art figure{position:absolute!important;padding:8px!important;background:#fff!important;border-radius:14px!important;overflow:hidden;box-shadow:0 22px 40px -14px rgba(11,42,35,.35),0 0 0 1px rgba(11,42,35,.06)!important;transition:transform .5s cubic-bezier(.2,.8,.2,1)!important}
+html body .ch-art figure img{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:9px;mix-blend-mode:normal!important}
+html body .ch-art .cha0{width:210px!important;height:230px!important;left:50%!important;top:42px!important;margin-left:-105px!important;z-index:3;transform:none!important}
+html body .ch-art .cha1{width:160px!important;height:175px!important;left:9%!important;right:auto!important;top:78px!important;transform:rotate(-7deg)!important;z-index:2}
+html body .ch-art .cha2{width:160px!important;height:175px!important;right:9%!important;left:auto!important;top:78px!important;transform:rotate(7deg)!important;z-index:2}
+html body .cathero:hover .ch-art .cha0{transform:translateY(-8px)!important}
+html body .cathero:hover .ch-art .cha1{transform:rotate(-10deg) translateX(-8px)!important}
+html body .cathero:hover .ch-art .cha2{transform:rotate(10deg) translateX(8px)!important}
+@media(max-width:900px){html body .ch-art{height:250px!important}html body .ch-art .cha0{width:150px!important;height:170px!important;margin-left:-75px!important;top:36px!important}html body .ch-art .cha1,html body .ch-art .cha2{width:115px!important;height:130px!important;top:66px!important}html body .ch-art .cha1{left:5%!important}html body .ch-art .cha2{right:5%!important}}
