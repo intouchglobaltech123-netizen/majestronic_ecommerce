@@ -1331,17 +1331,5 @@ body.is-home .nav:not(.solid){background:linear-gradient(rgba(255,253,249,.9),rg
 .lf-badges i{font-style:normal;border:1px solid rgba(226,198,138,.28);padding:6px 10px;font:500 10.5px var(--body);letter-spacing:.16em;text-transform:uppercase;color:#CDBE9E}
 .lf-top-btn{background:none;border:0;color:var(--gold-l);font:600 11px var(--body);letter-spacing:.22em;text-transform:uppercase;cursor:pointer;padding:0 92px 0 0}
 .lf-top-btn:hover{color:#fff}
-/* WhatsApp float */
-.wafloat{position:fixed!important;right:24px!important;bottom:24px!important;display:flex!important;align-items:center;gap:0;text-decoration:none;z-index:60}
-.wafloat .wadot{position:relative;width:62px!important;height:62px!important;border-radius:50%!important;display:grid!important;place-items:center;background:radial-gradient(circle at 30% 25%,#5BF08E,#25D366 45%,#128C4A)!important;box-shadow:0 0 0 3px #fff,0 0 0 4.5px rgba(184,146,74,.9),0 14px 30px rgba(18,140,74,.35),inset 0 -4px 10px rgba(0,0,0,.15)!important;border:0!important;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-.wafloat .wadot::before,.wafloat .wadot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,.55);animation:waping 2.4s ease-out infinite;pointer-events:none}
-.wafloat .wadot::after{animation-delay:1.2s}
-@keyframes waping{from{transform:scale(1);opacity:.9}to{transform:scale(1.7);opacity:0}}
-.wafloat .wadot svg{width:32px;height:32px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.18))}
-.wafloat:hover .wadot{transform:scale(1.07) rotate(-8deg)}
-.wafloat .watip{order:-1;position:static!important;opacity:1!important;transform:none!important;visibility:visible!important;max-width:0;overflow:hidden;white-space:nowrap;margin-right:0;background:#fff!important;color:#111!important;border:1px solid #E6D9BC;padding:11px 0!important;border-radius:999px!important;font:600 13px var(--body)!important;box-shadow:0 12px 26px rgba(0,0,0,.12);transition:max-width .45s cubic-bezier(.2,.8,.2,1),padding .45s,margin .45s}
-.wafloat .watip::after{display:none!important}
-.wafloat:hover .watip{max-width:200px;padding:11px 18px!important;margin-right:12px}
 @media(max-width:900px){.lf-top{grid-template-columns:1fr}.lf-grid{grid-template-columns:1fr 1fr}.lf-card{grid-column:1/-1}.lf-top-btn{padding-right:0}.lf-bottom{flex-direction:column;align-items:flex-start;padding-bottom:100px}}
-@media(max-width:520px){.lf-grid{grid-template-columns:1fr}.wafloat .wadot{width:56px!important;height:56px!important}.wafloat{right:16px!important;bottom:16px!important}}
-@media(prefers-reduced-motion:reduce){.wafloat .wadot::before,.wafloat .wadot::after{animation:none}}
+@media(max-width:520px){.lf-grid{grid-template-columns:1fr}}
