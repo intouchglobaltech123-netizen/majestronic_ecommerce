@@ -1,5 +1,4 @@
 (function(){
-
 /* ---------- CONFIG: replace with your own details ---------- */
 const BRAND={
   name:'Majestronicz',
@@ -609,6 +608,15 @@ function setNavH(){document.documentElement.style.setProperty('--navh',nav.offse
 addEventListener('resize',setNavH);
 addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
 
+
+/* ---------- HOME: curated rail ---------- */
+{const tabs=[['Sensors',p=>p.cat==='Sensors'],['Dev boards',p=>p.cat==='Dev Boards'],['Robot kits',p=>p.cat==='DIY Robotic Kits'],['STEM kits',p=>p.cat==='Kids DIY Kits'],['Tools',p=>p.cat==='Tools'||p.cat==='Power']];
+ const tb=$('#railTabs'),tr=$('#railTrack');
+ tb.innerHTML=tabs.map(([n],i)=>`<button role="tab" aria-selected="${i===0}" data-t="${i}">${n}</button>`).join('');
+ const draw=i=>{tr.innerHTML=P.filter(tabs[i][1]).map(card).join('');tr.scrollLeft=0;$$('#railTabs button').forEach((b,j)=>b.setAttribute('aria-selected',j===i))};
+ tb.addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(b)draw(+b.dataset.t)});
+ $$('.railbtn').forEach(b=>b.addEventListener('click',()=>tr.scrollBy({left:(b.classList.contains('next')?1:-1)*tr.clientWidth*.8,behavior:'smooth'})));
+ draw(0);}
 /* ---------- ROUTER ---------- */
 const R={page:'home',key:'home',id:null};
 function route(){
@@ -636,5 +644,4 @@ function route(){
  window.__placeNav=home=>{if(home){tr.after(nw);ub.append(ic)}else{tr.append(nw);tr.append(ic)}};}
 addEventListener('hashchange',route);
 drawCart();drawWishCount();route();
-
 })();
