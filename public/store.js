@@ -1768,6 +1768,7 @@ drawAccLbl();
 /* ---------- platform tiles ---------- */
 $$('[data-cnt]').forEach(el=>{const q=el.dataset.cnt;el.textContent=P.filter(p=>p.name.toLowerCase().includes(q)).length+' products'});
 document.addEventListener('click',e=>{const t=e.target.closest('.pt[data-q]');if(!t)return;e.preventDefault();const i=$('#searchForm input');if(i){i.value=t.dataset.q;$('#searchForm').dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}))}else location.hash='search'});
+document.addEventListener('click',e=>{const b=e.target.closest('.eye');if(!b)return;const i=b.previousElementSibling;const sh=i.type==='password';i.type=sh?'text':'password';b.textContent=sh?'Hide':'Show'});
 /* ---------- ROUTER ---------- */
 const R={page:'home',key:'home',id:null};
 function route(){
