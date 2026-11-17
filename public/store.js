@@ -105,6 +105,7 @@ const P=[
  ['Intermediate ESP32 Starter Kit for IoT and Automation','DIY Robotic Kits',1499,null,'kit:starter','ESP32 Wi-Fi module with sensors, a relay, a servo and a water pump for IoT and automation projects.',1],
  ['Beginner ESP32 Starter Kit for IoT and Electronics','DIY Robotic Kits',999,null,'board:esp','ESP32 module with sensors, a relay, a buzzer and a breadboard for learning basic electronics.',1]
 ].map((a,i)=>({id:i,name:a[0],cat:a[1],price:a[2],mrp:a[3],kind:a[4],desc:a[5],out:!!a[6]}));
+const pimg=p=>`<img class="ph" src="hd/hd-${String(p.id).padStart(2,'0')}.webp" alt="${esc(p.name)}" loading="lazy" decoding="async">`;
 const CATS=['All',...[...new Set(P.map(p=>p.cat))]];
 const inr=n=>'₹'+n.toLocaleString('en-IN');
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -301,7 +302,7 @@ const bestRank=p=>{const i=FEAT_NAMES.indexOf(p.name);return i<0?100+p.id:i};
 function card(p,i=0){
   const w=wish.has(p.id),sale=onSale(p),off=sale?Math.round((1-p.price/p.mrp)*100):0;
   return `<article class="card2 pc" style="animation-delay:${Math.min(i,12)*30}ms">
-  <div class="pc-media"><a class="c2img" href="#product-${p.id}" aria-label="${esc(p.name)}">${art(p.kind)}</a>
+  <div class="pc-media"><a class="c2img" href="#product-${p.id}" aria-label="${esc(p.name)}">${pimg(p)}</a>
   ${p.out?'<span class="pc-badge out">Sold out</span>':sale?`<span class="pc-badge">−${off}%</span>`:''}
   <button class="heart" data-wish="${p.id}" aria-pressed="${w}" aria-label="${w?'Remove from':'Add to'} wishlist">${IC_HEART}</button></div>
   <div class="pc-body">
@@ -370,8 +371,8 @@ function drawCatalog(){
    'search':['Search','Results across the full catalogue.']};
    const d=SUB[F.key]||['Category','Hand-picked '+title.toLowerCase()+' for makers, students and labs.'];
    $('#catKick').textContent=d[0];$('#catSub').textContent=d[1];$('#catN').textContent=base.length+' products';
-   const ph=base.filter(p=>PHOTOS.has(p.kind.replace(':','-'))).slice(0,3);
-   $('#catArt').innerHTML=ph.map((p,i)=>`<figure class="cha${i}">${art(p.kind)}</figure>`).join('');
+   const ph=base.slice(0,3);
+   $('#catArt').innerHTML=ph.map((p,i)=>`<figure class="cha${i}">${pimg(p)}</figure>`).join('');
    const keys=['shop','kids-diy-kits','diy-robotic-kit',...Object.keys(COL).filter(k=>k.startsWith('cat-')&&!/kids|robotic/.test(k))];
    $('#catChips').innerHTML=keys.map(k=>`<a href="#${k}" class="${k===F.key?'on':''}">${COL[k].key==='shop'?'All':COL[k].title}</a>`).join('');
    {const o=$('#catChips .on'),c=$('#catChips');if(o)c.scrollLeft=o.offsetLeft-c.clientWidth/2+o.offsetWidth/2;}}
@@ -422,7 +423,7 @@ function showProduct(id){
   const p=P[id],sale=onSale(p),d=DET[p.name];
   document.title=`${p.name} – MAJESTRONICZ`;
   $('#pdCrumbs').innerHTML=`<a href="#home">Home</a><span>/</span><a href="#${colOf(p)}">${esc(COL[colOf(p)].title)}</a><span>/</span><b>${esc(p.name)}</b>`;
-  $('#pdImg').innerHTML=art(p.kind)+(p.out?'<span class="tag" style="background:#2a2740">Sold out</span>':sale?'<span class="tag">Sale</span>':'');
+  $('#pdImg').innerHTML=pimg(p)+(p.out?'<span class="tag" style="background:#2a2740">Sold out</span>':sale?'<span class="tag">Sale</span>':'');
   $('#pdThumbs').innerHTML='';
   $('#pdName').textContent=p.name;
   $('#pdPrice').innerHTML=sale?`<span class="now">${rs(p.price)}</span><s>${rs(p.mrp)}</s><span class="tag">Sale</span><span class="save">You save ${rs(p.mrp-p.price)} (${pct(p)}%)</span>`:`<span class="now reg">${rs(p.price)}</span>`;
@@ -476,7 +477,7 @@ function drawCart(){
   const ids=Object.keys(cart).filter(i=>P[i]);
   const count=ids.reduce((s,i)=>s+cart[i],0),sub=ids.reduce((s,i)=>s+cart[i]*P[i].price,0);
   $('#cartCount').textContent=count;$('#cartCount').style.visibility=count?'visible':'hidden';$('#subtotal').textContent=inr(sub);
-  $('#items').innerHTML=ids.length?ids.map(i=>{const p=P[i];return `<div class="row"><a class="th" href="#product-${i}">${art(p.kind)}</a><div><h4>${esc(p.name)}</h4><div class="qty"><button data-q="${i}:-1" aria-label="Remove one">−</button><span>${cart[i]}</span><button data-q="${i}:1" aria-label="Add one">+</button></div></div><b class="mono">${inr(cart[i]*p.price)}</b></div>`}).join(''):'<p class="notice" style="padding:30px 0">Your cart is empty.</p>';
+  $('#items').innerHTML=ids.length?ids.map(i=>{const p=P[i];return `<div class="row"><a class="th" href="#product-${i}">${pimg(p)}</a><div><h4>${esc(p.name)}</h4><div class="qty"><button data-q="${i}:-1" aria-label="Remove one">−</button><span>${cart[i]}</span><button data-q="${i}:1" aria-label="Add one">+</button></div></div><b class="mono">${inr(cart[i]*p.price)}</b></div>`}).join(''):'<p class="notice" style="padding:30px 0">Your cart is empty.</p>';
   const left=Math.max(0,FREE-sub);
   $('#fsBar').style.width=Math.min(100,sub/FREE*100)+'%';
   $('#fsText').textContent=sub===0?'Tamil Nadu prepaid orders of ₹999 or more ship free.':left>0?`Add ${inr(left)} more for free shipping on Tamil Nadu prepaid orders.`:'Free shipping unlocked for Tamil Nadu prepaid orders.';
@@ -583,7 +584,7 @@ function drawSuggest(){
   const q=hq.value.trim().toLowerCase();
   if(!q){hideSuggest();return}
   const m=P.filter(p=>matchQ(p,q)).sort((a,b)=>relScore(b,q)-relScore(a,q)).slice(0,6);
-  sug.innerHTML=(m.length?m.map(p=>`<a href="#product-${p.id}"><span>${art(p.kind)}</span><small>${esc(p.name)}</small><em>${rs(p.price)}</em></a>`).join(''):`<div class="none">No products match “${esc(q)}”.</div>`)+
+  sug.innerHTML=(m.length?m.map(p=>`<a href="#product-${p.id}"><span>${pimg(p)}</span><small>${esc(p.name)}</small><em>${rs(p.price)}</em></a>`).join(''):`<div class="none">No products match “${esc(q)}”.</div>`)+
     `<a class="all" href="#search" data-go-search>View all results for “${esc(q)}” →</a>`;
   sug.hidden=false;
 }
