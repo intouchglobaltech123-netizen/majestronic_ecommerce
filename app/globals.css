@@ -1691,3 +1691,15 @@ html body .cat-bar .searchslot button,html body .cat-bar .searchslot [type=submi
 @media(max-width:1000px) and (min-width:821px){.navwrap .bar .cell{padding-left:8px!important;padding-right:8px!important;font-size:11px!important;letter-spacing:.06em!important}html body .nav{column-gap:10px!important}}
 @media(max-width:960px) and (min-width:821px){.navwrap .bar .cell{padding-left:6px!important;padding-right:6px!important;font-size:10.5px!important;letter-spacing:.03em!important}#nav .icons [href="#account"],#nav .icons .acct{display:none!important}.bx-txt b{font-size:13px!important}html body .nav{column-gap:6px!important;padding-left:14px!important;padding-right:14px!important}}
 html body .utilbar .search{display:none!important}html body .utilbar{background:transparent!important;padding-bottom:0!important;padding-top:var(--navh,80px)!important}html body .utilbar .ub{min-height:0!important;padding:0!important;border:0!important}
+html body [data-page="catalog"] .cat-head{display:none!important}
+html body .fcats{max-height:none!important;overflow:visible!important;margin:6px -6px 4px!important;gap:3px!important}
+html body .fcats a{position:relative;padding:10px 12px 10px 16px!important;border-radius:12px!important;font-size:14px!important;transition:background .2s,color .2s,padding .2s!important}
+html body .fcats a::before{content:"";position:absolute;left:6px;top:50%;width:3px;height:0;border-radius:3px;background:var(--gold);transform:translateY(-50%);transition:height .2s}
+html body .fcats a:hover{background:#FAF6EE!important;padding-left:20px!important}
+html body .fcats a:hover::before{height:16px}
+html body .fcats a.on{background:linear-gradient(135deg,#0B2A23,#174538)!important;color:#F6EBCF!important;box-shadow:0 8px 18px rgba(11,42,35,.22)}
+html body .fcats a.on::before{height:18px;background:#E2C68A}
+html body .fcats a i{font:600 11px var(--body)!important;background:#F3ECDD!important;color:#8C6A2F!important;padding:3px 9px!important}
+html body .fcats a.on i{background:rgba(226,198,138,.2)!important;color:#F1D99C!important}
+html body .fside{border-radius:20px!important;box-shadow:0 14px 34px rgba(40,30,10,.06)!important}
+html body .fgrp summary{color:#0B2A23!important}
