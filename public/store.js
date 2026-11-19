@@ -1815,5 +1815,5 @@ drawCart();drawWishCount();route();
 const set=k=>{box.classList.toggle('hl',k!=null);box.querySelectorAll('.ap').forEach(p=>p.classList.toggle('on',p.dataset.k==k));list.forEach(l=>l.classList.toggle('on',l.dataset.k==k))};
 list.forEach(l=>{l.addEventListener('mouseenter',()=>{set(l.dataset.k);box.querySelectorAll('.ap').forEach(p=>p.style.animationPlayState='paused')});l.addEventListener('mouseleave',()=>{set(null);box.querySelectorAll('.ap').forEach(p=>p.style.animationPlayState='')})});
 box.querySelectorAll('.ap').forEach(p=>{p.addEventListener('mouseenter',()=>set(p.dataset.k));p.addEventListener('mouseleave',()=>set(null))});
-const t0=performance.now();setInterval(()=>{const f=((performance.now()-t0)/9000)%1;st.textContent=f<.08||f>.92?'Exploded view':f<.38?'Assembling':f<.62?'Assembled':'Exploding'},300)})();
+const t0=performance.now();setInterval(()=>{const f=((performance.now()-t0)/9000)%1;st.textContent=f<.08||f>.92?'Assembled':f<.38?'Exploding':f<.62?'Exploded view':'Assembling'},300)})();
 })();
