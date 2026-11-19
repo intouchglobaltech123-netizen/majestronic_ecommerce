@@ -1810,10 +1810,8 @@ drawCart();drawWishCount();route();
 /* nav active */
 (function(){const mark=()=>{const h=(location.hash||'#home').slice(1).split('/')[0];const key=h.startsWith('product')||h.startsWith('cat-')||h==='search'?'shop':(h==='order'||h==='orders'?'orders':h);document.querySelectorAll('.nav .bar .cell.link').forEach(a=>a.classList.toggle('on',a.dataset.r===key));try{setNavH()}catch(e){}};addEventListener('hashchange',mark);mark();setTimeout(mark,300)})();
 
-/* assembly hero */
-(function(){const box=document.querySelector('.ax-box'),list=document.querySelectorAll('.ax-list li'),st=document.getElementById('axState');if(!box)return;
-const set=k=>{box.classList.toggle('hl',k!=null);box.querySelectorAll('.ap').forEach(p=>p.classList.toggle('on',p.dataset.k==k));list.forEach(l=>l.classList.toggle('on',l.dataset.k==k))};
-list.forEach(l=>{l.addEventListener('mouseenter',()=>{set(l.dataset.k);box.querySelectorAll('.ap').forEach(p=>p.style.animationPlayState='paused')});l.addEventListener('mouseleave',()=>{set(null);box.querySelectorAll('.ap').forEach(p=>p.style.animationPlayState='')})});
-box.querySelectorAll('.ap').forEach(p=>{p.addEventListener('mouseenter',()=>set(p.dataset.k));p.addEventListener('mouseleave',()=>set(null))});
-const t0=performance.now();setInterval(()=>{const f=((performance.now()-t0)/9000)%1;st.textContent=f<.08||f>.92?'Assembled':f<.38?'Exploding':f<.62?'Exploded view':'Assembling'},300)})();
+/* hero parallax */
+(function(){const h=document.querySelector('.xh');if(!h||matchMedia('(pointer:coarse)').matches)return;const t=h.querySelector('.xh-tilt'),bp=h.querySelector('.xh-bp');let raf=0;
+h.addEventListener('mousemove',e=>{const r=h.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{h.style.setProperty('--mx',(x+.5)*100+'%');h.style.setProperty('--my',(y+.5)*100+'%');t.style.setProperty('--ry',x*14+'deg');t.style.setProperty('--rx',-y*8+'deg');t.style.setProperty('--tx',x*18+'px');t.style.setProperty('--ty',y*10+'px');bp.style.translate=(-x*14)+'px '+(-y*8)+'px'})});
+h.addEventListener('mouseleave',()=>{['--ry','--rx','--tx','--ty'].forEach(p=>t.style.removeProperty(p));bp.style.translate=''})})();
 })();
