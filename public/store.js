@@ -1820,12 +1820,14 @@ h.addEventListener('mouseleave',()=>{['--ry','--rx','--tx','--ty'].forEach(p=>t.
 
 /* PCB hero */
 (function(){const root=document.getElementById('pcb');if(!root)return;const svg=root.querySelector('#pcSvg'),NS='http://www.w3.org/2000/svg';
-root.querySelectorAll('.chip.prod').forEach(c=>{const p=P.find(x=>x.name.startsWith(c.dataset.p));if(!p)return;c.href='#product-'+p.id;c.querySelector('.pi').innerHTML=pimg(p);c.querySelector('b').textContent=p.name;c.querySelector('span').textContent='₹'+p.price});
-const car=root.querySelector('.pc-car'),show=root.querySelector('.pc-show'),fr=show.querySelector('.pc-sframe');
-const open=c=>{const p=P.find(x=>x.name.startsWith(c.dataset.p));if(!p)return;root.querySelectorAll('.chip.prod').forEach(x=>x.classList.toggle('sel',x===c));fr.innerHTML=pimg(p);show.querySelector('b').textContent=p.name;show.querySelector('span').textContent='₹'+p.price;show.querySelector('.pc-view').href='#product-'+p.id;car.classList.remove('kit');void car.offsetWidth;car.classList.add('kit')};
-const close=()=>{car.classList.remove('kit');root.querySelectorAll('.chip.prod').forEach(x=>x.classList.remove('sel'))};
-root.querySelectorAll('.chip.prod').forEach(c=>c.addEventListener('click',e=>{e.preventDefault();c.classList.contains('sel')?close():open(c)}));
-show.querySelector('.pc-back').addEventListener('click',close);
+const IT={car:{img:'rc-car.webp',w:'Obstacle Avoiding Robot Car',lab:'ROBOT KIT',nm:'4WD Arduino Robot Car Kit'},k1:{img:'kit-50.webp',w:'Smart Line Following',lab:'DIY KIT'},k2:{img:'kit-22.webp',w:'MQ-53 DIY',lab:'DIY KIT'}};
+Object.values(IT).forEach(o=>{const p=P.find(x=>x.name.startsWith(o.w));o.p=p;o.nm=o.nm||(p?p.name:'');o.href=p?'#product-'+p.id:'#shop';o.price=p?'₹'+p.price:''});
+let cur='car';const hero=root.querySelector('#pcHero'),cap=root.querySelector('#pcCap'),car=root.querySelector('.pc-car');
+const fillChip=c=>{const o=IT[c.dataset.k];c.querySelector('.cl').textContent=c.querySelector('.cl').textContent.split('·')[0]+'· '+o.lab;c.querySelector('.pi').innerHTML=`<img src="${o.img}" alt="">`;c.querySelector('b').textContent=o.nm;c.querySelector('span').textContent=o.price};
+const fillCap=()=>{const o=IT[cur];cap.href=o.href;cap.querySelector('b').textContent=o.nm;cap.querySelector('span').textContent=o.price};
+root.querySelectorAll('.chip.prod').forEach(fillChip);fillCap();
+root.querySelectorAll('.chip.prod').forEach(c=>c.addEventListener('click',e=>{e.preventDefault();if(car.classList.contains('swap'))return;const k=c.dataset.k;c.classList.add('flip');car.classList.add('swap');
+setTimeout(()=>{c.dataset.k=cur;cur=k;hero.src=IT[cur].img;hero.alt=IT[cur].nm;fillChip(c);fillCap();car.classList.remove('swap');car.classList.add('in');c.classList.remove('flip');setTimeout(()=>car.classList.remove('in'),700)},380)}));
 let first=true;
 function draw(){if(innerWidth<=1000){svg.innerHTML='';return}const R=root.getBoundingClientRect();svg.setAttribute('viewBox',`0 0 ${R.width} ${R.height}`);svg.innerHTML='';
 const pads={};root.querySelectorAll('.pad').forEach(p=>{const r=p.getBoundingClientRect();pads[p.dataset.a]=[r.left+r.width/2-R.left,r.top+r.height/2-R.top]});
