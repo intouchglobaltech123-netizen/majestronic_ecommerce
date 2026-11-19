@@ -2332,5 +2332,5 @@ html body .chip.prod .kt span{font:800 19px var(--body);color:#F5DC9C}
 html body .chip.prod .kt span::after{content:none!important}
 html body .chip.prod .kt em{justify-self:start;font:600 11px var(--body);font-style:normal;color:#0B2A23;background:#E2C68A;padding:5px 10px;border-radius:999px;transition:.25s}
 html body .chip.prod:hover .kt em{background:#F5DC9C;box-shadow:0 0 14px rgba(245,220,156,.5)}
-html body .chip.prod:hover .pi img{transform:scale(1.08) rotate(-2deg)}
+html body .chip.prod .pi{display:flex!important;align-items:center;justify-content:center;overflow:hidden!important}html body .chip.prod .pi img{width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important}html body .chip.prod:hover .pi img{transform:scale(1.08) rotate(-2deg)}
 @media(max-width:1250px){html body .chip.prod{flex-direction:column;align-items:stretch}html body .chip.prod .pi{flex:none;height:96px!important}html body .chip.prod .kt{margin-top:0}}
