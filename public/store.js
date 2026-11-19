@@ -1831,7 +1831,7 @@ setTimeout(()=>{c.dataset.k=cur;cur=k;hero.src=IT[cur].img;hero.alt=IT[cur].nm;f
 let first=true;
 function draw(){if(innerWidth<=1000){svg.innerHTML='';return}const R=root.getBoundingClientRect();svg.setAttribute('viewBox',`0 0 ${R.width} ${R.height}`);svg.innerHTML='';
 const pads={};root.querySelectorAll('.pad').forEach(p=>{const r=p.getBoundingClientRect();pads[p.dataset.a]=[r.left+r.width/2-R.left,r.top+r.height/2-R.top]});
-const chips=[...root.querySelectorAll('.chip')];const map=[[0,'l1'],[1,'l2'],[2,'r2']];
+const chips=[...root.querySelectorAll('.chip')];const map=[[0,'l1'],[1,'r1'],[2,'r2']];
 map.forEach(([ci,pa],k)=>{const c=chips[ci];if(!c||!pads[pa])return;const r=c.getBoundingClientRect();const left=c.dataset.pin==='r';const x1=left?r.right-R.left:r.left-R.left,y1=r.top+r.height/2-R.top;const [x2,y2]=pads[pa];
 const mid=x1+(x2-x1)*.45,dy=y2-y1,dx=Math.sign(x2-x1)*Math.min(Math.abs(dy),Math.abs(x2-mid)*.8);const d=`M${x1} ${y1}H${mid}L${mid+dx} ${y1+Math.sign(dy)*Math.abs(dx)}V${y2}H${x2}`;
 const path=document.createElementNS(NS,'path');path.setAttribute('d',d);path.setAttribute('class','tr'+(first?' draw':''));path.id='pct'+k;svg.append(path);const L=path.getTotalLength();path.style.setProperty('--l',L);if(first)path.style.animationDelay=(0.5+k*.12)+'s';

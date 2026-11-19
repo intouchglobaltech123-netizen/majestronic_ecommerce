@@ -2259,3 +2259,17 @@ html body .pc-cbox{position:relative;display:inline-block;max-width:100%}html bo
 html body .pc-cap{position:relative!important;left:auto!important;bottom:auto!important;transform:none!important;margin-top:26px}
 @media(max-height:700px){html body .chip .xo-fine,html body .chip .cl{display:none}}
 @media(max-width:1000px){html body .pc{height:auto;max-height:none;display:block}html body .pc-car{height:auto;max-height:none}html body .pc-carimg{max-height:46vh}}
+/* v88 balanced */
+html body .pc-grid{max-width:1440px;margin:0 auto;grid-template-columns:minmax(300px,400px) minmax(420px,1fr) minmax(300px,400px)!important;gap:clamp(24px,4vw,70px)!important}
+html body .pc-col:first-child .chip.big{padding:22px 24px!important}
+html body .chip.big h1{font-size:clamp(28px,min(3vw,5.4vh),46px)!important;white-space:nowrap}
+html body .pc-col:last-child{gap:26px!important}
+html body .chip.prod{grid-template-columns:120px 1fr!important;grid-template-rows:auto auto!important;align-content:start;row-gap:6px;padding:14px 18px!important}
+html body .chip.prod .pi{width:120px!important;height:84px!important}
+html body .chip.prod b{font-size:15px!important;-webkit-line-clamp:2!important}
+html body .chip.prod span{font-size:17px!important}
+html body .chip.prod span::after{display:block;content:"Tap to swap →"!important;margin-top:4px;font-size:11.5px;color:#8FA59B}
+html body .pc-carimg{max-height:calc(100svh - var(--navh,76px) - 150px)!important;min-width:min(560px,100%)}
+html body .pc-plate{left:2%!important;right:2%!important}
+html body .pc-silk span{opacity:.7}
+html body .pc-col:last-child .led{background:#7CFFB2;box-shadow:0 0 8px #7CFFB2}
