@@ -1803,4 +1803,8 @@ function route(){
  window.__placeNav=home=>{if(home){tr.after(nw);ub.append(ic)}else{tr.append(nw);tr.append(ic)}};}
 addEventListener('hashchange',route);
 drawCart();drawWishCount();route();
+
+/* static hero products */
+(function(){const want=['Obstacle Avoiding Robot Car','ESP32-S3 DevKit M-1','HC-SR04 Ultrasonic'];const tags=['Bestseller','Top pick','Top pick'];
+const el=document.getElementById('shProds');if(!el)return;el.innerHTML=want.map((w,k)=>{const p=P.find(x=>x.name.startsWith(w));return p?`<a class="shp" href="#product-${p.id}"><i>${tags[k]}</i>${pimg(p)}<div><b>${p.name}</b><span>₹${p.price}</span></div></a>`:''}).join('')})();
 })();
