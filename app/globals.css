@@ -2442,3 +2442,49 @@ html body .cat2.big .c2pics.one{inset:70px 40px 130px 40px!important}
 html body .cat2.big .c2pics.one img{mix-blend-mode:normal;background:#fff!important;border-radius:18px;padding:18px!important;box-shadow:0 30px 60px rgba(0,0,0,.45)!important;width:auto!important;height:auto!important;max-width:70%!important;max-height:100%!important;box-sizing:border-box}
 html body .cathero{grid-template-columns:1fr!important}
 html body .cat2:not(.big) .c2txt{max-width:52%}@media(max-width:820px){html body .c2pics.one{inset:30px 10px 10px 50%!important}}
+/* v100 */
+html body .cathero{display:none!important}
+html body .c2img .ph2{display:none!important}
+html body .card2.pc:hover .c2img .ph{opacity:1!important}
+/* category tiles: photo on top, text below */
+html body #catsGrid .c2pics.one{position:absolute!important;inset:40px 16px 84px 16px!important;display:flex!important;align-items:center;justify-content:center;overflow:hidden;pointer-events:none}
+html body #catsGrid .c2pics.one img{width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;aspect-ratio:auto!important;object-fit:contain!important;mix-blend-mode:multiply;position:static!important;padding:0!important;background:none!important;box-shadow:none!important;border-radius:0!important;transition:transform .5s cubic-bezier(.2,.8,.2,1)!important}
+html body #catsGrid .cat2:hover .c2pics.one img{transform:scale(1.06)!important}
+html body #catsGrid .cat2:not(.big) .c2txt{max-width:none!important;right:62px}
+html body #catsGrid .cat2.big .c2pics.one{inset:70px 60px 130px 60px!important}
+html body #catsGrid .cat2.big .c2pics.one img{mix-blend-mode:normal;background:#fff!important;border-radius:20px!important;padding:22px!important;box-shadow:0 30px 60px rgba(0,0,0,.45)!important;box-sizing:border-box}
+@media(max-width:820px){html body #catsGrid .c2pics.one{inset:34px 10px 66px 10px!important}html body #catsGrid .cat2.big .c2pics.one{inset:50px 24px 110px 24px!important}}
+/* product page */
+html body .pd{display:grid!important;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)!important;gap:clamp(24px,4vw,56px)!important;align-items:start}
+html body .pdgal{position:sticky;top:calc(var(--navh,76px) + 20px)}
+html body .pdimg{position:relative;aspect-ratio:1/1;border-radius:24px!important;background:radial-gradient(circle at 50% 40%,#fff,#F4EFE4)!important;border:1px solid #ECE4D3!important;display:grid!important;place-items:center;overflow:hidden;box-shadow:0 30px 60px -40px rgba(11,42,35,.35)}
+html body .pdimg img.ph{width:84%!important;height:84%!important;object-fit:contain!important;mix-blend-mode:multiply;transition:transform .5s}
+html body .pdimg:hover img.ph{transform:scale(1.04)}
+html body .pdimg .tag{position:absolute;top:16px;left:16px;border-radius:999px!important;background:#0B2A23!important;color:#F1D99C!important;font:700 11px var(--body)!important;letter-spacing:.12em;padding:6px 12px!important;text-transform:uppercase}
+html body #pdThumbs{display:flex!important;gap:12px!important;margin-top:14px!important}
+html body .pdt{width:84px!important;height:84px!important;border-radius:16px!important;border:1.5px solid #E6DCC6!important;background:#fff!important;padding:8px!important;cursor:pointer;overflow:hidden;display:grid;place-items:center;transition:.2s}
+html body .pdt img{width:100%!important;height:100%!important;object-fit:contain!important;mix-blend-mode:multiply}
+html body .pdt.on{border-color:#0B2A23!important;box-shadow:0 0 0 3px rgba(226,198,138,.55)!important}
+html body .pdinfo{padding-top:6px}
+html body .pdvendor{font:700 11px var(--body)!important;letter-spacing:.22em!important;color:#A87B2E!important;margin:0 0 10px!important}
+html body #pdName{font:800 clamp(26px,2.6vw,38px)/1.15 var(--body)!important;letter-spacing:-.02em;color:#0B2A23!important;margin:0 0 16px!important}
+html body .pdprice{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;padding:16px 0;border-top:1px solid #EDE5D3;border-bottom:1px solid #EDE5D3}
+html body .pdprice .now{font:800 30px var(--body)!important;color:#0B2A23!important}
+html body .pdprice s{color:#9A9384;font-size:16px}
+html body .pdprice .tag{background:#E2C68A!important;color:#0B2A23!important;border-radius:999px!important;padding:4px 10px!important;font:700 11px var(--body)!important}
+html body .pdprice .save{width:100%;color:#1C6B45;font:600 13px var(--body)}
+html body .pdtax{color:#7A7466;font-size:13px;margin:10px 0 6px!important}
+html body .stock{display:inline-flex;align-items:center;gap:8px;font:600 13px var(--body);padding:6px 12px;border-radius:999px;background:#EAF6EE;color:#1C6B45}
+html body .pdqty{display:flex;align-items:center;gap:14px;margin:20px 0 14px}
+html body .pdqty span{font:600 13px var(--body);color:#3D4A44}
+html body .pdqty .qty2{height:46px;border-radius:999px!important;border:1px solid #E6DCC6!important;background:#FBF8F1!important}
+html body .pdbtns{display:grid!important;grid-template-columns:1fr 1fr auto;gap:10px}
+html body .pdbtns .addbtn,html body .pdbtns .buybtn{height:52px;border-radius:999px!important;font:700 14px var(--body)!important;letter-spacing:.04em;border:0!important;cursor:pointer}
+html body .pdbtns .addbtn{background:#0B2A23!important;color:#F1D99C!important}
+html body .pdbtns .buybtn{background:linear-gradient(180deg,#F5DC9C,#D9AE5A)!important;color:#0B2A23!important}
+html body .pdbtns .wishbtn{width:52px;height:52px;border-radius:50%!important;border:1px solid #E6DCC6!important;background:#fff!important;display:grid;place-items:center}
+html body .pdtrust{display:grid!important;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0!important;padding:0;list-style:none}
+html body .pdtrust li{background:#FBF8F1;border:1px solid #EDE5D3;border-radius:16px;padding:12px 14px;display:grid;gap:2px}
+html body .pdtrust b{font:700 13px var(--body);color:#0B2A23}
+html body .pdtrust span{font-size:12px;color:#7A7466}
+@media(max-width:900px){html body .pd{grid-template-columns:1fr!important}html body .pdgal{position:static}html body .pdbtns{grid-template-columns:1fr 1fr auto}html body .pdtrust{grid-template-columns:1fr}}

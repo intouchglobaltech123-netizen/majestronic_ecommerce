@@ -246,7 +246,7 @@ const bestRank=p=>{const i=FEAT_NAMES.indexOf(p.dn||p.name);return i<0?100+p.id:
 function card(p,i=0){
   const w=wish.has(p.id),sale=onSale(p),off=sale?Math.round((1-p.price/p.mrp)*100):0;
   return `<article class="card2 pc" style="animation-delay:${Math.min(i,12)*30}ms">
-  <div class="pc-media"><a class="c2img${p.img2?' has2':''}" href="#product-${p.id}" aria-label="${esc(p.name)}">${pimg(p)}${p.img2?`<img class="ph2" src="${p.img2}" alt="" loading="lazy" decoding="async">`:''}</a>
+  <div class="pc-media"><a class="c2img${p.img2?' has2':''}" href="#product-${p.id}" aria-label="${esc(p.name)}">${pimg(p)}</a>
   ${p.out?'<span class="pc-badge out">Sold out</span>':sale?`<span class="pc-badge">−${off}%</span>`:''}
   <button class="heart" data-wish="${p.id}" aria-pressed="${w}" aria-label="${w?'Remove from':'Add to'} wishlist">${IC_HEART}</button></div>
   <div class="pc-body">
