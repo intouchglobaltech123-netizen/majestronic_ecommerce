@@ -2313,3 +2313,12 @@ html body .chip.lcdonly .lcd-l.y{font-size:clamp(17px,1.7vw,23px)}
 html body .chip.lcdonly .lcd-l.s{font-size:clamp(13px,1.2vw,16px)}
 html body .chip.lcdonly:hover{transform:translateY(-3px)}
 html body .chip.lcdonly:hover .lcd-scr{box-shadow:inset 0 0 18px rgba(0,60,0,.45),0 0 40px rgba(160,240,100,.4)}
+/* v92 simple LCD */
+html body .chip.big.lcdm.lcdonly{background:none!important;background-image:none!important;border:0!important;padding:0!important;box-shadow:none!important}
+html body .chip.lcdonly .lcd{background:#0A1F1A;padding:8px;border-radius:16px;box-shadow:0 0 0 1px rgba(226,198,138,.45),0 20px 40px -20px rgba(0,0,0,.8)}
+html body .chip.lcdonly .lcd-scr{background:linear-gradient(160deg,#B8EC86,#8FD45E);border-radius:10px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15),0 0 30px rgba(160,240,100,.18);padding:22px 24px;min-height:0}
+html body .chip.lcdonly .lcd-scr::before{opacity:.35}
+html body .chip.lcdonly .lcd-scr::after{display:none}
+html body .chip.lcdonly .lcd-l{color:#173A10;text-shadow:none;letter-spacing:.04em}
+html body .chip.lcdonly .lcd-l.y{color:#245217;margin-top:4px}
+html body .chip.lcdonly .lcd-l.s{color:#2F6420;margin-top:12px;padding-top:10px;border-top:1px dashed rgba(23,58,16,.3)}
