@@ -2047,6 +2047,7 @@ html body .nav .toprow>.brand img{width:44px!important;height:auto!important;mar
 html body .nav .toprow>.brand b{font:800 19px var(--body)!important;letter-spacing:.14em!important;color:#0B2A23!important}
 html body .nav .toprow>.navwrap{order:2!important;flex:1!important;display:flex!important;justify-content:center!important;margin:0!important;position:static!important;height:auto!important;width:auto!important;padding:0!important}
 html body .nav .plate{display:none!important}
+html body .nav .navwrap::before,html body .nav .navwrap::after,html body .nav nav.bar::before,html body .nav nav.bar::after{display:none!important}
 html body .nav nav.bar{display:flex!important;gap:4px!important;background:#F6F1E6!important;border:1px solid #EAE0C9!important;border-radius:999px!important;padding:5px!important;box-shadow:inset 0 1px 0 #fff!important;height:auto!important;width:auto!important;clip-path:none!important}
 html body .nav nav.bar .cell{position:relative!important;background:transparent!important;border:0!important;box-shadow:none!important;clip-path:none!important;padding:10px 20px!important;border-radius:999px!important;font:600 14px var(--body)!important;letter-spacing:.02em!important;text-transform:none!important;color:#3D4A44!important;text-decoration:none;transition:background .25s,color .25s!important;height:auto!important;min-width:0!important}
 html body .nav nav.bar .cell::before,html body .nav nav.bar .cell::after{display:none!important}
