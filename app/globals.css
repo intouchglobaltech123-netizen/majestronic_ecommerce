@@ -2393,3 +2393,4 @@ html body .chip::before,html body .chip::after{left:10px!important;right:10px!im
 html body .chip.lcdonly .lcd{padding:6px!important;border-radius:12px!important}
 html body .chip.lcdonly .lcd-scr{padding:14px 16px!important}
 }
+@media(max-width:560px){html body .fl-head h2,html body .lux-head h2,html body .cats h2,html body section h2{font-size:clamp(26px,8vw,36px)!important;line-height:1.1!important;word-break:normal;overflow-wrap:anywhere}html body .railtrack{grid-auto-columns:78%!important}}
