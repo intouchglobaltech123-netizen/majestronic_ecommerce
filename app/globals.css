@@ -2424,3 +2424,13 @@ html body main .card2.pc:has(.addbtn:disabled) .pc-media img{opacity:.6;filter:g
 html body main .card2.pc .pc-media{margin-bottom:0!important}
 html body main .card2.pc .pc-body{flex:none!important;min-height:0!important}
 html body main .card2.pc .pc-buy{margin-top:12px!important;position:static!important}
+/* v98 second image on hover */
+html body .c2img{position:relative}
+html body .c2img .ph2{position:absolute!important;inset:9%!important;width:82%!important;height:82%!important;object-fit:contain!important;opacity:0;transition:opacity .4s,transform .45s;mix-blend-mode:multiply}
+html body .card2.pc:hover .c2img.has2 .ph{opacity:0}
+html body .card2.pc:hover .c2img.has2 .ph2{opacity:1;transform:scale(1.05)}
+html body .c2img .ph{transition:opacity .4s,transform .45s}
+html body #pdThumbs{display:flex;gap:10px;margin-top:12px}
+html body .pdt{width:74px;height:74px;border-radius:12px;border:1.5px solid #E6DCC6;background:#fff;padding:6px;cursor:pointer;transition:.2s}
+html body .pdt img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+html body .pdt.on,html body .pdt:hover{border-color:#0B2A23;box-shadow:0 0 0 2px rgba(226,198,138,.5)}
