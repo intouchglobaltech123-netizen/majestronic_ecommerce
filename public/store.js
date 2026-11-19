@@ -1808,7 +1808,7 @@ drawCart();drawWishCount();route();
 (function(){const el=document.getElementById('xhMini');if(!el)return;el.innerHTML=[['Obstacle Avoiding Robot Car','Bestseller'],['ESP32-S3 DevKit M-1','Top pick'],['HC-SR04 Ultrasonic','Top pick']].map(([w,t])=>{const p=P.find(x=>x.name.startsWith(w));return p?`<a class="xm" href="#product-${p.id}">${pimg(p)}<span><small>${t}</small><b>${p.name}</b><i>₹${p.price}</i></span></a>`:''}).join('')})();
 
 /* nav active */
-(function(){const mark=()=>{const h=(location.hash||'#home').slice(1).split('/')[0];const key=h.startsWith('product')||h.startsWith('cat-')||h==='search'?'shop':(h==='order'||h==='orders'?'orders':h);document.querySelectorAll('.nav .bar .cell.link').forEach(a=>a.classList.toggle('on',a.dataset.r===key));try{setNavH()}catch(e){}};addEventListener('hashchange',mark);mark();setTimeout(mark,300)})();
+(function(){const mark=()=>{const h=(location.hash||'#home').slice(1).split('/')[0];const key=h.startsWith('product')||h.startsWith('cat-')||h==='search'?'shop':(h==='order'||h==='orders'?'orders':h);document.querySelectorAll('.nav .bar .cell.link').forEach(a=>a.classList.toggle('on',a.dataset.r===key));document.body.classList.toggle('show-ic',h==='shop'||h.startsWith('cat-')||h==='search');try{setNavH()}catch(e){}};addEventListener('hashchange',mark);mark();setTimeout(mark,300)})();
 
 /* hero parallax */
 (function(){const h=document.querySelector('.xh');if(!h||matchMedia('(pointer:coarse)').matches)return;const t=h.querySelector('.xh-tilt'),bp=h.querySelector('.xh-bp');let raf=0;

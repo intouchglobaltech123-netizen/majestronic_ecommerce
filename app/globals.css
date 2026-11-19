@@ -2394,3 +2394,7 @@ html body .chip.lcdonly .lcd{padding:6px!important;border-radius:12px!important}
 html body .chip.lcdonly .lcd-scr{padding:14px 16px!important}
 }
 @media(max-width:560px){html body .fl-head h2,html body .lux-head h2,html body .cats h2,html body section h2{font-size:clamp(26px,8vw,36px)!important;line-height:1.1!important;word-break:normal;overflow-wrap:anywhere}html body .railtrack{grid-auto-columns:78%!important}}
+/* v96 icons only on shop */
+html body:not(.show-ic) .nav .toprow>.icons{display:none!important}
+html body:not(.show-ic) .nav .toprow>.navwrap{margin-left:auto!important;margin-right:0!important}
+html body.show-ic .nav .toprow>.navwrap{margin-left:auto!important;margin-right:18px!important}
