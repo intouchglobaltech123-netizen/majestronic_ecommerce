@@ -2255,7 +2255,7 @@ html body .xo-fine{margin-top:6px}
 html body .chip.prod .pi{height:60px!important;width:84px!important}
 html body .pc-car{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;max-height:calc(100svh - var(--navh,76px) - 90px)}
 html body .pc-carimg{width:auto!important;max-width:100%;max-height:calc(100svh - var(--navh,76px) - 160px);object-fit:contain}
-html body .pc-plate{bottom:12%}
-html body .pc-cap{bottom:2%}
+html body .pc-cbox{position:relative;display:inline-block;max-width:100%}html body .pc-plate{bottom:-4%}
+html body .pc-cap{position:relative!important;left:auto!important;bottom:auto!important;transform:none!important;margin-top:26px}
 @media(max-height:700px){html body .chip .xo-fine,html body .chip .cl{display:none}}
 @media(max-width:1000px){html body .pc{height:auto;max-height:none;display:block}html body .pc-car{height:auto;max-height:none}html body .pc-carimg{max-height:46vh}}
