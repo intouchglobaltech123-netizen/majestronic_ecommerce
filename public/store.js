@@ -1817,4 +1817,21 @@ h.addEventListener('mouseleave',()=>{['--ry','--rx','--tx','--ty'].forEach(p=>t.
 
 /* hero stats count-up */
 (function(){const els=document.querySelectorAll('.xh-stats b[data-n]');if(!els.length)return;setTimeout(()=>els.forEach(el=>{const n=+el.dataset.n,sf=el.dataset.s||'',t0=performance.now(),d=1600;const f=t=>{const p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,3);el.textContent=Math.round(n*e)+(p===1&&n>999?'+':'')+sf;if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}),1700)})();
+
+/* PCB hero */
+(function(){const root=document.getElementById('pcb');if(!root)return;const svg=root.querySelector('#pcSvg'),NS='http://www.w3.org/2000/svg';
+root.querySelectorAll('.chip.prod').forEach(c=>{const p=P.find(x=>x.name.startsWith(c.dataset.p));if(!p)return;c.href='#product-'+p.id;c.querySelector('.pi').innerHTML=pimg(p);c.querySelector('b').textContent=p.name;c.querySelector('span').textContent='₹'+p.price});
+const n=root.querySelector('[data-n]');setTimeout(()=>{const t0=performance.now();(function f(t){const q=Math.min(1,(t-t0)/1500);n.textContent=Math.round(1017*(1-Math.pow(1-q,3)))+(q===1?'+':'');if(q<1)requestAnimationFrame(f)})(t0)},1700);
+let first=true;
+function draw(){if(innerWidth<=1000){svg.innerHTML='';return}const R=root.getBoundingClientRect();svg.setAttribute('viewBox',`0 0 ${R.width} ${R.height}`);svg.innerHTML='';
+const pads={};root.querySelectorAll('.pad').forEach(p=>{const r=p.getBoundingClientRect();pads[p.dataset.a]=[r.left+r.width/2-R.left,r.top+r.height/2-R.top]});
+const chips=[...root.querySelectorAll('.chip')];const map=[[0,'l1'],[1,'l2'],[2,'r1'],[3,'r3'],[4,'r2']];
+map.forEach(([ci,pa],k)=>{const c=chips[ci];if(!c||!pads[pa])return;const r=c.getBoundingClientRect();const left=c.dataset.pin==='r';const x1=left?r.right-R.left:r.left-R.left,y1=r.top+r.height/2-R.top;const [x2,y2]=pads[pa];
+const mid=x1+(x2-x1)*.45,dy=y2-y1,dx=Math.sign(x2-x1)*Math.min(Math.abs(dy),Math.abs(x2-mid)*.8);const d=`M${x1} ${y1}H${mid}L${mid+dx} ${y1+Math.sign(dy)*Math.abs(dx)}V${y2}H${x2}`;
+const path=document.createElementNS(NS,'path');path.setAttribute('d',d);path.setAttribute('class','tr'+(first?' draw':''));path.id='pct'+k;svg.append(path);const L=path.getTotalLength();path.style.setProperty('--l',L);if(first)path.style.animationDelay=(0.5+k*.12)+'s';
+const v=document.createElementNS(NS,'circle');v.setAttribute('cx',x1);v.setAttribute('cy',y1);v.setAttribute('r',5);v.setAttribute('class','via');svg.append(v);
+const pu=document.createElementNS(NS,'circle');pu.setAttribute('r',4);pu.setAttribute('class','pulse');pu.innerHTML=`<animateMotion dur="${2+k*.35}s" begin="${first?2.2+k*.1:0}s" repeatCount="indefinite" keyPoints="${left?'0;1':'1;0'}" keyTimes="0;1" calcMode="linear"><mpath href="#pct${k}"/></animateMotion>`;svg.append(pu);
+c.onmouseenter=()=>path.classList.add('hot');c.onmouseleave=()=>path.classList.remove('hot')});first=false}
+const run=()=>requestAnimationFrame(draw);setTimeout(run,60);addEventListener('resize',()=>{clearTimeout(window.__pct);window.__pct=setTimeout(run,150)});
+const img=root.querySelector('.pc-car img');if(!img.complete)img.addEventListener('load',run);addEventListener('hashchange',()=>setTimeout(run,80))})();
 })();
