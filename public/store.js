@@ -1804,7 +1804,15 @@ function route(){
 addEventListener('hashchange',route);
 drawCart();drawWishCount();route();
 
-/* static hero products */
-(function(){const want=['Obstacle Avoiding Robot Car','ESP32-S3 DevKit M-1','HC-SR04 Ultrasonic'];const tags=['Bestseller','Top pick','Top pick'];
-const el=document.getElementById('shProds');if(!el)return;el.innerHTML=want.map((w,k)=>{const p=P.find(x=>x.name.startsWith(w));return p?`<a class="shp" href="#product-${p.id}"><i>${tags[k]}</i>${pimg(p)}<div><b>${p.name}</b><span>₹${p.price}</span></div></a>`:''}).join('')})();
+/* hero slider */
+(function(){const sets=[[['Obstacle Avoiding Robot Car','Bestseller'],['ESP32-S3 DevKit M-1','Top pick'],['HC-SR04 Ultrasonic','Top pick']],
+[['Smart Line Following','Bestseller'],['2 Wheel Mobile Controlled','New'],['4 Wheel Kit','Value pick']],
+[['ESP32-S3 N16R8 Development Board with Camera','With camera'],['Seeed Studio XIAO ESP32-S3','Tiny & mighty'],['Arduino Sensor Shield','Top pick']]];
+document.querySelectorAll('.sh-prods[data-set]').forEach(el=>{el.innerHTML=sets[+el.dataset.set].map(([w,t])=>{const p=P.find(x=>x.name.startsWith(w));return p?`<a class="shp" href="#product-${p.id}"><i>${t}</i>${pimg(p)}<div><b>${p.name}</b><span>₹${p.price}</span></div></a>`:''}).join('')});
+const root=document.getElementById('hsl');if(!root)return;const sl=[...root.querySelectorAll('.hs')],dots=[...root.querySelectorAll('.hs-dots button')];let k=0,t;
+function go(n){k=(n+sl.length)%sl.length;sl.forEach((x,j)=>x.classList.toggle('on',j===k));dots.forEach((d,j)=>{d.classList.remove('on');void d.offsetWidth;d.classList.toggle('on',j===k)});clearTimeout(t);t=setTimeout(()=>go(k+1),6000)}
+root.addEventListener('click',e=>{const a=e.target.closest('.hs-arr'),d=e.target.closest('[data-g]');if(a)go(k+ +a.dataset.d);else if(d)go(+d.dataset.g)});
+root.addEventListener('mouseenter',()=>{clearTimeout(t);root.classList.add('paused')});root.addEventListener('mouseleave',()=>{root.classList.remove('paused');go(k)});
+let sx=0;root.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});root.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)go(k+(dx<0?1:-1))});
+go(0)})();
 })();

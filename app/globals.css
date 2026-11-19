@@ -2006,3 +2006,34 @@ html body .track{display:none!important}
 .shp i{position:absolute;top:12px;left:12px;font:700 10px var(--body);letter-spacing:.14em;text-transform:uppercase;background:#E2C68A;color:#0B2A23;padding:5px 10px;border-radius:999px;font-style:normal}
 @media(max-width:900px){.sh-in{grid-template-columns:1fr;padding:40px 20px 48px}.sh-prods{height:340px}}
 @media(max-width:520px){.sh-prods{height:280px;gap:10px}.shp b{font-size:12px}.shp div{padding:8px 10px}}
+/* v74 hero slider */
+.sh{min-height:560px}
+.sh-glow{position:absolute;width:620px;height:620px;right:8%;top:50%;margin-top:-310px;border-radius:50%;background:radial-gradient(closest-side,rgba(226,198,138,.22),transparent);animation:shg 6s ease-in-out infinite;pointer-events:none}
+@keyframes shg{50%{transform:scale(1.12) translate(-20px,10px)}}
+.hs{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .7s,visibility .7s}
+.hs.on{position:relative;opacity:1;visibility:visible}
+.hs .sh-in{padding:56px 32px 92px}
+.hs .sh-copy>*{opacity:0;transform:translateY(26px)}
+.hs.on .sh-copy>*{animation:shup .8s cubic-bezier(.2,.8,.2,1) forwards}
+.hs.on .sh-copy>*:nth-child(2){animation-delay:.1s}.hs.on .sh-copy>*:nth-child(3){animation-delay:.2s}.hs.on .sh-copy>*:nth-child(4){animation-delay:.3s}.hs.on .sh-copy>*:nth-child(5){animation-delay:.4s}
+@keyframes shup{to{opacity:1;transform:none}}
+.hs .shp{opacity:0;transform:translateY(40px) scale(.94)}
+.hs.on .shp{animation:shin .9s cubic-bezier(.2,.8,.2,1) forwards,shfl 5s ease-in-out 1s infinite}
+.hs.on .shp:nth-child(2){animation-delay:.15s,1.3s}.hs.on .shp:nth-child(3){animation-delay:.3s,1.6s}
+@keyframes shin{to{opacity:1;transform:none}}
+@keyframes shfl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.shp img{transition:transform .6s}.shp:hover img{transform:scale(1.07)}
+.sh-btn{position:relative;overflow:hidden}
+.sh-btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:shine 3.2s ease-in-out infinite}
+@keyframes shine{0%,60%{left:-60%}100%{left:130%}}
+.hs-nav{position:absolute;left:0;right:0;bottom:26px;display:flex;justify-content:center;align-items:center;gap:16px;z-index:5}
+.hs-arr{width:40px;height:40px;border-radius:50%;border:1px solid rgba(226,198,138,.4);background:rgba(255,255,255,.04);color:#F1D99C;font-size:22px;line-height:1;cursor:pointer}
+.hs-arr:hover{background:#E2C68A;color:#0B2A23}
+.hs-dots{display:flex;gap:8px}
+.hs-dots button{width:34px;height:5px;border:0;padding:0;border-radius:9px;background:rgba(255,255,255,.2);overflow:hidden;cursor:pointer}
+.hs-dots button i{display:block;height:100%;width:0;background:#E2C68A}
+.hs-dots button.on i{animation:hsbar 6s linear forwards}
+#hsl.paused .hs-dots button.on i{animation-play-state:paused}
+@keyframes hsbar{to{width:100%}}
+@media(max-width:900px){.sh{min-height:0}.hs .sh-in{padding:36px 20px 84px}}
+@media(prefers-reduced-motion:reduce){.hs.on .shp,.hs.on .sh-copy>*{animation:none;opacity:1;transform:none}}
