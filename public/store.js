@@ -1800,7 +1800,7 @@ function route(){
   setNavH();
 }
 {const ub=$('#utilbar .ub'),ic=$('.nav .icons'),nw=$('.nav .navwrap'),tr=$('.nav .toprow');ub.append($('#searchForm'));
- window.__placeNav=home=>{if(home){tr.after(nw);ub.append(ic)}else{tr.append(nw);tr.append(ic)}};}
+ window.__placeNav=home=>{tr.append(nw);tr.append(ic)};}
 addEventListener('hashchange',route);
 drawCart();drawWishCount();route();
 
@@ -1815,4 +1815,7 @@ root.addEventListener('click',e=>{const a=e.target.closest('.hs-arr'),d=e.target
 root.addEventListener('mouseenter',()=>{clearTimeout(t);root.classList.add('paused')});root.addEventListener('mouseleave',()=>{root.classList.remove('paused');go(k)});
 let sx=0;root.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});root.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50)go(k+(dx<0?1:-1))});
 go(0)})();
+
+/* nav active */
+(function(){const mark=()=>{const h=(location.hash||'#home').slice(1).split('/')[0];const key=h.startsWith('product')||h.startsWith('cat-')||h==='search'?'shop':(h==='order'||h==='orders'?'orders':h);document.querySelectorAll('.nav .bar .cell.link').forEach(a=>a.classList.toggle('on',a.dataset.r===key));try{setNavH()}catch(e){}};addEventListener('hashchange',mark);mark();setTimeout(mark,300)})();
 })();

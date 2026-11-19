@@ -2037,3 +2037,27 @@ html body .track{display:none!important}
 @keyframes hsbar{to{width:100%}}
 @media(max-width:900px){.sh{min-height:0}.hs .sh-in{padding:36px 20px 84px}}
 @media(prefers-reduced-motion:reduce){.hs.on .shp,.hs.on .sh-copy>*{animation:none;opacity:1;transform:none}}
+/* v75 nav bar */
+html body header.nav,html body.is-home header.nav{display:block!important;position:fixed!important;top:0;left:0;right:0;padding:0!important;height:auto!important;background:rgba(255,255,255,.9)!important;-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);border-bottom:1px solid #EAE2D0!important;box-shadow:0 6px 24px -18px rgba(11,42,35,.45)!important}
+html body header.nav::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#0B2A23,#C9A45E 50%,#0B2A23)}
+html body .nav .toprow{display:flex!important;align-items:center!important;gap:24px!important;max-width:1320px;margin:0 auto!important;padding:12px 32px!important;height:76px;box-sizing:border-box}
+html body .nav .toprow>.brand{flex:0 0 auto!important;order:1!important;display:flex!important;flex-direction:row!important;align-items:center!important;gap:10px!important;text-decoration:none}
+html body .nav .toprow>.brand img{width:44px!important;height:auto!important;margin:0!important}
+html body .nav .toprow>.brand b{font:800 19px var(--body)!important;letter-spacing:.14em!important;color:#0B2A23!important}
+html body .nav .toprow>.navwrap{order:2!important;flex:1!important;display:flex!important;justify-content:center!important;margin:0!important;position:static!important;height:auto!important;width:auto!important;padding:0!important}
+html body .nav .plate{display:none!important}
+html body .nav nav.bar{display:flex!important;gap:4px!important;background:#F6F1E6!important;border:1px solid #EAE0C9!important;border-radius:999px!important;padding:5px!important;box-shadow:inset 0 1px 0 #fff!important;height:auto!important;width:auto!important;clip-path:none!important}
+html body .nav nav.bar .cell{position:relative!important;background:transparent!important;border:0!important;box-shadow:none!important;clip-path:none!important;padding:10px 20px!important;border-radius:999px!important;font:600 14px var(--body)!important;letter-spacing:.02em!important;text-transform:none!important;color:#3D4A44!important;text-decoration:none;transition:background .25s,color .25s!important;height:auto!important;min-width:0!important}
+html body .nav nav.bar .cell::before,html body .nav nav.bar .cell::after{display:none!important}
+html body .nav nav.bar .cell:hover{color:#0B2A23!important;background:#fff!important}
+html body .nav nav.bar .cell.on,html body .nav nav.bar .cell[aria-current],html body .nav nav.bar .cell.active{background:#0B2A23!important;color:#F1D99C!important;box-shadow:0 6px 14px -8px rgba(11,42,35,.7)!important}
+html body .nav .toprow>.icons{order:3!important;display:flex!important;align-items:center;gap:6px!important;margin:0!important;flex:0 0 auto}
+html body .nav .icons .hic{width:44px!important;height:44px!important;display:grid!important;place-items:center;border-radius:50%!important;border:1px solid #EAE0C9!important;background:#fff!important;color:#0B2A23!important;position:relative;transition:.25s}
+html body .nav .icons .hic:hover{background:#0B2A23!important;color:#F1D99C!important;border-color:#0B2A23!important}
+html body .nav .icons .acc-lbl{display:none!important}
+html body .nav .menucell{display:none!important}
+@media(max-width:900px){html body .nav .toprow{padding:10px 16px!important;height:64px;gap:10px!important}html body .nav .toprow>.brand b{font-size:15px!important}html body .nav .toprow>.brand img{width:34px!important}
+html body .nav .toprow>.navwrap{order:4!important;flex:0 0 auto!important;position:relative!important}html body .nav nav.bar{background:transparent!important;border:0!important;padding:0!important}html body .nav nav.bar .cell.link{display:none!important}
+html body .nav nav.bar .menucell{display:grid!important;place-items:center;width:44px!important;height:44px!important;padding:0!important;border-radius:50%!important;background:#0B2A23!important;color:#F1D99C!important;font-size:0!important}
+html body .nav nav.bar .menucell::before{display:block!important;content:"";width:18px;height:12px;background:linear-gradient(currentColor 0 0) top/100% 2px no-repeat,linear-gradient(currentColor 0 0) center/100% 2px no-repeat,linear-gradient(currentColor 0 0) bottom/100% 2px no-repeat}
+html body .nav .toprow>.icons{margin-left:auto!important}html body .nav .icons .hic{width:40px!important;height:40px!important}}
