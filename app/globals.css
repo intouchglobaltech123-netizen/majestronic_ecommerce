@@ -2488,3 +2488,12 @@ html body .pdtrust li{background:#FBF8F1;border:1px solid #EDE5D3;border-radius:
 html body .pdtrust b{font:700 13px var(--body);color:#0B2A23}
 html body .pdtrust span{font-size:12px;color:#7A7466}
 @media(max-width:900px){html body .pd{grid-template-columns:1fr!important}html body .pdgal{position:static}html body .pdbtns{grid-template-columns:1fr 1fr auto}html body .pdtrust{grid-template-columns:1fr}}
+/* v101 product buttons */
+html body .pdbtns{grid-template-columns:1fr 1fr!important}
+html body .pdbtns .wishbtn{grid-column:1/-1;width:100%!important;height:46px!important;border-radius:999px!important;display:flex!important;align-items:center;justify-content:center;gap:8px;font:600 13.5px var(--body)!important;color:#0B2A23!important;white-space:nowrap;padding:0 18px!important}
+html body .pdbtns .wishbtn *{white-space:nowrap}
+html body .pdbtns .wishbtn:hover{border-color:#E2C68A!important;background:#FBF8F1!important}
+html body .pdbtns .wishbtn[aria-pressed="true"]{color:#B23A3A!important;border-color:#F0C9C9!important}
+html body .pdqty{margin:22px 0 16px!important}
+html body .pdqty span{letter-spacing:.14em;text-transform:uppercase;font-size:12px!important}
+html body .pdtrust li{text-align:left}
