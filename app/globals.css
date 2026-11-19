@@ -2177,7 +2177,7 @@ html body .nav .navwrap .cell.on{background:radial-gradient(ellipse 80% 110% at 
 .ax-glow{position:absolute;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(226,198,138,.16),transparent 70%)}
 .ax-box{position:relative;height:100%;aspect-ratio:620/800;container-type:size}
 .ax-box::after{content:"";position:absolute;left:8%;right:8%;bottom:-1%;height:9%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.5),transparent)}
-.ap{position:absolute;height:auto;filter:drop-shadow(0 18px 18px rgba(0,0,0,.4));transition:filter .3s,opacity .3s;animation:axp 9s cubic-bezier(.65,0,.35,1) infinite;animation-delay:calc(var(--i)*.06s)}
+.ap{position:absolute;height:auto;z-index:calc(10 - var(--i));filter:drop-shadow(0 18px 18px rgba(0,0,0,.4));transition:filter .3s,opacity .3s;animation:axp 9s cubic-bezier(.65,0,.35,1) infinite;animation-delay:calc(var(--i)*.06s)}
 @keyframes axp{0%,8%{transform:translate(var(--ax),var(--ay))}38%,62%{transform:none}92%,100%{transform:translate(var(--ax),var(--ay))}}
 .ax-box.hl .ap{opacity:.25}
 .ax-box.hl .ap.on{opacity:1;filter:drop-shadow(0 0 22px rgba(241,217,156,.55)) drop-shadow(0 18px 18px rgba(0,0,0,.4))}
