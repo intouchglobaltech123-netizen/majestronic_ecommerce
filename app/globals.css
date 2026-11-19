@@ -2269,7 +2269,7 @@ html body .chip.prod .pi{width:120px!important;height:84px!important}
 html body .chip.prod b{font-size:15px!important;-webkit-line-clamp:2!important}
 html body .chip.prod span{font-size:17px!important}
 html body .chip.prod span::after{display:block;content:"Tap to swap →"!important;margin-top:4px;font-size:11.5px;color:#8FA59B}
-html body .pc-carimg{max-height:calc(100svh - var(--navh,76px) - 150px)!important;width:100%!important;max-width:720px!important}html body .pc-cbox{width:100%;max-width:720px}html body .chip.prod{grid-template-columns:104px 1fr!important}html body .chip.prod .pi{width:104px!important;height:76px!important}
+html body .pc-carimg{max-height:none!important;width:100%!important;max-width:none!important;height:auto!important}html body .pc-cbox{width:min(100%,720px,calc((100svh - var(--navh,76px) - 170px)*1.6))}html body .chip.prod{grid-template-columns:104px 1fr!important}html body .chip.prod .pi{width:104px!important;height:76px!important}
 html body .pc-plate{left:2%!important;right:2%!important}
 html body .pc-silk span{opacity:.7}
 html body .pc-col:last-child .led{background:#7CFFB2;box-shadow:0 0 8px #7CFFB2}
