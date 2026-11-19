@@ -2303,3 +2303,13 @@ html body .chip.big.lcdm{background:linear-gradient(160deg,#0F4A3C,#0A3A2F)!impo
 .lcd-btn:active .cap{box-shadow:0 1px 0 #6d5122,inset 0 -2px 4px rgba(0,0,0,.25)}
 .lcdm .xo-fine{margin:12px 6px 0!important}
 .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* v91 LCD only */
+html body .chip.lcdonly{background:none!important;border:0!important;padding:0!important;box-shadow:none!important;opacity:1}
+html body .chip.lcdonly::before,html body .chip.lcdonly::after{display:none!important}
+html body .chip.lcdonly .lcd{padding:10px;border-radius:10px;box-shadow:inset 0 0 0 2px #1d1d1d,0 0 0 1px rgba(226,198,138,.35),0 24px 40px -20px #000}
+html body .chip.lcdonly .lcd-scr{min-height:150px;padding:18px 20px}
+html body .chip.lcdonly .lcd-l{font-size:clamp(24px,2.4vw,34px)}
+html body .chip.lcdonly .lcd-l.y{font-size:clamp(17px,1.7vw,23px)}
+html body .chip.lcdonly .lcd-l.s{font-size:clamp(13px,1.2vw,16px)}
+html body .chip.lcdonly:hover{transform:translateY(-3px)}
+html body .chip.lcdonly:hover .lcd-scr{box-shadow:inset 0 0 18px rgba(0,60,0,.45),0 0 40px rgba(160,240,100,.4)}
