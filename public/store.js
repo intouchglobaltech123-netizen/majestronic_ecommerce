@@ -1840,4 +1840,11 @@ const pu=document.createElementNS(NS,'circle');pu.setAttribute('r',4);pu.setAttr
 c.onmouseenter=()=>path.classList.add('hot');c.onmouseleave=()=>path.classList.remove('hot')});first=false}
 const run=()=>requestAnimationFrame(draw);setTimeout(run,2300);addEventListener('resize',()=>{clearTimeout(window.__pct);window.__pct=setTimeout(run,150)});
 const img=root.querySelector('.pc-car img');if(!img.complete)img.addEventListener('load',run);addEventListener('hashchange',()=>setTimeout(run,80))})();
+
+/* LCD typing */
+(function(){const ls=[...document.querySelectorAll('.lcd-l')];if(!ls.length)return;
+function run(){ls.forEach(l=>{l.textContent='';l.classList.remove('cur')});let i=0;
+(function next(){if(i>=ls.length){ls[ls.length-1].classList.add('cur');setTimeout(run,6000);return}const l=ls[i],t=l.dataset.t;let j=0;l.classList.add('cur');
+(function tick(){l.textContent=t.slice(0,++j);if(j<t.length)setTimeout(tick,55);else{l.classList.remove('cur');i++;setTimeout(next,220)}})()})()}
+setTimeout(run,1600)})();
 })();
