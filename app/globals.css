@@ -2273,3 +2273,7 @@ html body .pc-carimg{max-height:none!important;width:100%!important;max-width:no
 html body .pc-plate{left:2%!important;right:2%!important}
 html body .pc-silk span{opacity:.7}
 html body .pc-col:last-child .led{background:#7CFFB2;box-shadow:0 0 8px #7CFFB2}
+/* v89 center product */
+html body .pc-car{justify-self:stretch!important;width:100%!important;align-items:center!important;margin:0 auto}
+html body .pc-cbox{margin:0 auto!important;display:block!important}
+html body .pc-cap{align-self:center}
