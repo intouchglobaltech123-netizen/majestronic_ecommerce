@@ -2163,7 +2163,7 @@ html body .nav .navwrap .cell.on{background:radial-gradient(ellipse 80% 110% at 
 .xh-tilt::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.28) 48%,transparent 60%);background-size:250% 100%;-webkit-mask:url(/rc-car.webp) center/100% 100% no-repeat;mask:url(/rc-car.webp) center/100% 100% no-repeat;animation:xsheen 5s ease-in-out 2s infinite;pointer-events:none;mix-blend-mode:screen}
 @keyframes xsheen{0%{background-position:150% 0}45%,100%{background-position:-60% 0}}
 .xh-bot{grid-template-columns:1fr auto!important}
-.xh-stats{display:flex;gap:0;border:1px solid rgba(226,198,138,.2);border-radius:18px;background:rgba(255,255,255,.03);backdrop-filter:blur(6px);opacity:0;animation:xup .8s 1.6s forwards}
+.xh-stats{margin-right:72px;display:flex;gap:0;border:1px solid rgba(226,198,138,.2);border-radius:18px;background:rgba(255,255,255,.03);backdrop-filter:blur(6px);opacity:0;animation:xup .8s 1.6s forwards}
 .xh-stats div{padding:14px 22px;display:grid;gap:2px;border-left:1px solid rgba(226,198,138,.15)}
 .xh-stats div:first-child{border-left:0}
 .xh-stats b{font:800 26px var(--body);color:#F5DC9C;letter-spacing:-.02em}
