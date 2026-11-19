@@ -2398,3 +2398,29 @@ html body .chip.lcdonly .lcd-scr{padding:14px 16px!important}
 html body:not(.show-ic) .nav .toprow>.icons{display:none!important}
 html body:not(.show-ic) .nav .toprow>.navwrap{margin-left:auto!important;margin-right:0!important}
 html body.show-ic .nav .toprow>.navwrap{margin-left:auto!important;margin-right:18px!important}
+/* v97 all product cards */
+html body .p-grid,html body #grid,html body .grid,html body [class*="grid"]:has(>.card2.pc){align-items:start!important}
+html body main .card2.pc{transform:none!important;height:auto!important;min-height:0!important;display:flex!important;flex-direction:column;background:#fff!important;border:1px solid #EDE5D3!important;border-radius:20px!important;padding:10px!important;box-shadow:0 1px 0 #fff inset,0 14px 30px -22px rgba(11,42,35,.35)!important;transition:transform .3s,box-shadow .3s,border-color .3s!important;overflow:hidden}
+html body main .card2.pc:hover{transform:translateY(-6px)!important;border-color:#E2C68A!important;box-shadow:0 26px 40px -24px rgba(11,42,35,.45)!important}
+html body main .pc-media{position:relative;margin:0!important;aspect-ratio:1/1;height:auto!important;border-radius:14px!important;background:radial-gradient(circle at 50% 40%,#FFFFFF,#F4EFE4)!important;overflow:hidden;display:grid;place-items:center}
+html body main .pc-media .c2img{display:grid;place-items:center;width:100%;height:100%}
+html body main .pc-media img{width:82%!important;height:82%!important;object-fit:contain!important;mix-blend-mode:multiply;transition:transform .45s}
+html body main .card2.pc:hover .pc-media img{transform:scale(1.07)}
+html body main .pc-badge{top:10px!important;left:10px!important;border-radius:999px!important;font-size:11px!important;padding:4px 10px!important}
+html body main .heart{top:10px!important;right:10px!important;width:36px!important;height:36px!important;background:#fff!important;box-shadow:0 4px 10px -4px rgba(0,0,0,.2)!important}
+html body main .pc-body{padding:14px 8px 6px!important;display:flex;flex-direction:column;gap:6px;flex:none!important}
+html body main .pc-cat{margin:0!important;font-size:10.5px!important;letter-spacing:.16em!important;color:#A87B2E!important}
+html body main h3{margin:0!important;font:600 15px/1.35 var(--body)!important;min-height:2.7em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+html body main h3 a{color:#0B2A23!important;text-decoration:none}
+html body main .c2price{margin:2px 0 0!important;display:flex;align-items:baseline;gap:8px}
+html body main .c2price .now{font:800 18px var(--body)!important;color:#0B2A23!important}
+html body main .c2price s{font-size:12.5px;color:#9A9384}
+html body main .pc-buy{margin-top:10px!important;display:flex!important;gap:8px;align-items:center}
+html body main .qty2{height:40px;border-radius:999px!important;border:1px solid #E6DCC6!important;background:#FBF8F1!important}
+html body main .addbtn{flex:1;height:40px;border-radius:999px!important;background:#0B2A23!important;color:#F1D99C!important;font:700 13px var(--body)!important;display:flex;align-items:center;justify-content:center;gap:6px;border:0!important}
+html body main .addbtn:hover:not(:disabled){background:#14453A!important}
+html body main .addbtn:disabled{background:#EDE7DA!important;color:#9A9384!important}
+html body main .card2.pc:has(.addbtn:disabled) .pc-media img{opacity:.6;filter:grayscale(.3)}
+html body main .card2.pc .pc-media{margin-bottom:0!important}
+html body main .card2.pc .pc-body{flex:none!important;min-height:0!important}
+html body main .card2.pc .pc-buy{margin-top:12px!important;position:static!important}
