@@ -3035,3 +3035,12 @@ html body .sd-b i{position:absolute;top:3px;right:3px;min-width:16px;height:16px
 html body .cat-bar .searchslot{order:1!important;margin-left:0!important}
 html body .cat-bar .sdock{order:2!important;margin-left:4px}
 html body .cat-bar{justify-content:flex-start!important}
+/* v128 unified shop bar */
+html body .cat-bar{gap:12px!important;align-items:stretch!important}
+html body .cat-bar .searchslot{flex:1 1 auto!important;max-width:none!important;margin-right:0!important}
+html body .cat-bar .searchslot form,html body .cat-bar .searchslot .search{width:100%!important;height:56px!important;border-radius:16px!important;background:#FFFDF8!important;border:1px solid rgba(181,83,47,.28)!important;box-shadow:0 12px 26px -20px rgba(90,50,20,.5)!important;padding:6px 6px 6px 18px!important;box-sizing:border-box}
+html body .cat-bar .searchslot input{height:100%!important;background:transparent!important}
+html body .cat-bar .searchslot button,html body .cat-bar .searchslot [type=submit]{height:44px!important;border-radius:12px!important;background:#B5532F!important;color:#fff!important;padding:0 22px!important;box-shadow:none!important}
+html body .cat-bar .searchslot button:hover{background:#9C4526!important}
+html body .cat-bar .sdock{height:56px;box-sizing:border-box;align-items:center;border-radius:16px;padding:6px 8px}
+html body .sd-b{width:44px;height:44px;border-radius:12px}
