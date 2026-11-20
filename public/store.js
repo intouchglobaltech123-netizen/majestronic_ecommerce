@@ -806,18 +806,19 @@ h.addEventListener('mouseleave',()=>{['--ry','--rx','--tx','--ty'].forEach(p=>t.
 
 /* PCB hero */
 (function(){const root=document.getElementById('pcb');if(!root)return;const svg=root.querySelector('#pcSvg'),NS='http://www.w3.org/2000/svg';
-const IT={car:{img:'rc-car.webp',w:'Obstacle Avoiding Robot Car',lab:'ROBOT KIT',nm:'4WD Arduino Robot Car Kit'},k1:{img:'kit-50.webp',w:'Smart Line Following',lab:'DIY KIT'},k2:{img:'kit-22.webp',w:'MQ-53 DIY',lab:'DIY KIT'}};
+const IT={car:{img:'rc-car.webp',w:'Obstacle Avoiding Robot Car',lab:'ROBOT KIT',nm:'4WD Arduino Robot Car Kit'},k1:{img:'kit-50.webp',w:'Smart Line Following',lab:'DIY KIT'},k2:{img:'kit-22.webp',w:'MQ-53 DIY',lab:'DIY KIT'},k3:{img:'kit-jcb.webp',w:'Hydraulic JCB',lab:'DIY KIT'},k4:{img:'kit-treb.webp',w:'Wooden Trebuchet',lab:'DIY KIT'}};
 Object.values(IT).forEach(o=>{const p=P.find(x=>x.name.startsWith(o.w));o.p=p;o.nm=o.nm||(p?p.name:'');o.href=p?'#product-'+p.id:'#shop';o.price=p?'₹'+p.price:''});
 let cur='car';const hero=root.querySelector('#pcHero'),cap=root.querySelector('#pcCap'),car=root.querySelector('.pc-car');
-const fillChip=c=>{const o=IT[c.dataset.k];c.querySelector('.cl').textContent=c.querySelector('.cl').textContent.split('·')[0]+'· '+o.lab;c.querySelector('.pi').innerHTML=`<img src="${o.img}" alt="">`;c.querySelector('b').textContent=o.nm;c.querySelector('span').textContent=o.price};
+const fillChip=c=>{const o=IT[c.dataset.k];c.querySelector('.pi').innerHTML=`<img src="${o.img}" alt="${o.nm}">`;c.setAttribute('aria-label',o.nm);c.title=o.nm};
 const fillCap=()=>{const o=IT[cur];cap.href=o.href;cap.querySelector('b').textContent=o.nm;cap.querySelector('span').textContent=o.price};
 root.querySelectorAll('.chip.prod').forEach(fillChip);fillCap();
 root.querySelectorAll('.chip.prod').forEach(c=>c.addEventListener('click',e=>{e.preventDefault();if(car.classList.contains('swap'))return;const k=c.dataset.k;c.classList.add('flip');car.classList.add('swap');
 setTimeout(()=>{c.dataset.k=cur;cur=k;hero.src=IT[cur].img;hero.alt=IT[cur].nm;fillChip(c);fillCap();car.classList.remove('swap');car.classList.add('in');c.classList.remove('flip');setTimeout(()=>car.classList.remove('in'),700)},380)}));
+let apI=0,apT=null;const apChips=()=>[...root.querySelectorAll('.chip.prod')];const ap=()=>{clearTimeout(apT);apT=setTimeout(()=>{if(!document.hidden&&!root.matches(':hover')){const cs=apChips();cs[apI%cs.length].click();apI++}ap()},3800)};ap();
 let first=true;
 function draw(){if(innerWidth<=1000){svg.innerHTML='';return}const R=root.getBoundingClientRect();svg.setAttribute('viewBox',`0 0 ${R.width} ${R.height}`);svg.innerHTML='';
 const pads={};root.querySelectorAll('.pad').forEach(p=>{const r=p.getBoundingClientRect();pads[p.dataset.a]=[r.left+r.width/2-R.left,r.top+r.height/2-R.top]});
-const chips=[...root.querySelectorAll('.chip')];const map=[[0,'l1'],[1,'r1'],[2,'r2']];
+const chips=[...root.querySelectorAll('.chip')];const map=[[0,'l1'],[1,'l2'],[3,'r1'],[4,'r2']];
 map.forEach(([ci,pa],k)=>{const c=chips[ci];if(!c||!pads[pa])return;const r=c.getBoundingClientRect();const left=c.dataset.pin==='r';const x1=left?r.right-R.left:r.left-R.left,y1=r.top+r.height/2-R.top;const [x2,y2]=pads[pa];
 const mid=x1+(x2-x1)*.45,dy=y2-y1,dx=Math.sign(x2-x1)*Math.min(Math.abs(dy),Math.abs(x2-mid)*.8);const d=`M${x1} ${y1}H${mid}L${mid+dx} ${y1+Math.sign(dy)*Math.abs(dx)}V${y2}H${x2}`;
 const path=document.createElementNS(NS,'path');path.setAttribute('d',d);path.setAttribute('class','tr'+(first?' draw':''));path.id='pct'+k;svg.append(path);const L=path.getTotalLength();path.style.setProperty('--l',L);if(first)path.style.animationDelay=(0.5+k*.12)+'s';

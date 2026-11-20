@@ -2774,3 +2774,24 @@ html body .p3steps li p{font-size:10.5px!important;line-height:1.35!important;ma
 }
 @media(max-width:600px){html body #railTrack .card2.pc:nth-child(n+5){display:none!important}html body .pc-col:first-child,html body .chip.lcdonly{width:100%!important}}
 @media(max-width:600px){html body [data-page="print-3d"] .p3steps li b{font-size:12.5px!important;line-height:1.2!important}html body [data-page="print-3d"] .p3steps li span{font-size:22px!important}}
+/* v104 image-only kit chips + autoplay */
+.pc-pair2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
+html body .chip.prod{display:grid!important;place-items:center;padding:14px!important;min-height:0}
+html body .chip.prod .pi{width:100%!important;height:120px!important;margin:0!important;flex:none!important}
+html body .pc-pair2 .chip.prod .pi{height:92px!important}
+html body .chip.prod .kt,html body .chip.prod .cl{display:none!important}
+html body .chip.prod.sel{box-shadow:0 0 0 2px #F5DC9C,0 0 30px rgba(245,220,156,.35)!important}
+.chip.prod.flip{transform:scale(.92)!important;opacity:.4}
+@media(max-width:1000px){html body .pc-col:first-child{display:contents}html body .chip.lcdonly{order:1}html body .pc-pair2{display:contents}html body .pc-col:last-child{display:contents}html body .pc-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important}html body .pc-car{grid-column:1/-1;order:2}html body .chip.lcdonly{grid-column:1/-1}html body .chip.prod{order:3}}
+@media(max-width:600px){html body .pc-grid{gap:8px!important;column-gap:8px!important}html body .chip.prod{padding:6px!important;border-radius:12px!important}html body .chip.prod .pi,html body .pc-pair2 .chip.prod .pi{height:58px!important}html body .chip.prod .led{width:5px!important;height:5px!important;top:6px!important;right:6px!important}}
+/* v105 */
+html body .pc-carimg{max-height:min(54vh,520px)!important;object-fit:contain!important}
+html body .chip.prod .pi{display:flex!important;align-items:center;justify-content:center}
+html body .chip.prod .pi img{max-width:100%!important;max-height:100%!important;width:auto!important;height:auto!important}
+html body .pc-col:last-child .chip.prod .pi{height:130px!important}
+@media(max-width:1000px){html body .pc-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}html body .chip.prod{min-width:0}}
+@media(max-width:600px){html body .chip.lcdonly{width:auto!important}}
+html body .chip.prod{grid-template-columns:1fr!important;grid-template-rows:1fr!important}
+@media(max-width:1000px){html body .pc-col:first-child,html body .pc-col:last-child,html body .pc-pair2{display:contents!important}}
+@media(max-width:1000px){html body .pc-col:last-child .chip.prod .pi,html body .pc-pair2 .chip.prod .pi{height:86px!important}}
+@media(max-width:600px){html body .pc-col:last-child .chip.prod .pi,html body .pc-pair2 .chip.prod .pi{height:58px!important}}
