@@ -808,11 +808,7 @@ h.addEventListener('mouseleave',()=>{['--ry','--rx','--tx','--ty'].forEach(p=>t.
 (function(){const root=document.getElementById('pcb');if(!root)return;const svg=root.querySelector('#pcSvg'),NS='http://www.w3.org/2000/svg';
 const IT={car:{img:'top-esp32.webp',w:'ESP32 WROOM 38 Pin Type-B',nm:'ESP32 Development Board'},k1:{img:'top-uno.webp',w:'Arduino UNO SMD',nm:'Arduino UNO SMD'},k2:{img:'top-sr04.webp',w:'HC-SR04 Ultrasonic Sensor',nm:'Ultrasonic Sensor HC-SR04'},k3:{img:'top-ir.webp',w:'IR Sensor Module',nm:'IR Sensor Module'},k4:{img:'top-servo.webp',w:'MG90S Micro Servo',nm:'Micro Servo Motor'}};
 Object.values(IT).forEach(o=>{const p=P.find(x=>x.name.startsWith(o.w));o.p=p;o.nm=o.nm||(p?p.name:'');o.href=p?'#product-'+p.id:'#shop';o.price=p?'₹'+p.price:''});
-const TAGS={car:[['Wi-Fi + Bluetooth',.5,.12],['Dual-core 240 MHz',.08,.4],['38 GPIO pins',.92,.62],['Micro-USB',.5,.94]],
-k1:[['ATmega328P SMD',.42,.5],['USB Type-B',.1,.22],['14 digital I/O',.62,.08],['Power jack',.06,.82]],
-k2:[['2 – 400 cm range',.28,.45],['Trig / Echo',.6,.82],['5 V module',.8,.2]],
-k3:[['IR emitter + receiver',.32,.12],['Adjustable range',.5,.5],['3-pin output',.2,.88]],
-k4:[['180° rotation',.85,.2],['Metal gear',.5,.55],['3-wire PWM',.15,.4]]};
+const TAGS={};
 const COMPS={};
 const SPOTS={2:[[.15,.14],[.85,.84]],3:[[.15,.14],[.85,.14],[.85,.86]],4:[[.15,.14],[.85,.14],[.15,.86],[.85,.86]]};
 const tagBox=root.querySelector('#pcTags');
