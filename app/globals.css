@@ -3151,3 +3151,14 @@ html body .cgrid4,html body main [class*="grid"]{align-items:stretch!important}
 html body .card2.pc .pc-cat{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
 html body.at-foot .wafloat{opacity:0!important;pointer-events:none!important;transform:translateY(20px)!important;transition:opacity .25s,transform .25s}
 html body .wafloat{transition:opacity .25s,transform .25s}
+/* v134 mobile card buttons + numbers */
+@media(max-width:700px){
+html body .card2.pc .pc-buy{display:flex!important;flex-direction:row!important;align-items:center!important;gap:6px!important;width:100%}
+html body .card2.pc .pc-buy .qty2{flex:0 0 auto!important;width:auto!important;height:36px!important;display:flex!important;align-items:center;padding:0 2px!important}
+html body .card2.pc .pc-buy .qty2 button{width:22px!important;height:32px!important;font-size:14px!important;padding:0!important}
+html body .card2.pc .pc-buy .qty2 input{width:20px!important;font-size:13px!important;padding:0!important;text-align:center}
+html body .card2.pc .pc-buy .addbtn{flex:1 1 auto!important;width:auto!important;min-width:0!important;height:36px!important;padding:0 8px!important;font-size:11px!important;margin:0!important}}
+html body .c2n,html body .p3steps li span{white-space:nowrap!important;display:inline-flex!important;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+@media(max-width:700px){html body .c2n{min-width:30px;height:22px;padding:0 8px;border-radius:999px;background:#2B2B2B;color:#F3E5CF!important;font-size:11px!important;letter-spacing:.04em!important}
+html body .p3steps li span{width:44px;height:44px;border-radius:12px;background:#B5532F;color:#fff!important;font-size:18px!important;margin-bottom:8px}}
+@media(max-width:700px){html body main .card2.pc .pc-buy,html body .card2.pc .pc-body .pc-buy,html body [data-page] .card2.pc .pc-buy{display:grid!important;grid-template-columns:auto 1fr!important;grid-auto-flow:column!important;gap:6px!important;align-items:center!important}html body .card2.pc .pc-buy>*{grid-row:1!important;width:auto!important}}
