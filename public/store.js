@@ -816,7 +816,7 @@ const drawTags=()=>{if(!tagBox)return;tagBox.innerHTML='';const cp=COMPS[cur];ta
 addEventListener('resize',()=>{clearTimeout(window.__tg);window.__tg=setTimeout(drawTags,200)});
 let cur='car';const hero=root.querySelector('#pcHero'),cap=root.querySelector('#pcCap'),car=root.querySelector('.pc-car');hero.style.cursor='pointer';hero.title='View product';hero.addEventListener('click',()=>{const o=IT[cur];if(o&&o.href)location.hash=o.href.replace(/^#/,'')});
 const fillCap=()=>{const o=IT[cur];drawTags();cap.href=o.href;cap.querySelector('b').textContent=o.nm;cap.querySelector('span').textContent=o.price};
-root.querySelectorAll('.chip.mq').forEach(c=>{const o=IT[c.dataset.k];c.querySelector('.pi').innerHTML=`<img src="${o.img}" alt="${o.nm}">`;c.title=o.nm;c.setAttribute('aria-label','Show '+o.nm)});fillCap();
+root.querySelectorAll('.chip.mq').forEach(c=>{const o=IT[c.dataset.k];c.querySelector('.pi').innerHTML=`<img src="${o.img}" alt="${o.nm}">`;if(!c.querySelector('.mqi'))c.insertAdjacentHTML('beforeend',`<span class="mqi"><b>${o.nm}</b><em>${o.price}</em></span>`);c.title=o.nm;c.setAttribute('aria-label','Show '+o.nm)});fillCap();
 const mark=()=>root.querySelectorAll('.chip.mq').forEach(c=>c.classList.toggle('sel',c.dataset.k===cur));
 const show=k=>{if(k===cur||car.classList.contains('swap'))return;car.classList.add('swap');setTimeout(()=>{cur=k;hero.src=IT[k].img;hero.alt=IT[k].nm;fillCap();mark();car.classList.remove('swap');car.classList.add('in');setTimeout(()=>car.classList.remove('in'),700)},380)};
 let apT=null;const ORDER=['car','k1','k2','k3','k4'];const ap=()=>{clearTimeout(apT);apT=setTimeout(()=>{if(!document.hidden&&!car.matches(':hover'))show(ORDER[(ORDER.indexOf(cur)+1)%ORDER.length]);ap()},4000)};

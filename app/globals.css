@@ -2940,3 +2940,20 @@ html body #pcCap,html body .pc-cap{display:none!important}
 html body .pc-cbox #pcHero{pointer-events:auto;position:relative;z-index:5}
 html body .pc-cbox #pcHero:hover{scale:.76}
 @media(max-width:600px){html body .pc-cbox #pcHero:hover{scale:.6}}
+/* v120 neat side column */
+html body .pc-mq{-webkit-mask:linear-gradient(transparent,#000 6%,#000 94%,transparent)!important;mask:linear-gradient(transparent,#000 6%,#000 94%,transparent)!important;border-radius:20px}
+html body .pc-mqt{gap:14px!important;padding:6px 6px!important}
+html body .chip.mq{height:auto!important;margin:0!important;padding:14px 14px 12px!important;border-radius:18px!important;background:#FFFDF8!important;border:1px solid rgba(181,83,47,.22)!important;box-shadow:0 12px 26px -18px rgba(90,50,20,.55)!important;display:flex!important;flex-direction:column;align-items:stretch;gap:10px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+html body .chip.mq::before,html body .chip.mq::after,html body .chip.mq .led,html body .pc-mqt::before,html body .pc-mqt::after{display:none!important}
+html body .chip.mq .pi{height:118px!important;width:100%;border-radius:12px;background:#F6ECDC!important;display:flex!important;align-items:center;justify-content:center;overflow:hidden;box-shadow:none!important}
+html body .chip.mq .pi::before,html body .chip.mq .pi::after{display:none!important}
+html body .chip.mq .pi img{width:auto!important;height:auto!important;max-width:78%!important;max-height:82%!important;object-fit:contain!important;transform:none!important;filter:drop-shadow(0 8px 10px rgba(90,50,20,.22))!important;mix-blend-mode:normal}
+html body .chip.mq .mqi{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:0 2px}
+html body .chip.mq .mqi b{font:600 13px var(--body);color:#2B2B2B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html body .chip.mq .mqi em{font:700 13px var(--body);font-style:normal;color:#B5532F;flex:none}
+html body .chip.mq:hover{transform:translateY(-3px);border-color:rgba(181,83,47,.55)!important;box-shadow:0 18px 30px -18px rgba(90,50,20,.6)!important}
+html body .chip.mq.sel{border-color:#B5532F!important;box-shadow:0 0 0 2px rgba(181,83,47,.35),0 12px 26px -18px rgba(90,50,20,.55)!important}
+@media(max-width:600px){html body .pc-mqt{gap:8px!important;padding:0!important}html body .chip.mq{padding:6px!important;border-radius:12px!important;gap:4px}html body .chip.mq .pi{height:56px!important;border-radius:8px}html body .chip.mq .mqi{display:none}}
+html body .chip.mq > :not(.pi):not(.mqi){display:none!important}
+@media(max-width:600px){html body .pc-cbox #pcHero,html body .pc-cbox #pcHero:hover{scale:.5!important;translate:0 -6%!important}}
+html body .chip.prod span::after,html body .chip.mq .mqi::after{content:none!important;display:none!important}
