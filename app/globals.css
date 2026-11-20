@@ -2844,3 +2844,15 @@ html body .chip.lcdonly .lcd-btn{font-size:12px;padding:7px 14px;margin-top:10px
 @keyframes cmpin{to{opacity:1;transform:none}}
 @keyframes cmpfl{to{transform:translateY(-5px)}}
 @media(max-width:600px){.pc-cbox.hascmp #pcHero{scale:.78;translate:0 -14%}.pc-tags.cmp{bottom:1%;gap:4px}.pt-cmp img{height:34px;max-width:46px}.pt-cmp figcaption{font-size:7.5px;padding:2px 5px}}
+/* v110 component cards */
+html body .pc-cbox.hascmp .pad{opacity:0;transition:opacity .3s}
+html body .pc-tags.cmp{gap:clamp(8px,1vw,14px);bottom:2%}
+html body .pt-cmp{width:clamp(78px,7.4vw,108px);gap:0;padding:10px 8px 8px;border-radius:14px;background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.02) 60%),rgba(6,30,25,.72);border:1px solid rgba(226,198,138,.35);box-shadow:0 14px 30px -12px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.12);backdrop-filter:blur(8px);position:relative;overflow:hidden}
+html body .pt-cmp::before{content:"";position:absolute;left:50%;top:38%;width:70%;aspect-ratio:1;translate:-50% -50%;background:radial-gradient(circle,rgba(245,220,156,.28),transparent 65%);pointer-events:none}
+html body .pt-cmp::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.14),transparent);animation:cmpsh 4s ease-in-out calc(var(--d) + 1s) infinite}
+html body .pt-cmp img{position:relative;height:clamp(40px,4vw,58px);max-width:88%;filter:drop-shadow(0 6px 8px rgba(0,0,0,.55));animation:none}
+html body .pt-cmp figcaption{position:relative;margin-top:8px;width:100%;text-align:center;background:none;border:0;border-top:1px solid rgba(226,198,138,.22);border-radius:0;padding:6px 0 0;font:600 10.5px var(--body);color:#F1E2BC;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html body .pt-cmp{animation:cmpin .6s cubic-bezier(.2,.9,.25,1.15) var(--d) forwards,cmpfl 3.6s ease-in-out calc(var(--d) + .7s) infinite alternate}
+@keyframes cmpfl{from{transform:translateY(0)}to{transform:translateY(-4px)}}
+@keyframes cmpsh{0%,60%{left:-60%}100%{left:130%}}
+@media(max-width:600px){html body .pc-tags.cmp{gap:5px;bottom:0}html body .pt-cmp{width:54px;padding:6px 4px 5px;border-radius:10px}html body .pt-cmp img{height:28px}html body .pt-cmp figcaption{font-size:7px;margin-top:4px;padding-top:4px}}

@@ -69,7 +69,7 @@ $('#marq').innerHTML=[...facts,...facts].map(f=>`<span>${f}</span>`).join('');
 const PARTS=[
  {f:'rc-p0.webp',b:[627.9,32.2,115.6,87.2],o:[685.7,75.8],dx:-96.5,dy:551.5,sc:1,lift:24,st:0.1,lx:763,ly:76,t:'HC-SR04 ultrasonic sensor',cat:'Sensors',tip:'Sensors'},
  {f:'rc-p1.webp',b:[623.5,86.6,235.5,179.3],o:[741.2,176.2],dx:-8.7,dy:377.1,sc:1,lift:16,st:0.13,lx:872,ly:218,t:'Sensor shield + jumper wires',cat:'Modules',tip:'Modules'},
- {f:'rc-p2.webp',b:[624.1,256.7,235.5,113.3],o:[741.9,313.3],dx:-8.7,dy:301.3,sc:1,lift:9,st:0.16,lx:872,ly:316,t:'Arduino UNO',cat:'Dev Boards',tip:'Dev boards'},
+ {f:'rc-p2.webp',b:[624.1,256.7,235.5,113.3],o:[741.9,313.3],dx:-8.7,dy:301.3,sc:1,lift:9,st:0.16,lx:872,ly:316,t:'Arduino',cat:'Dev Boards',tip:'Dev boards'},
  {f:'rc-p3.webp',b:[516.2,331.9,458.4,210.3],o:[745.4,437.0],dx:-3.3,dy:176.6,sc:1,lift:4,st:0.19,lx:987,ly:427,t:'Acrylic deck + battery box',cat:'DIY Robotic Kits',tip:'Robot kits'},
  {f:'rc-p4.webp',b:[472.6,510.6,556.0,300.3],o:[750.6,660.8],dx:0.0,dy:0.0,sc:1,lift:0,st:0,lx:1047,ly:654,t:'4WD chassis, gear motors, wheels',cat:'Motors & Wheels',tip:'Motors and wheels'}
 ];
@@ -166,7 +166,7 @@ const DET={
  'Obstacle Avoiding Robot Car using Arduino Kit':{intro:'A DIY robot car that measures distance with an ultrasonic sensor and turns away from anything in its path, controlled by an Arduino UNO.',
   specs:[['Operating voltage','7V to 12V (12V battery pack recommended)'],['Control board','Arduino UNO (ATmega328P)'],['Sensor','HC-SR04 ultrasonic'],['Detection range','2 cm to 400 cm'],['Motor driver','L298N dual H-bridge'],['Motor type','DC BO gear motors (100 to 300 RPM typical)'],['Control logic','Obstacle detection with directional response'],['Movement','Forward, backward, left, right, stop'],['Power','Battery powered']],
   features:['Autonomous obstacle detection and avoidance'],
-  contents:['Arduino UNO','L298N motor driver module','HC-SR04 ultrasonic sensor','BO motors (2WD)','Robot chassis with wheels','SG90 servo motor','Battery holder (18650 or 9V/12V pack)','Jumper wires','Switch']},
+  contents:['Arduino','L298N motor driver module','HC-SR04 ultrasonic sensor','BO motors (2WD)','Robot chassis with wheels','SG90 servo motor','Battery holder (18650 or 9V/12V pack)','Jumper wires','Switch']},
  '2 Wheel Mobile Controlled Robot Car Kit':{intro:'A two-wheel robot car you assemble, program and then drive from your phone over Bluetooth.',
   features:['Bluetooth-controlled mobile robot','Suited to learning robotics and embedded systems'],
   contents:['1 set × 2 Wheel kit','1 × Arduino UNO SMD board','1 × HC-05 Bluetooth module','1 × L298N motor driver module','2 × 18650 Li-ion battery','1 × 2-cell battery holder','1 set × Jumper wire combo pack']},
@@ -548,7 +548,7 @@ startType();
 /* ---------- HEADER: All categories mega menu ---------- */
 const mega=$('#mega');let mg=0;
 $('#mgroups').innerHTML=MEGA.map(([g],i)=>`<button role="listitem" data-g="${i}">${g}</button>`).join('');
-const nice=n=>n.split(' ').map(w=>/^\(?[A-Z0-9]{2,4}\)?$/.test(w)&&!/^(AND|KEY|PAD|ARM|FUSE|DRONE|LOAD|CELL|WIRE|BOOST|BUCK|BMP|RATE|SOIL|GAS|VOICE|HEAT)$/.test(w)?w:w==='AND'||w==='and'?'and':w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join(' ').replace(/^Bmp$/,'BMP').replace(/^STM 32$/,'STM32').replace(/Arduino uno/i,'Arduino UNO');
+const nice=n=>n.split(' ').map(w=>/^\(?[A-Z0-9]{2,4}\)?$/.test(w)&&!/^(AND|KEY|PAD|ARM|FUSE|DRONE|LOAD|CELL|WIRE|BOOST|BUCK|BMP|RATE|SOIL|GAS|VOICE|HEAT)$/.test(w)?w:w==='AND'||w==='and'?'and':w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join(' ').replace(/^Bmp$/,'BMP').replace(/^STM 32$/,'STM32').replace(/Arduino uno/i,'Arduino');
 const cnt=k=>P.filter(COL[k].test).length;
 function drawMg(i){
   mg=i;const [g,items]=MEGA[i];
@@ -809,13 +809,13 @@ h.addEventListener('mouseleave',()=>{['--ry','--rx','--tx','--ty'].forEach(p=>t.
 const IT={car:{img:'rc-car.webp',w:'Obstacle Avoiding Robot Car',nm:'4WD Arduino Robot Car Kit'},k1:{img:'kit-50.webp',w:'Smart Line Following'},k2:{img:'kit-22.webp',w:'MQ-53 DIY'},k3:{img:'kit-jcb.webp',w:'Hydraulic JCB'},k4:{img:'kit-treb.webp',w:'Wooden Trebuchet'}};
 Object.values(IT).forEach(o=>{const p=P.find(x=>x.name.startsWith(o.w));o.p=p;o.nm=o.nm||(p?p.name:'');o.href=p?'#product-'+p.id:'#shop';o.price=p?'₹'+p.price:''});
 const TAGS={car:[['HC-SR04 ultrasonic',.21,.42],['Arduino UNO + shield',.5,.3],['18650 battery box',.8,.2],['BO motor + wheel',.66,.8],['Acrylic 4WD chassis',.27,.72]],
-k1:[['Arduino UNO',.6,.33],['Wooden chassis',.3,.38],['BO motor + wheel',.17,.72],['IR line sensors',.92,.6]],
+k1:[['Arduino',.6,.33],['Wooden chassis',.3,.38],['BO motor + wheel',.17,.72],['IR line sensors',.92,.6]],
 k2:[['Brushless motor',.14,.3],['Propeller',.83,.17],['Wooden frame',.56,.42],['Flight controller',.46,.58]],
 k3:[['Hydraulic syringe',.09,.45],['Wooden boom arm',.33,.12],['Bucket',.14,.82],['Crawler tracks',.62,.86],['Cabin',.7,.5]],
 k4:[['Throwing arm',.4,.12],['Counterweight',.2,.26],['A-frame',.55,.45],['Wheels',.78,.86]]};
-const COMPS={car:[['uno','Arduino UNO'],['shield','Sensor shield'],['sr04','HC-SR04'],['l298','L298N driver'],['bo','BO motor'],['bat','18650 holder']],
-k1:[['uno','Arduino UNO'],['arr','IR line array'],['ir','IR sensor'],['l298','L298N driver'],['bo','BO motor']],
-k2:[['fc','KK2.1 flight ctrl'],['esc','30A ESC'],['prop','Propeller'],['lipo','LiPo battery']]};
+const COMPS={car:[['uno','Arduino'],['shield','Shield'],['sr04','HC-SR04'],['l298','L298N'],['bo','BO motor'],['bat','Battery']],
+k1:[['uno','Arduino'],['arr','Line array'],['ir','IR sensor'],['l298','L298N'],['bo','BO motor']],
+k2:[['fc','Flight board'],['esc','30A ESC'],['prop','Propeller'],['lipo','LiPo battery']]};
 const tagBox=root.querySelector('#pcTags');
 const drawTags=()=>{if(!tagBox)return;tagBox.innerHTML='';const cp=COMPS[cur];tagBox.classList.toggle('cmp',!!cp);root.querySelector('.pc-cbox').classList.toggle('hascmp',!!cp);if(cp){tagBox.innerHTML=cp.map(([f,t],i)=>`<figure class="pt-cmp" style="--d:${.3+i*.1}s"><img src="/comp/${f}.webp" alt=""><figcaption>${t}</figcaption></figure>`).join('');return}const im=root.querySelector('#pcHero');const go=()=>{const W=im.clientWidth,H=im.clientHeight,nw=im.naturalWidth||1,nh=im.naturalHeight||1;const sc=Math.min(W/nw,H/nh),rw=nw*sc,rh=nh*sc,ox=(W-rw)/2+im.offsetLeft,oy=(H-rh)/2+im.offsetTop;tagBox.innerHTML=(TAGS[cur]||[]).map(([t,x,y],i)=>`<span class="pt-tag ${x>.5?'r':'l'}" style="left:${ox+x*rw}px;top:${oy+y*rh}px;--d:${.35+i*.12}s"><i></i><b>${t}</b></span>`).join('')};if(im.complete&&im.naturalWidth)go();else im.addEventListener('load',go,{once:true})};
 addEventListener('resize',()=>{clearTimeout(window.__tg);window.__tg=setTimeout(drawTags,200)});
