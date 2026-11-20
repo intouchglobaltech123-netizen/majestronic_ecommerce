@@ -2992,3 +2992,7 @@ html body .pdimg .tag,html body [data-page="product"] .pdimg .tag{background:#B5
 @media(max-width:600px){html body .pc-mqt{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:6px!important}html body .chip.mq .pi{height:48px!important}}
 html body .chip.mq .mqi em{display:none!important}
 html body .chip.mq .mqi{justify-content:center!important}
+/* v123 car centre */
+html body .pc-cbox #pcHero{scale:1!important;translate:none!important}
+html body .pc-cbox #pcHero:hover{scale:1.03!important}
+html body .chip.mq{cursor:pointer}
