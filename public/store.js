@@ -530,7 +530,7 @@ hq.addEventListener('blur',()=>{setTimeout(hideSuggest,180);if(!hq.value)startTy
 function runSearch(){nav.classList.remove('srch');F.q=hq.value.trim().toLowerCase();F.page=1;F.sort=F.q?'rel':'feat';hideSuggest();hq.blur();if(location.hash==='#search')showCatalog('search');else location.hash='search'}
 $('#searchForm').addEventListener('submit',e=>{e.preventDefault();runSearch()});
 sug.addEventListener('click',e=>{if(e.target.closest('[data-go-search]')){e.preventDefault();runSearch()}else hideSuggest()});
-$('#searchToggle').addEventListener('click',()=>{const o=nav.classList.toggle('srch');$('#searchToggle').setAttribute('aria-expanded',o);if(o)hq.focus();setNavH()});
+$('#searchToggle').addEventListener('click',e=>{if(!document.querySelector('#nav form.search')){e.stopImmediatePropagation();if(!/^#(shop|collections)/.test(location.hash))location.hash='shop';setTimeout(()=>{const i=document.querySelector('#hq');if(i){i.scrollIntoView({block:'center'});i.focus()}},350)}},true);$('#searchToggle').addEventListener('click',()=>{const o=nav.classList.toggle('srch');$('#searchToggle').setAttribute('aria-expanded',o);if(o)hq.focus();setNavH()});
 document.addEventListener('click',e=>{if(e.target.closest('[data-focus-search]')){setTimeout(()=>{nav.classList.add('srch');setNavH();hq.focus()},60)}});
 /* typing placeholder */
 const PH='Search "Arduino Uno", "Sensors"...';let tyT=null;
