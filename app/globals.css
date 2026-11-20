@@ -2927,3 +2927,6 @@ html body #nav .brand img{filter:brightness(0) saturate(100%) invert(18%)!import
 html body #nav nav a,html body #nav .bar a,html body #nav .navwrap a{color:#3A3633!important;-webkit-text-fill-color:#3A3633!important;text-shadow:none!important;opacity:1!important}
 html body #nav nav a.on,html body #nav nav a[aria-current],html body #nav nav a:hover{color:#B5532F!important;-webkit-text-fill-color:#B5532F!important}
 html body #nav .menubtn,html body #nav .menucell button{color:#fff!important}
+/* v117 marquee inside hero */
+html body .pc .marq{position:absolute;left:-2%;right:-2%;bottom:34px;margin:0!important;z-index:6;font-size:15px!important;padding:12px 0!important;box-shadow:0 18px 30px -12px rgba(120,60,30,.35)}
+@media(max-width:600px){html body .pc .marq{position:relative;bottom:auto;left:auto;right:auto;margin:18px -4% 0!important;font-size:11px!important;padding:9px 0!important}}
