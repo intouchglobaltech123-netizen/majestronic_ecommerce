@@ -2818,3 +2818,19 @@ html body .chip.mq.sel{box-shadow:0 0 0 2px #F5DC9C,0 0 26px rgba(245,220,156,.3
 @keyframes ptin{from{opacity:0;filter:blur(4px)}to{opacity:1;filter:none}}
 .pc-car.swap .pc-tags{opacity:0;transition:opacity .2s}
 @media(max-width:600px){.pt-tag b{font-size:9px;padding:3px 7px}.pt-tag i{width:8px;height:8px}.pt-tag.l b{margin-left:8px}.pt-tag.r b{margin-right:8px}.pt-tag.l b::before,.pt-tag.r b::before{width:8px}}
+/* v108 bigger LCD offer */
+html body .chip.lcdonly .lcd-btn{height:auto!important;min-height:0!important;flex:none!important;white-space:nowrap!important;width:auto!important;max-width:none!important;align-self:flex-start;line-height:1.2!important}
+@media(max-width:600px){html body .chip.lcdonly .lcd-btn{align-self:center}}
+html body .chip.lcdonly .lcd-scr{padding:22px 24px!important;text-align:left}
+html body .chip.lcdonly .lcd-tg{display:inline-block;font:700 12px var(--mono,monospace);letter-spacing:.12em;color:#E9F7C8;background:#173A10;padding:5px 10px;border-radius:4px;margin-bottom:12px}
+html body .chip.lcdonly .lcd-l{font-size:clamp(30px,3vw,42px)!important;line-height:1.05}
+html body .chip.lcdonly .lcd-l.y{font-size:clamp(20px,1.9vw,27px)!important;margin-top:6px!important}
+html body .chip.lcdonly .lcd-l.s{font-size:clamp(14px,1.2vw,17px)!important;margin-top:14px!important;padding-top:12px!important;border-top:1px dashed rgba(23,58,16,.35)!important;opacity:1!important}
+html body .chip.lcdonly .lcd-btn{display:inline-block;margin-top:14px;font:800 15px var(--mono,monospace);letter-spacing:.08em;color:#173A10;background:#F5C542;border:2px solid #173A10;padding:9px 18px;border-radius:8px;box-shadow:3px 3px 0 #173A10}
+html body .chip.lcdonly:hover .lcd-btn{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #173A10}
+html body .chip.lcdonly .lcd-tc{display:block;margin-top:12px;font:600 11.5px var(--mono,monospace);color:#2F6420;letter-spacing:.03em}
+@media(max-width:600px){html body .chip.lcdonly .lcd-scr{padding:14px 16px!important;text-align:center}
+html body .chip.lcdonly .lcd-tg{font-size:9.5px;margin-bottom:8px}
+html body .chip.lcdonly .lcd-l{font-size:26px!important}html body .chip.lcdonly .lcd-l.y{font-size:16px!important}
+html body .chip.lcdonly .lcd-l.s{font-size:11.5px!important;margin-top:8px!important;padding-top:8px!important}
+html body .chip.lcdonly .lcd-btn{font-size:12px;padding:7px 14px;margin-top:10px}html body .chip.lcdonly .lcd-tc{font-size:9.5px;margin-top:8px}}
