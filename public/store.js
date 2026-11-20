@@ -815,7 +815,7 @@ k3:[['Hydraulic syringe',.09,.45],['Wooden boom arm',.33,.12],['Bucket',.14,.82]
 k4:[['Throwing arm',.4,.12],['Counterweight',.2,.26],['A-frame',.55,.45],['Wheels',.78,.86]]};
 const COMPS={car:[['uno','Arduino'],['shield','Shield'],['sr04','HC-SR04'],['l298','L298N'],['bo','BO motor'],['bat','Battery']],
 k1:[['uno','Arduino'],['arr','Line array'],['ir','IR sensor'],['l298','L298N'],['bo','BO motor']],
-k2:[['fc','Flight board'],['esc','30A ESC'],['prop','Propeller'],['lipo','LiPo battery']]};
+k2:[['fc','Flight controller'],['esc','30A ESC'],['prop','Propeller'],['lipo','LiPo battery']]};
 const tagBox=root.querySelector('#pcTags');
 const drawTags=()=>{if(!tagBox)return;tagBox.innerHTML='';const cp=COMPS[cur];tagBox.classList.toggle('cmp',!!cp);root.querySelector('.pc-cbox').classList.toggle('hascmp',!!cp);if(cp){tagBox.innerHTML=cp.map(([f,t],i)=>`<figure class="pt-cmp" style="--d:${.3+i*.1}s"><img src="/comp/${f}.webp" alt=""><figcaption>${t}</figcaption></figure>`).join('');return}const im=root.querySelector('#pcHero');const go=()=>{const W=im.clientWidth,H=im.clientHeight,nw=im.naturalWidth||1,nh=im.naturalHeight||1;const sc=Math.min(W/nw,H/nh),rw=nw*sc,rh=nh*sc,ox=(W-rw)/2+im.offsetLeft,oy=(H-rh)/2+im.offsetTop;tagBox.innerHTML=(TAGS[cur]||[]).map(([t,x,y],i)=>`<span class="pt-tag ${x>.5?'r':'l'}" style="left:${ox+x*rw}px;top:${oy+y*rh}px;--d:${.35+i*.12}s"><i></i><b>${t}</b></span>`).join('')};if(im.complete&&im.naturalWidth)go();else im.addEventListener('load',go,{once:true})};
 addEventListener('resize',()=>{clearTimeout(window.__tg);window.__tg=setTimeout(drawTags,200)});
