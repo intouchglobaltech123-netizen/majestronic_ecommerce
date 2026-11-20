@@ -2930,3 +2930,9 @@ html body #nav .menubtn,html body #nav .menucell button{color:#fff!important}
 /* v117 marquee inside hero */
 html body .pc .marq{position:absolute;left:-2%;right:-2%;bottom:34px;margin:0!important;z-index:6;font-size:15px!important;padding:12px 0!important;box-shadow:0 18px 30px -12px rgba(120,60,30,.35)}
 @media(max-width:600px){html body .pc .marq{position:relative;bottom:auto;left:auto;right:auto;margin:18px -4% 0!important;font-size:11px!important;padding:9px 0!important}}
+/* v118 top 5 */
+html body .pc-top5{position:absolute;top:104px;left:50%;translate:-50% 0;z-index:7;font:700 12px var(--mono,monospace);letter-spacing:.18em;text-transform:uppercase;color:#B5532F;background:#FFFDF8;border:1px solid rgba(181,83,47,.35);padding:7px 16px;border-radius:999px}
+html body .pc-cbox #pcHero{filter:drop-shadow(0 26px 30px rgba(90,50,20,.28))}
+@media(max-width:600px){html body .pc-top5{position:relative;top:auto;left:auto;translate:none;display:table;margin:10px auto 0;font-size:10px}}
+html body .pc-cbox #pcHero{scale:.72;transition:scale .4s}
+@media(max-width:600px){html body .pc-cbox #pcHero{scale:.6}html body .pc-car,html body .pc-cbox{max-height:300px}}

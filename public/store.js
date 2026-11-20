@@ -806,21 +806,17 @@ h.addEventListener('mouseleave',()=>{['--ry','--rx','--tx','--ty'].forEach(p=>t.
 
 /* PCB hero */
 (function(){const root=document.getElementById('pcb');if(!root)return;const svg=root.querySelector('#pcSvg'),NS='http://www.w3.org/2000/svg';
-const IT={car:{img:'rc-car.webp',w:'Obstacle Avoiding Robot Car',nm:'4WD Arduino Robot Car Kit'},k1:{img:'kit-50.webp',w:'Smart Line Following'},k2:{img:'kit-22.webp',w:'MQ-53 DIY'},k3:{img:'kit-jcb.webp',w:'Hydraulic JCB'},k4:{img:'kit-treb.webp',w:'Wooden Trebuchet'}};
+const IT={car:{img:'top-esp32.webp',w:'ESP32 WROOM 38 Pin Type-B',nm:'ESP32 Development Board'},k1:{img:'top-uno.webp',w:'Arduino UNO SMD',nm:'Arduino UNO SMD'},k2:{img:'top-sr04.webp',w:'HC-SR04 Ultrasonic Sensor',nm:'Ultrasonic Sensor HC-SR04'},k3:{img:'top-ir.webp',w:'IR Sensor Module',nm:'IR Sensor Module'},k4:{img:'top-servo.webp',w:'MG90S Micro Servo',nm:'Micro Servo Motor'}};
 Object.values(IT).forEach(o=>{const p=P.find(x=>x.name.startsWith(o.w));o.p=p;o.nm=o.nm||(p?p.name:'');o.href=p?'#product-'+p.id:'#shop';o.price=p?'₹'+p.price:''});
-const TAGS={car:[['HC-SR04 ultrasonic',.21,.42],['Arduino UNO + shield',.5,.3],['18650 battery box',.8,.2],['BO motor + wheel',.66,.8],['Acrylic 4WD chassis',.27,.72]],
-k1:[['Arduino',.6,.33],['Wooden chassis',.3,.38],['BO motor + wheel',.17,.72],['IR line sensors',.92,.6]],
-k2:[['Brushless motor',.14,.3],['Propeller',.83,.17],['Wooden frame',.56,.42],['Flight controller',.46,.58]],
-k3:[['Hydraulic syringe',.09,.45],['Wooden boom arm',.33,.12],['Bucket',.14,.82],['Crawler tracks',.62,.86],['Cabin',.7,.5]],
-k4:[['Throwing arm',.4,.12],['Counterweight',.2,.26],['A-frame',.55,.45],['Wheels',.78,.86]]};
-const COMPS={car:[['uno','Arduino'],['sr04','HC-SR04'],['l298','L298N'],['bo','BO motor']],
-k1:[['uno','Arduino'],['arr','Line array'],['bo','BO motor']],
-k2:[['fc','Flight controller'],['esc','30A ESC'],['prop','Propeller'],['lipo','LiPo battery']],
-k3:[['syr','Hydraulic syringe',1],['bucket','Bucket',1],['track','Crawler tracks',1]],
-k4:[['cw','Counterweight',1],['wheel','Wheels',1]]};
+const TAGS={car:[['Wi-Fi + Bluetooth',.5,.12],['Dual-core 240 MHz',.08,.4],['38 GPIO pins',.92,.62],['Micro-USB',.5,.94]],
+k1:[['ATmega328P SMD',.42,.5],['USB Type-B',.1,.22],['14 digital I/O',.62,.08],['Power jack',.06,.82]],
+k2:[['2 – 400 cm range',.28,.45],['Trig / Echo',.6,.82],['5 V module',.8,.2]],
+k3:[['IR emitter + receiver',.32,.12],['Adjustable range',.5,.5],['3-pin output',.2,.88]],
+k4:[['180° rotation',.85,.2],['Metal gear',.5,.55],['3-wire PWM',.15,.4]]};
+const COMPS={};
 const SPOTS={2:[[.15,.14],[.85,.84]],3:[[.15,.14],[.85,.14],[.85,.86]],4:[[.15,.14],[.85,.14],[.15,.86],[.85,.86]]};
 const tagBox=root.querySelector('#pcTags');
-const drawTags=()=>{if(!tagBox)return;tagBox.innerHTML='';const cp=COMPS[cur];tagBox.classList.toggle('cmp',!!cp);root.querySelector('.pc-cbox').classList.toggle('hascmp',!!cp);if(cp){let seed=cur.charCodeAt(cur.length-1);const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;tagBox.innerHTML=cp.map(([f,t,l],i)=>{const [x,y]=SPOTS[cp.length][i];return `<figure class="pt-cmp${l?' lens':''}" style="left:${(x+(rnd()-.5)*.06)*100}%;top:${(y+(rnd()-.5)*.05)*100}%;--r:${((rnd()-.5)*18).toFixed(1)}deg;--d:${.3+i*.1}s"><img src="/comp/${f}.webp" alt=""><figcaption>${t}</figcaption></figure>`}).join('');return}const im=root.querySelector('#pcHero');const go=()=>{const W=im.clientWidth,H=im.clientHeight,nw=im.naturalWidth||1,nh=im.naturalHeight||1;const sc=Math.min(W/nw,H/nh),rw=nw*sc,rh=nh*sc,ox=(W-rw)/2+im.offsetLeft,oy=(H-rh)/2+im.offsetTop;tagBox.innerHTML=(TAGS[cur]||[]).map(([t,x,y],i)=>`<span class="pt-tag ${x>.5?'r':'l'}" style="left:${ox+x*rw}px;top:${oy+y*rh}px;--d:${.35+i*.12}s"><i></i><b>${t}</b></span>`).join('')};if(im.complete&&im.naturalWidth)go();else im.addEventListener('load',go,{once:true})};
+const drawTags=()=>{if(!tagBox)return;tagBox.innerHTML='';const cp=COMPS[cur];tagBox.classList.toggle('cmp',!!cp);root.querySelector('.pc-cbox').classList.toggle('hascmp',!!cp);if(cp){let seed=cur.charCodeAt(cur.length-1);const rnd=()=>(seed=(seed*9301+49297)%233280)/233280;tagBox.innerHTML=cp.map(([f,t,l],i)=>{const [x,y]=SPOTS[cp.length][i];return `<figure class="pt-cmp${l?' lens':''}" style="left:${(x+(rnd()-.5)*.06)*100}%;top:${(y+(rnd()-.5)*.05)*100}%;--r:${((rnd()-.5)*18).toFixed(1)}deg;--d:${.3+i*.1}s"><img src="/comp/${f}.webp" alt=""><figcaption>${t}</figcaption></figure>`}).join('');return}const im=root.querySelector('#pcHero');const go=()=>{const R=im.getBoundingClientRect(),B=tagBox.getBoundingClientRect(),W=R.width,H=R.height,nw=im.naturalWidth||1,nh=im.naturalHeight||1;const sc=Math.min(W/nw,H/nh),rw=nw*sc,rh=nh*sc,ox=(W-rw)/2+R.left-B.left,oy=(H-rh)/2+R.top-B.top;tagBox.innerHTML=(TAGS[cur]||[]).map(([t,x,y],i)=>`<span class="pt-tag ${x>.5?'r':'l'}" style="left:${ox+x*rw}px;top:${oy+y*rh}px;--d:${.35+i*.12}s"><i></i><b>${t}</b></span>`).join('')};if(im.complete&&im.naturalWidth)setTimeout(go,450);else im.addEventListener('load',go,{once:true})};
 addEventListener('resize',()=>{clearTimeout(window.__tg);window.__tg=setTimeout(drawTags,200)});
 let cur='car';const hero=root.querySelector('#pcHero'),cap=root.querySelector('#pcCap'),car=root.querySelector('.pc-car');
 const fillCap=()=>{const o=IT[cur];drawTags();cap.href=o.href;cap.querySelector('b').textContent=o.nm;cap.querySelector('span').textContent=o.price};
