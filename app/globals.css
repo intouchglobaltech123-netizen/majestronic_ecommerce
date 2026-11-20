@@ -3134,3 +3134,4 @@ html body #nav #menuBtn[aria-expanded="true"] .mb-ic i:nth-child(3){top:6px;tran
 @media(max-width:900px){html body #nav nav.bar,html body #nav .navwrap nav.bar{clip-path:none!important;background:transparent!important;background-color:transparent!important;-webkit-mask:none!important}
 html body #nav #menuBtn .mb-ic,html body #nav #menuBtn .mb-ic *{background-color:transparent}
 html body #nav #menuBtn .mb-ic i{background-color:#F3E5CF!important}}
+@media(min-width:901px){html body #nav .toprow>.navwrap,html body.is-home #nav .toprow>.navwrap{padding:4px 0!important;height:50px!important}}
