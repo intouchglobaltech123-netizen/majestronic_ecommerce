@@ -2936,3 +2936,7 @@ html body .pc-cbox #pcHero{filter:drop-shadow(0 26px 30px rgba(90,50,20,.28))}
 @media(max-width:600px){html body .pc-top5{position:relative;top:auto;left:auto;translate:none;display:table;margin:10px auto 0;font-size:10px}}
 html body .pc-cbox #pcHero{scale:.72;transition:scale .4s}
 @media(max-width:600px){html body .pc-cbox #pcHero{scale:.6}html body .pc-car,html body .pc-cbox{max-height:300px}}
+html body #pcCap,html body .pc-cap{display:none!important}
+html body .pc-cbox #pcHero{pointer-events:auto;position:relative;z-index:5}
+html body .pc-cbox #pcHero:hover{scale:.76}
+@media(max-width:600px){html body .pc-cbox #pcHero:hover{scale:.6}}
