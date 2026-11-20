@@ -3135,3 +3135,5 @@ html body #nav #menuBtn[aria-expanded="true"] .mb-ic i:nth-child(3){top:6px;tran
 html body #nav #menuBtn .mb-ic,html body #nav #menuBtn .mb-ic *{background-color:transparent}
 html body #nav #menuBtn .mb-ic i{background-color:#F3E5CF!important}}
 @media(min-width:901px){html body #nav .toprow>.navwrap,html body.is-home #nav .toprow>.navwrap{padding:4px 0!important;height:50px!important}}
+html body .addbtn:hover:not(:disabled),html body main .addbtn:hover:not(:disabled),html body #railTrack .addbtn:hover:not(:disabled),html body .pc .addbtn:hover{background:#B5532F!important;color:#fff!important;-webkit-text-fill-color:#fff!important}
+html body .addbtn:hover svg{stroke:#fff!important;color:#fff!important}
