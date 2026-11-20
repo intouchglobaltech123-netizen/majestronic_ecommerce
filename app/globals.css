@@ -2990,3 +2990,5 @@ html body .pdimg::before,html body .pdimg::after{display:none!important}
 html body .pdimg img.ph{background:#fff!important;filter:none!important}
 html body .pdimg .tag,html body [data-page="product"] .pdimg .tag{background:#B5532F!important;color:#fff!important;z-index:2}
 @media(max-width:600px){html body .pc-mqt{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:6px!important}html body .chip.mq .pi{height:48px!important}}
+html body .chip.mq .mqi em{display:none!important}
+html body .chip.mq .mqi{justify-content:center!important}
