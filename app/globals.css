@@ -3137,3 +3137,12 @@ html body #nav #menuBtn .mb-ic i{background-color:#F3E5CF!important}}
 @media(min-width:901px){html body #nav .toprow>.navwrap,html body.is-home #nav .toprow>.navwrap{padding:4px 0!important;height:50px!important}}
 html body .addbtn:hover:not(:disabled),html body main .addbtn:hover:not(:disabled),html body #railTrack .addbtn:hover:not(:disabled),html body .pc .addbtn:hover{background:#B5532F!important;color:#fff!important;-webkit-text-fill-color:#fff!important}
 html body .addbtn:hover svg{stroke:#fff!important;color:#fff!important}
+/* v133 even cards */
+html body .card2.pc{display:flex!important;flex-direction:column!important;height:100%!important}
+html body .card2.pc .pc-body{display:flex!important;flex-direction:column!important;flex:1 1 auto!important}
+html body .card2.pc h3{min-height:2.6em}
+html body .card2.pc .c2price{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:flex-start!important;gap:2px!important;height:48px!important;white-space:nowrap;overflow:visible;justify-content:flex-start}
+html body .card2.pc .c2price .now{font-size:clamp(16px,1.35vw,20px)!important}
+html body .card2.pc .c2price s,html body .card2.pc .c2price .was,html body .card2.pc .c2price del{font-size:12px!important}
+html body .card2.pc .pc-buy{margin-top:auto!important}
+html body .cgrid4,html body main [class*="grid"]{align-items:stretch!important}
