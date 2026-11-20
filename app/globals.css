@@ -3146,3 +3146,4 @@ html body .card2.pc .c2price .now{font-size:clamp(16px,1.35vw,20px)!important}
 html body .card2.pc .c2price s,html body .card2.pc .c2price .was,html body .card2.pc .c2price del{font-size:12px!important}
 html body .card2.pc .pc-buy{margin-top:auto!important}
 html body .cgrid4,html body main [class*="grid"]{align-items:stretch!important}
+html body .card2.pc .pc-cat{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
