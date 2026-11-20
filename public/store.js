@@ -808,8 +808,16 @@ h.addEventListener('mouseleave',()=>{['--ry','--rx','--tx','--ty'].forEach(p=>t.
 (function(){const root=document.getElementById('pcb');if(!root)return;const svg=root.querySelector('#pcSvg'),NS='http://www.w3.org/2000/svg';
 const IT={car:{img:'rc-car.webp',w:'Obstacle Avoiding Robot Car',nm:'4WD Arduino Robot Car Kit'},k1:{img:'kit-50.webp',w:'Smart Line Following'},k2:{img:'kit-22.webp',w:'MQ-53 DIY'},k3:{img:'kit-jcb.webp',w:'Hydraulic JCB'},k4:{img:'kit-treb.webp',w:'Wooden Trebuchet'}};
 Object.values(IT).forEach(o=>{const p=P.find(x=>x.name.startsWith(o.w));o.p=p;o.nm=o.nm||(p?p.name:'');o.href=p?'#product-'+p.id:'#shop';o.price=p?'₹'+p.price:''});
+const TAGS={car:[['HC-SR04 ultrasonic',.21,.42],['Arduino UNO + shield',.5,.3],['18650 battery box',.8,.2],['BO motor + wheel',.66,.8],['Acrylic 4WD chassis',.27,.72]],
+k1:[['Arduino UNO',.6,.33],['Wooden chassis',.3,.38],['BO motor + wheel',.17,.72],['IR line sensors',.92,.6]],
+k2:[['Brushless motor',.14,.3],['Propeller',.83,.17],['Wooden frame',.56,.42],['Flight controller',.46,.58]],
+k3:[['Hydraulic syringe',.09,.45],['Wooden boom arm',.33,.12],['Bucket',.14,.82],['Crawler tracks',.62,.86],['Cabin',.7,.5]],
+k4:[['Throwing arm',.4,.12],['Counterweight',.2,.26],['A-frame',.55,.45],['Wheels',.78,.86]]};
+const tagBox=root.querySelector('#pcTags');
+const drawTags=()=>{if(!tagBox)return;tagBox.innerHTML='';const im=root.querySelector('#pcHero');const go=()=>{const W=im.clientWidth,H=im.clientHeight,nw=im.naturalWidth||1,nh=im.naturalHeight||1;const sc=Math.min(W/nw,H/nh),rw=nw*sc,rh=nh*sc,ox=(W-rw)/2+im.offsetLeft,oy=(H-rh)/2+im.offsetTop;tagBox.innerHTML=(TAGS[cur]||[]).map(([t,x,y],i)=>`<span class="pt-tag ${x>.5?'r':'l'}" style="left:${ox+x*rw}px;top:${oy+y*rh}px;--d:${.35+i*.12}s"><i></i><b>${t}</b></span>`).join('')};if(im.complete&&im.naturalWidth)go();else im.addEventListener('load',go,{once:true})};
+addEventListener('resize',()=>{clearTimeout(window.__tg);window.__tg=setTimeout(drawTags,200)});
 let cur='car';const hero=root.querySelector('#pcHero'),cap=root.querySelector('#pcCap'),car=root.querySelector('.pc-car');
-const fillCap=()=>{const o=IT[cur];cap.href=o.href;cap.querySelector('b').textContent=o.nm;cap.querySelector('span').textContent=o.price};
+const fillCap=()=>{const o=IT[cur];drawTags();cap.href=o.href;cap.querySelector('b').textContent=o.nm;cap.querySelector('span').textContent=o.price};
 root.querySelectorAll('.chip.mq').forEach(c=>{const o=IT[c.dataset.k];c.querySelector('.pi').innerHTML=`<img src="${o.img}" alt="${o.nm}">`;c.title=o.nm;c.setAttribute('aria-label','Show '+o.nm)});fillCap();
 const mark=()=>root.querySelectorAll('.chip.mq').forEach(c=>c.classList.toggle('sel',c.dataset.k===cur));
 const show=k=>{if(k===cur||car.classList.contains('swap'))return;car.classList.add('swap');setTimeout(()=>{cur=k;hero.src=IT[k].img;hero.alt=IT[k].nm;fillCap();mark();car.classList.remove('swap');car.classList.add('in');setTimeout(()=>car.classList.remove('in'),700)},380)};
@@ -838,4 +846,5 @@ function run(){ls.forEach(l=>{l.textContent='';l.classList.remove('cur')});let i
 (function next(){if(i>=ls.length){ls[ls.length-1].classList.add('cur');setTimeout(run,6000);return}const l=ls[i],t=l.dataset.t;let j=0;l.classList.add('cur');
 (function tick(){l.textContent=t.slice(0,++j);if(j<t.length)setTimeout(tick,55);else{l.classList.remove('cur');i++;setTimeout(next,220)}})()})()}
 setTimeout(run,1600)})();
+
 })();
