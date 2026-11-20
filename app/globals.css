@@ -3060,7 +3060,8 @@ html body #nav #menuBtn::before,html body #nav #menuBtn::after{display:none!impo
 html body #nav #menuBtn svg,html body #nav #menuBtn i,html body #nav #menuBtn span{color:#F3E5CF!important;stroke:#F3E5CF!important;background-color:currentColor}
 html body #nav #menuBtn svg{background:none!important}
 html body #nav.open #menuBtn,html body #nav #menuBtn[aria-expanded="true"]{background-color:#B5532F!important;background-image:linear-gradient(45deg,transparent 46%,#fff 46%,#fff 54%,transparent 54%),linear-gradient(-45deg,transparent 46%,#fff 46%,#fff 54%,transparent 54%)!important;background-size:20px 20px,20px 20px!important;background-position:center,center!important}}
-/* v131 minimal footer */
+/* v131 minimal footer (mobile only) */
+@media(max-width:700px){
 html body .card-foot{background:#EFE1C8!important;padding:28px 0 18px!important;margin-top:40px!important;border-top:1px solid rgba(181,83,47,.15)!important;box-shadow:none!important}
 html body .card-foot::before,html body .card-foot::after,html body .cf-card::before,html body .cf-card::after{display:none!important}
 html body .cf-card{background:transparent!important;box-shadow:none!important;border:0!important;padding:0!important;border-radius:0!important}
@@ -3072,6 +3073,7 @@ html body .cf-cols h4{font-size:11px!important;margin-bottom:10px!important}
 html body .cf-cols li a,html body .cf-reach a,html body .cf-deal p{font-size:13px!important;line-height:1.5!important}
 html body .cf-cols ul{gap:6px!important}html body .cf-cols li{margin:0 0 6px!important}
 html body .cf-copy{margin-top:18px!important;font-size:11px!important;text-align:center}
+}
 @media(max-width:700px){
 html body .card-foot{padding:22px 0 14px!important}
 html body .cf-top{flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:10px!important}
@@ -3147,3 +3149,5 @@ html body .card2.pc .c2price s,html body .card2.pc .c2price .was,html body .card
 html body .card2.pc .pc-buy{margin-top:auto!important}
 html body .cgrid4,html body main [class*="grid"]{align-items:stretch!important}
 html body .card2.pc .pc-cat{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+html body.at-foot .wafloat{opacity:0!important;pointer-events:none!important;transform:translateY(20px)!important;transition:opacity .25s,transform .25s}
+html body .wafloat{transition:opacity .25s,transform .25s}
