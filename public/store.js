@@ -845,4 +845,5 @@ function run(){ls.forEach(l=>{l.textContent='';l.classList.remove('cur')});let i
 (function tick(){l.textContent=t.slice(0,++j);if(j<t.length)setTimeout(tick,55);else{l.classList.remove('cur');i++;setTimeout(next,220)}})()})()}
 setTimeout(run,1600)})();
 
+(()=>{const c=document.getElementById('sdCart');if(c)c.addEventListener('click',()=>document.getElementById('openCart').click());const sync=()=>{[['wishCount','sdWish'],['cartCount','sdCartN']].forEach(([a,b])=>{const x=document.getElementById(a),y=document.getElementById(b);if(x&&y){y.textContent=x.textContent;y.style.display=(+x.textContent>0)?'':'none'}})};sync();['wishCount','cartCount'].forEach(id=>{const e=document.getElementById(id);if(e)new MutationObserver(sync).observe(e,{childList:true,characterData:true,subtree:true})})})();
 })();

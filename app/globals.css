@@ -3020,3 +3020,18 @@ html body.show-ic #nav .icons .hic:hover{background:#B5532F!important;color:#fff
 html body.show-ic #nav .icons .hic+.hic{position:relative}
 html body.show-ic #nav .icons .hic+.hic::before{content:"";position:absolute;left:-2px;top:11px;bottom:11px;width:1px;background:rgba(243,229,207,.18)}
 html body.show-ic #nav .icons .hic svg{stroke:currentColor}}
+/* v127 shop bar: smaller search + wishlist/cart */
+html body #catCount,html body .cat-bar .ccount{display:none!important}
+@media(min-width:901px){html body.show-ic #nav .toprow>.icons,html body #nav .toprow>.icons{display:none!important}}
+html body .cat-bar{display:flex!important;align-items:center;gap:12px}
+html body .cat-bar .searchslot{flex:0 1 460px!important;max-width:460px!important;margin-right:auto}
+html body .cat-bar .searchslot input{height:44px!important}
+html body .sdock{display:flex;gap:4px;padding:5px;background:#2B2B2B;border:1px solid rgba(217,120,79,.45);border-radius:14px;box-shadow:0 12px 24px -14px rgba(43,43,43,.55);flex:none}
+html body .sd-b{position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:10px;border:0;background:transparent;color:#F3E5CF;cursor:pointer;transition:background .2s}
+html body .sd-b:hover{background:#B5532F;color:#fff}
+html body .sd-b+.sd-b::before{content:"";position:absolute;left:-2px;top:10px;bottom:10px;width:1px;background:rgba(243,229,207,.2)}
+html body .sd-b i{position:absolute;top:3px;right:3px;min-width:16px;height:16px;padding:0 4px;border-radius:999px;background:#B5532F;color:#fff;font:700 10px/16px var(--body);font-style:normal;text-align:center}
+@media(max-width:900px){html body .sdock{display:none}html body .cat-bar .searchslot{max-width:none!important;flex:1 1 auto!important}}
+html body .cat-bar .searchslot{order:1!important;margin-left:0!important}
+html body .cat-bar .sdock{order:2!important;margin-left:4px}
+html body .cat-bar{justify-content:flex-start!important}
