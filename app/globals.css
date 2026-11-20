@@ -2887,3 +2887,43 @@ html body .chip.lcdonly .lcd-l.s{color:#4A4541!important;border-top-color:rgba(4
 html body .chip.lcdonly .lcd-tg{background:#2B2B2B!important;color:#F3E5CF!important}
 html body .chip.lcdonly .lcd-btn{background:#B5532F!important;color:#F7EFE2!important;border-color:#2B2B2B!important;box-shadow:3px 3px 0 #2B2B2B!important}
 html body .chip.lcdonly .lcd-tc{color:#6E6759!important}
+/* v116 LIGHT sandal + terracotta */
+:root{--ink:#2B2B2B}
+html body #nav.nav,html body.is-home #nav.nav:not(.solid),html body #nav.nav.solid{background:rgba(247,239,226,.92)!important;border-bottom:1px solid rgba(181,83,47,.18)!important;backdrop-filter:blur(10px)}
+html body #nav.nav::before{display:none!important}
+html body .nav .navwrap .bar,html body .nav .navwrap .plate,html body .nav .navwrap .plate.b,html body .nav .bar,html body .nav .plate{background:#FFFDF8!important;border-color:rgba(181,83,47,.35)!important;box-shadow:0 6px 18px -10px rgba(120,60,30,.35)!important}
+html body .nav a,html body .nav .bar a,html body .nav .bx-txt b,html body .nav .brand,html body .nav .logo{color:#2B2B2B!important}
+html body .nav .bar a.on,html body .nav .bar a[aria-current],html body .nav .bar a:hover{color:#B5532F!important}
+html body .nav img.logo,html body .nav .bx-mark{filter:none}
+html body .nav .icons .hic{background:#FFFDF8!important;color:#2B2B2B!important;border-color:rgba(181,83,47,.3)!important}
+html body .nav .drop,html body .mega{background:#FFFDF8!important;color:#2B2B2B!important}
+html body .nav .drop a,html body .mega a{color:#2B2B2B!important}
+html body .pc{background:radial-gradient(1200px 600px at 50% 40%,#FBF4E8,#EFE0C6)!important;color:#2B2B2B!important}
+html body .pc *{--line:rgba(181,83,47,.18)}
+html body .pc::before,html body .pc::after{opacity:.5}
+html body .pc .pc-cap{background:#FFFDF8!important;color:#2B2B2B!important;border-color:rgba(181,83,47,.35)!important;box-shadow:0 8px 20px -12px rgba(120,60,30,.4)!important}
+html body .pc .pc-cap b{color:#2B2B2B!important}
+html body .pc .pc-cap span,html body .pc .pc-cap i{color:#B5532F!important}
+html body .pc .pc-plate{opacity:.6}
+html body .chip.prod,html body .chip.prod.mq{background:#FFFDF8!important;border-color:rgba(181,83,47,.35)!important;box-shadow:0 10px 24px -14px rgba(120,60,30,.45)!important}
+html body .pc [class*="silk"],html body .pc .silk,html body .pc small,html body .pc .ref{color:rgba(43,43,43,.45)!important}
+html body .pt-cmp figcaption{color:#2B2B2B!important;text-shadow:none!important}
+html body .pt-cmp img{filter:drop-shadow(0 10px 10px rgba(90,50,20,.28))!important}
+html body .pt-cmp.lens img{filter:none!important}
+html body .pt-tag b{background:#FFFDF8!important;color:#2B2B2B!important}
+html body .chip.lcdonly .lcd{background:#FFFDF8!important}
+html body .marq{background:#B5532F!important;color:#F7EFE2!important}
+html body .marq *{color:#F7EFE2!important}
+html body .card-foot{background:#EAD7B7!important}
+html body .cf-card{background:#FFFDF8!important;color:#2B2B2B!important}
+html body .cat2.big{background:#EAD7B7!important;color:#2B2B2B!important}
+html body .cat2.big *{color:#2B2B2B!important}
+html body .cat2.big .c2go{background:#B5532F!important;color:#fff!important}
+html body .p3hero{background:linear-gradient(160deg,#FBF4E8,#EAD7B7)!important;color:#2B2B2B!important}
+html body .p3hero h1,html body .p3hero h2,html body .p3hero p{color:#2B2B2B!important}
+html body .wadot{background:#B5532F!important}
+html body #nav .brand b,html body #nav .bx b,html body #nav .brand{color:#2B2B2B!important;-webkit-text-fill-color:#2B2B2B!important;background:none!important;text-shadow:none!important}
+html body #nav .brand img{filter:brightness(0) saturate(100%) invert(18%)!important}
+html body #nav nav a,html body #nav .bar a,html body #nav .navwrap a{color:#3A3633!important;-webkit-text-fill-color:#3A3633!important;text-shadow:none!important;opacity:1!important}
+html body #nav nav a.on,html body #nav nav a[aria-current],html body #nav nav a:hover{color:#B5532F!important;-webkit-text-fill-color:#B5532F!important}
+html body #nav .menubtn,html body #nav .menucell button{color:#fff!important}
