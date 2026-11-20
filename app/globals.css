@@ -3060,3 +3060,59 @@ html body #nav #menuBtn::before,html body #nav #menuBtn::after{display:none!impo
 html body #nav #menuBtn svg,html body #nav #menuBtn i,html body #nav #menuBtn span{color:#F3E5CF!important;stroke:#F3E5CF!important;background-color:currentColor}
 html body #nav #menuBtn svg{background:none!important}
 html body #nav.open #menuBtn,html body #nav #menuBtn[aria-expanded="true"]{background-color:#B5532F!important;background-image:linear-gradient(45deg,transparent 46%,#fff 46%,#fff 54%,transparent 54%),linear-gradient(-45deg,transparent 46%,#fff 46%,#fff 54%,transparent 54%)!important;background-size:20px 20px,20px 20px!important;background-position:center,center!important}}
+/* v131 minimal footer */
+html body .card-foot{background:#EFE1C8!important;padding:28px 0 18px!important;margin-top:40px!important;border-top:1px solid rgba(181,83,47,.15)!important;box-shadow:none!important}
+html body .card-foot::before,html body .card-foot::after,html body .cf-card::before,html body .cf-card::after{display:none!important}
+html body .cf-card{background:transparent!important;box-shadow:none!important;border:0!important;padding:0!important;border-radius:0!important}
+html body .cf-top{padding-bottom:18px!important;margin-bottom:18px!important;border-bottom:1px solid rgba(181,83,47,.18)!important}
+html body .cf-brand img{width:40px!important;height:auto!important}
+html body .cf-brand b{font-size:18px!important}
+html body .cf-cta{padding:8px 16px 8px 8px!important;font-size:11px!important;box-shadow:none!important;background:#B5532F!important;color:#fff!important}
+html body .cf-cols h4{font-size:11px!important;margin-bottom:10px!important}
+html body .cf-cols li a,html body .cf-reach a,html body .cf-deal p{font-size:13px!important;line-height:1.5!important}
+html body .cf-cols ul{gap:6px!important}html body .cf-cols li{margin:0 0 6px!important}
+html body .cf-copy{margin-top:18px!important;font-size:11px!important;text-align:center}
+@media(max-width:700px){
+html body .card-foot{padding:22px 0 14px!important}
+html body .cf-top{flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:10px!important}
+html body .cf-brand i{display:none!important}html body .cf-brand b{font-size:15px!important}html body .cf-brand img{width:32px!important}
+html body .cf-cta{font-size:0!important;padding:6px!important;gap:0!important}html body .cf-cta::after{content:"Join";font-size:11px;letter-spacing:.08em;padding:0 8px 0 6px;font-weight:700}
+html body .cf-cols{display:grid!important;grid-template-columns:1fr 1fr!important;gap:18px 14px!important}
+html body .cf-deal{display:none!important}html body .cf-reach{grid-column:1/-1}
+html body .cf-reach a{display:flex!important;gap:8px;align-items:baseline}html body .cf-reach small{min-width:68px}
+}
+/* v131 mobile shop bar */
+@media(max-width:900px){
+html body .cat-bar{flex-wrap:wrap!important;gap:10px!important}
+html body .cat-bar .searchslot{order:1!important;flex:1 1 100%!important}
+html body .cat-bar .searchslot form,html body .cat-bar .searchslot .search{height:50px!important}
+html body .cat-bar .searchslot button,html body .cat-bar .searchslot [type=submit]{height:38px!important;padding:0 14px!important}
+html body .cat-bar .fopen{display:inline-flex!important;order:2!important;flex:1 1 auto!important;height:50px!important;justify-content:center;align-items:center;gap:8px;border-radius:14px!important;background:#FFFDF8!important;border:1px solid rgba(181,83,47,.3)!important;color:#2B2B2B!important;font-weight:600}
+html body .sdock{display:flex!important;order:3!important;height:50px!important;padding:4px 6px!important}
+html body .sd-b{width:40px!important;height:40px!important}}
+/* v131 3D print */
+html body .p3hero{padding:40px 0 30px!important}
+html body .p3btns{display:flex!important;gap:12px!important;flex-wrap:wrap}
+html body .p3btns a{display:inline-flex!important;align-items:center;justify-content:center;height:52px!important;padding:0 26px!important;border-radius:14px!important;font:700 13px var(--body)!important;letter-spacing:.08em;text-transform:uppercase;box-shadow:none!important}
+html body .p3btns .jb-btn{background:#B5532F!important;color:#fff!important;border:0!important}
+html body .p3btns .ghostbtn{background:#2B2B2B!important;color:#F3E5CF!important;border:0!important;opacity:1!important}
+html body .p3steps ol{gap:14px!important}
+html body .p3steps li{background:#FFFDF8!important;border:1px solid rgba(181,83,47,.18)!important;border-radius:18px!important;padding:22px!important;box-shadow:none!important}
+html body .p3steps li span{color:#B5532F!important}
+@media(max-width:700px){
+html body .p3hero{padding:20px 0 10px!important}
+html body .p3hero .ptitle{font-size:36px!important}
+html body .p3btns a{flex:1 1 100%!important;height:50px!important}
+html body .p3art{transform:scale(.7);margin:-20px auto -30px!important}
+html body .p3steps ol{display:grid!important;grid-template-columns:1fr!important}}
+/* v131 mobile marquee */
+@media(max-width:600px){html body .pc .marq{transform:rotate(-1deg)!important;margin:16px -6% 0!important;padding:8px 0!important;font-size:11px!important;box-shadow:none!important}}
+@media(max-width:900px){html body .cat-bar,html body .cmain{max-width:100%!important;min-width:0!important;box-sizing:border-box}
+html body .cat-bar .searchslot,html body .cat-bar .searchslot form,html body .cat-bar .searchslot input{min-width:0!important;max-width:100%!important}
+html body .cat-bar .searchslot form{width:100%!important}
+html body .cat-bar .searchslot input{flex:1 1 auto!important;width:auto!important}
+html body .cat-bar .searchslot button{flex:none!important}
+html body .cat-bar .fopen{min-width:0!important}}
+@media(max-width:700px){html body .cf-top{display:flex!important;flex-wrap:nowrap!important}html body .cf-cta{width:auto!important;flex:none!important}
+html body .cf-cols li{margin:0 0 2px!important}html body .cf-cols li a{padding:3px 0!important;display:inline-block}
+html body .p3art{transform:scale(.55)!important;margin:-40px auto -50px!important}}
