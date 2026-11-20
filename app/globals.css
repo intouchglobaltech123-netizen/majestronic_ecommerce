@@ -3011,3 +3011,12 @@ html body #nav .toprow{position:relative}
 html body #nav .toprow>.icons,html body:not(.show-ic) #nav .toprow>.icons{position:absolute!important;top:calc(100% + 14px);right:20px;z-index:55;display:flex!important;gap:8px!important;background:rgba(255,253,248,.92);border:1px solid rgba(181,83,47,.22);border-radius:999px;padding:5px!important;box-shadow:0 12px 26px -16px rgba(90,50,20,.5);backdrop-filter:blur(8px)}
 html body #nav .icons .hic{width:38px!important;height:38px!important}
 html body #nav .toprow>.navwrap{margin-right:0!important}}
+/* v126 shop tool dock */
+@media(min-width:901px){
+html body:not(.show-ic) #nav .toprow>.icons{display:none!important}
+html body.show-ic #nav .toprow>.icons{display:flex!important;top:calc(100% + 16px);right:24px;gap:4px!important;padding:6px!important;background:#2B2B2B!important;border:1px solid rgba(217,120,79,.45)!important;border-radius:16px!important;box-shadow:0 18px 34px -16px rgba(43,43,43,.55)!important}
+html body.show-ic #nav .icons .hic{width:42px!important;height:42px!important;border-radius:12px!important;background:transparent!important;border:0!important;color:#F3E5CF!important;transition:background .2s,color .2s,transform .2s}
+html body.show-ic #nav .icons .hic:hover{background:#B5532F!important;color:#fff!important;transform:translateY(-1px)}
+html body.show-ic #nav .icons .hic+.hic{position:relative}
+html body.show-ic #nav .icons .hic+.hic::before{content:"";position:absolute;left:-2px;top:11px;bottom:11px;width:1px;background:rgba(243,229,207,.18)}
+html body.show-ic #nav .icons .hic svg{stroke:currentColor}}
