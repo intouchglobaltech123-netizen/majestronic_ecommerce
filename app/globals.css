@@ -3045,3 +3045,9 @@ html body .cat-bar .searchslot button:hover{background:#9C4526!important}
 html body .cat-bar .sdock{height:56px;box-sizing:border-box;align-items:center;border-radius:16px;padding:6px 8px}
 html body .sd-b{width:44px;height:44px;border-radius:12px}
 html body .card-foot{background:linear-gradient(180deg,transparent 0 50%,#EAD7B7 50% 100%)!important}
+/* v129 dark plated nav */
+html body #nav .navwrap .bar,html body #nav .navwrap .plate,html body #nav .navwrap .plate.b,html body #nav .navwrap .plate.t{background:#2B2B2B!important;border-color:#3D3936!important;box-shadow:0 10px 22px -12px rgba(43,43,43,.6)!important}
+html body #nav .navwrap .bar a,html body #nav nav.bar a{color:#EAD7B7!important;-webkit-text-fill-color:#EAD7B7!important;border-color:rgba(234,215,183,.14)!important;background:transparent!important}
+html body #nav nav.bar a:hover{color:#fff!important;-webkit-text-fill-color:#fff!important;background:rgba(181,83,47,.35)!important}
+html body #nav nav.bar a.on,html body #nav nav.bar a[aria-current]{background:#B5532F!important;color:#fff!important;-webkit-text-fill-color:#fff!important}
+html body #nav nav.bar a::after,html body #nav nav.bar a::before{background:#E58A62!important}
