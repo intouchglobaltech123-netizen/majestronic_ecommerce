@@ -2865,3 +2865,10 @@ html body .pt-cmp img{display:block;margin:0 auto;height:clamp(46px,4.2vw,62px);
 html body .pt-cmp figcaption{margin:10px 0 0;padding:7px 6px 8px;border-top:1px solid rgba(226,198,138,.35);font:700 10.5px/1.15 var(--body);color:#F5DC9C;white-space:normal;overflow:visible;text-overflow:clip;min-height:2.3em;display:flex;align-items:center;justify-content:center;text-align:center}
 html body .pt-cmp:hover{border-color:#F5DC9C}
 @media(max-width:600px){html body .pt-cmp{width:56px;border-radius:11px;box-shadow:0 10px 18px -10px rgba(0,0,0,.8)}html body .pt-cmp::before{border-radius:10px 10px 0 0}html body .pt-cmp img{height:30px;padding-top:6px}html body .pt-cmp figcaption{font-size:7.5px;margin-top:6px;padding:4px 3px 5px;min-height:2.2em}}
+/* v112 bare components */
+html body .pt-cmp{background:none!important;border:0!important;box-shadow:none!important;padding:0!important;overflow:visible!important;width:auto!important}
+html body .pt-cmp::before,html body .pt-cmp::after{display:none!important}
+html body .pt-cmp img{padding:0!important;height:clamp(54px,5vw,76px)!important;max-width:clamp(80px,7.5vw,112px)!important;filter:drop-shadow(0 12px 10px rgba(0,0,0,.6)) drop-shadow(0 0 14px rgba(245,220,156,.18))!important}
+html body .pt-cmp figcaption{border:0!important;min-height:0!important;margin-top:8px!important;padding:0!important;font:600 11px var(--body)!important;color:#F1E2BC!important;white-space:nowrap!important;text-shadow:0 2px 6px rgba(0,0,0,.8)}
+html body .pc-tags.cmp{gap:clamp(14px,1.8vw,28px)!important}
+@media(max-width:600px){html body .pt-cmp img{height:34px!important;max-width:50px!important}html body .pt-cmp figcaption{font-size:7.5px!important;margin-top:4px!important}html body .pc-tags.cmp{gap:6px!important}}
