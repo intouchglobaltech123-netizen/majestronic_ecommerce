@@ -2795,3 +2795,13 @@ html body .chip.prod{grid-template-columns:1fr!important;grid-template-rows:1fr!
 @media(max-width:1000px){html body .pc-col:first-child,html body .pc-col:last-child,html body .pc-pair2{display:contents!important}}
 @media(max-width:1000px){html body .pc-col:last-child .chip.prod .pi,html body .pc-pair2 .chip.prod .pi{height:86px!important}}
 @media(max-width:600px){html body .pc-col:last-child .chip.prod .pi,html body .pc-pair2 .chip.prod .pi{height:58px!important}}
+/* v106 vertical running kits */
+.pc-mq{position:relative;height:min(68vh,560px);overflow:hidden;border-radius:16px;-webkit-mask:linear-gradient(transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(transparent,#000 12%,#000 88%,transparent)}
+.pc-mqt{display:flex;flex-direction:column;padding:0;animation:mqdown 22s linear infinite}
+.pc-mq:hover .pc-mqt{animation-play-state:paused}
+@keyframes mqdown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+html body .chip.mq{opacity:1!important;animation:none!important;flex:0 0 auto;height:170px;margin:9px 2px}
+html body .chip.mq .pi{height:132px!important}
+html body .chip.mq.sel{box-shadow:0 0 0 2px #F5DC9C,0 0 26px rgba(245,220,156,.35)!important}
+@media(max-width:1000px){.pc-mq{height:auto;-webkit-mask:none;mask:none;overflow:visible;grid-column:1/-1;order:3}.pc-mqt{animation:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:0}html body .chip.mq.dup{display:none!important}html body .chip.mq{height:auto;margin:0}html body .chip.mq .pi{height:86px!important}}
+@media(max-width:600px){.pc-mqt{gap:8px}html body .chip.mq .pi{height:58px!important}}

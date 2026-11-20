@@ -806,25 +806,29 @@ h.addEventListener('mouseleave',()=>{['--ry','--rx','--tx','--ty'].forEach(p=>t.
 
 /* PCB hero */
 (function(){const root=document.getElementById('pcb');if(!root)return;const svg=root.querySelector('#pcSvg'),NS='http://www.w3.org/2000/svg';
-const IT={car:{img:'rc-car.webp',w:'Obstacle Avoiding Robot Car',lab:'ROBOT KIT',nm:'4WD Arduino Robot Car Kit'},k1:{img:'kit-50.webp',w:'Smart Line Following',lab:'DIY KIT'},k2:{img:'kit-22.webp',w:'MQ-53 DIY',lab:'DIY KIT'},k3:{img:'kit-jcb.webp',w:'Hydraulic JCB',lab:'DIY KIT'},k4:{img:'kit-treb.webp',w:'Wooden Trebuchet',lab:'DIY KIT'}};
+const IT={car:{img:'rc-car.webp',w:'Obstacle Avoiding Robot Car',nm:'4WD Arduino Robot Car Kit'},k1:{img:'kit-50.webp',w:'Smart Line Following'},k2:{img:'kit-22.webp',w:'MQ-53 DIY'},k3:{img:'kit-jcb.webp',w:'Hydraulic JCB'},k4:{img:'kit-treb.webp',w:'Wooden Trebuchet'}};
 Object.values(IT).forEach(o=>{const p=P.find(x=>x.name.startsWith(o.w));o.p=p;o.nm=o.nm||(p?p.name:'');o.href=p?'#product-'+p.id:'#shop';o.price=p?'₹'+p.price:''});
 let cur='car';const hero=root.querySelector('#pcHero'),cap=root.querySelector('#pcCap'),car=root.querySelector('.pc-car');
-const fillChip=c=>{const o=IT[c.dataset.k];c.querySelector('.pi').innerHTML=`<img src="${o.img}" alt="${o.nm}">`;c.setAttribute('aria-label',o.nm);c.title=o.nm};
 const fillCap=()=>{const o=IT[cur];cap.href=o.href;cap.querySelector('b').textContent=o.nm;cap.querySelector('span').textContent=o.price};
-root.querySelectorAll('.chip.prod').forEach(fillChip);fillCap();
+root.querySelectorAll('.chip.mq').forEach(c=>{const o=IT[c.dataset.k];c.querySelector('.pi').innerHTML=`<img src="${o.img}" alt="${o.nm}">`;c.title=o.nm;c.setAttribute('aria-label','Show '+o.nm)});fillCap();
+const mark=()=>root.querySelectorAll('.chip.mq').forEach(c=>c.classList.toggle('sel',c.dataset.k===cur));
+const show=k=>{if(k===cur||car.classList.contains('swap'))return;car.classList.add('swap');setTimeout(()=>{cur=k;hero.src=IT[k].img;hero.alt=IT[k].nm;fillCap();mark();car.classList.remove('swap');car.classList.add('in');setTimeout(()=>car.classList.remove('in'),700)},380)};
+let apT=null;const ORDER=['car','k1','k2','k3','k4'];const ap=()=>{clearTimeout(apT);apT=setTimeout(()=>{if(!document.hidden&&!car.matches(':hover'))show(ORDER[(ORDER.indexOf(cur)+1)%ORDER.length]);ap()},4000)};
+root.querySelectorAll('.chip.mq').forEach(c=>c.addEventListener('click',e=>{e.preventDefault();show(c.dataset.k);ap()}));ap();
+
 root.querySelectorAll('.chip.prod').forEach(c=>c.addEventListener('click',e=>{e.preventDefault();if(car.classList.contains('swap'))return;const k=c.dataset.k;c.classList.add('flip');car.classList.add('swap');
 setTimeout(()=>{c.dataset.k=cur;cur=k;hero.src=IT[cur].img;hero.alt=IT[cur].nm;fillChip(c);fillCap();car.classList.remove('swap');car.classList.add('in');c.classList.remove('flip');setTimeout(()=>car.classList.remove('in'),700)},380)}));
-let apI=0,apT=null;const apChips=()=>[...root.querySelectorAll('.chip.prod')];const ap=()=>{clearTimeout(apT);apT=setTimeout(()=>{if(!document.hidden&&!root.matches(':hover')){const cs=apChips();cs[apI%cs.length].click();apI++}ap()},3800)};ap();
+
 let first=true;
 function draw(){if(innerWidth<=1000){svg.innerHTML='';return}const R=root.getBoundingClientRect();svg.setAttribute('viewBox',`0 0 ${R.width} ${R.height}`);svg.innerHTML='';
 const pads={};root.querySelectorAll('.pad').forEach(p=>{const r=p.getBoundingClientRect();pads[p.dataset.a]=[r.left+r.width/2-R.left,r.top+r.height/2-R.top]});
-const chips=[...root.querySelectorAll('.chip')];const map=[[0,'l1'],[1,'l2'],[3,'r1'],[4,'r2']];
-map.forEach(([ci,pa],k)=>{const c=chips[ci];if(!c||!pads[pa])return;const r=c.getBoundingClientRect();const left=c.dataset.pin==='r';const x1=left?r.right-R.left:r.left-R.left,y1=r.top+r.height/2-R.top;const [x2,y2]=pads[pa];
+const chips=[root.querySelector('.chip.lcdonly'),root.querySelector('.pc-mq'),root.querySelector('.pc-mq')];const map=[[0,'l1'],[1,'r1'],[2,'r2']];
+map.forEach(([ci,pa],k)=>{const c=chips[ci];if(!c||!pads[pa])return;const r=c.getBoundingClientRect();const left=c.dataset.pin==='r';const x1=left?r.right-R.left:r.left-R.left,y1=r.top+r.height*(c.classList.contains('pc-mq')?(k===1?.3:.7):.5)-R.top;const [x2,y2]=pads[pa];
 const mid=x1+(x2-x1)*.45,dy=y2-y1,dx=Math.sign(x2-x1)*Math.min(Math.abs(dy),Math.abs(x2-mid)*.8);const d=`M${x1} ${y1}H${mid}L${mid+dx} ${y1+Math.sign(dy)*Math.abs(dx)}V${y2}H${x2}`;
 const path=document.createElementNS(NS,'path');path.setAttribute('d',d);path.setAttribute('class','tr'+(first?' draw':''));path.id='pct'+k;svg.append(path);const L=path.getTotalLength();path.style.setProperty('--l',L);if(first)path.style.animationDelay=(0.5+k*.12)+'s';
 const v=document.createElementNS(NS,'circle');v.setAttribute('cx',x1);v.setAttribute('cy',y1);v.setAttribute('r',5);v.setAttribute('class','via');svg.append(v);
 const pu=document.createElementNS(NS,'circle');pu.setAttribute('r',4);pu.setAttribute('class','pulse');pu.innerHTML=`<animateMotion dur="${2+k*.35}s" begin="${first?2.2+k*.1:0}s" repeatCount="indefinite" keyPoints="${left?'0;1':'1;0'}" keyTimes="0;1" calcMode="linear"><mpath href="#pct${k}"/></animateMotion>`;svg.append(pu);
-c.onmouseenter=()=>path.classList.add('hot');c.onmouseleave=()=>path.classList.remove('hot')});first=false}
+});first=false}
 const run=()=>requestAnimationFrame(draw);setTimeout(run,2300);addEventListener('resize',()=>{clearTimeout(window.__pct);window.__pct=setTimeout(run,150)});
 const img=root.querySelector('.pc-car img');if(!img.complete)img.addEventListener('load',run);addEventListener('hashchange',()=>setTimeout(run,80))})();
 
