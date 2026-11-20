@@ -2872,3 +2872,9 @@ html body .pt-cmp img{padding:0!important;height:clamp(54px,5vw,76px)!important;
 html body .pt-cmp figcaption{border:0!important;min-height:0!important;margin-top:8px!important;padding:0!important;font:600 11px var(--body)!important;color:#F1E2BC!important;white-space:nowrap!important;text-shadow:0 2px 6px rgba(0,0,0,.8)}
 html body .pc-tags.cmp{gap:clamp(14px,1.8vw,28px)!important}
 @media(max-width:600px){html body .pt-cmp img{height:34px!important;max-width:50px!important}html body .pt-cmp figcaption{font-size:7.5px!important;margin-top:4px!important}html body .pc-tags.cmp{gap:6px!important}}
+/* v113 scattered components */
+html body .pc-tags.cmp{display:block!important;inset:0!important;padding:0!important}
+html body .pc-tags.cmp .pt-cmp{position:absolute;translate:-50% -50%;rotate:var(--r)}
+html body .pc-cbox.hascmp #pcHero{scale:.74!important;translate:0 -2%!important}
+html body .pt-cmp.lens img{width:clamp(58px,5vw,78px)!important;height:clamp(58px,5vw,78px)!important;max-width:none!important;object-fit:cover;border-radius:50%;border:2px solid #E2C68A;box-shadow:0 0 0 4px rgba(226,198,138,.18),0 12px 20px -6px rgba(0,0,0,.7);filter:none!important}
+@media(max-width:600px){html body .pc-cbox.hascmp #pcHero{scale:.7!important;translate:0 -2%!important}html body .pt-cmp.lens img{width:36px!important;height:36px!important}}
