@@ -846,4 +846,5 @@ function run(){ls.forEach(l=>{l.textContent='';l.classList.remove('cur')});let i
 setTimeout(run,1600)})();
 
 (()=>{const c=document.getElementById('sdCart');if(c)c.addEventListener('click',()=>document.getElementById('openCart').click());const sync=()=>{[['wishCount','sdWish'],['cartCount','sdCartN']].forEach(([a,b])=>{const x=document.getElementById(a),y=document.getElementById(b);if(x&&y){y.textContent=x.textContent;y.style.display=(+x.textContent>0)?'':'none'}})};sync();['wishCount','cartCount'].forEach(id=>{const e=document.getElementById(id);if(e)new MutationObserver(sync).observe(e,{childList:true,characterData:true,subtree:true})})})();
+(()=>{const b=document.getElementById('menuBtn');if(!b)return;b.innerHTML='<span class="mb-ic" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">Menu</span>'})();
 })();

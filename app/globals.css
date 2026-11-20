@@ -3116,3 +3116,21 @@ html body .cat-bar .fopen{min-width:0!important}}
 @media(max-width:700px){html body .cf-top{display:flex!important;flex-wrap:nowrap!important}html body .cf-cta{width:auto!important;flex:none!important}
 html body .cf-cols li{margin:0 0 2px!important}html body .cf-cols li a{padding:3px 0!important;display:inline-block}
 html body .p3art{transform:scale(.55)!important;margin:-40px auto -50px!important}}
+/* v132 perfect menu button */
+@media(max-width:900px){
+html body #nav .navwrap .plate,html body #nav .navwrap::before,html body #nav .navwrap::after,html body #nav nav.bar::before,html body #nav nav.bar::after{display:none!important}
+html body #nav .navwrap,html body #nav nav.bar{background:none!important;border:0!important;box-shadow:none!important;padding:0!important}
+html body #nav #menuBtn{width:46px!important;height:46px!important;border-radius:14px!important;background:#2B2B2B!important;background-image:none!important;border:0!important;box-shadow:0 8px 18px -10px rgba(43,43,43,.6)!important;display:grid!important;place-items:center!important;font-size:0!important;transition:background .25s}
+html body #nav #menuBtn .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+html body #nav #menuBtn .mb-ic{position:relative;width:20px;height:14px;display:block}
+html body #nav #menuBtn .mb-ic i{position:absolute;left:0;height:2px;border-radius:2px;background:#F3E5CF;transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .2s,top .3s,width .3s}
+html body #nav #menuBtn .mb-ic i:nth-child(1){top:0;width:20px}
+html body #nav #menuBtn .mb-ic i:nth-child(2){top:6px;width:14px;left:6px}
+html body #nav #menuBtn .mb-ic i:nth-child(3){top:12px;width:20px}
+html body #nav #menuBtn[aria-expanded="true"],html body #nav.open #menuBtn{background:#B5532F!important;background-image:none!important}
+html body #nav #menuBtn[aria-expanded="true"] .mb-ic i:nth-child(1){top:6px;transform:rotate(45deg)}
+html body #nav #menuBtn[aria-expanded="true"] .mb-ic i:nth-child(2){opacity:0}
+html body #nav #menuBtn[aria-expanded="true"] .mb-ic i:nth-child(3){top:6px;transform:rotate(-45deg)}}
+@media(max-width:900px){html body #nav nav.bar,html body #nav .navwrap nav.bar{clip-path:none!important;background:transparent!important;background-color:transparent!important;-webkit-mask:none!important}
+html body #nav #menuBtn .mb-ic,html body #nav #menuBtn .mb-ic *{background-color:transparent}
+html body #nav #menuBtn .mb-ic i{background-color:#F3E5CF!important}}
