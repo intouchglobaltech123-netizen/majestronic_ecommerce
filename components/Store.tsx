@@ -7,7 +7,7 @@ export default function Store() {
   return (
     <>
       <div style={{ display: "contents" }} dangerouslySetInnerHTML={{ __html: markup }} />
-      <Script src="/store.js" strategy="afterInteractive" />
+      <Script src="/store.js?v=c0e54c25f0" strategy="afterInteractive" />
     </>
   );
 }
